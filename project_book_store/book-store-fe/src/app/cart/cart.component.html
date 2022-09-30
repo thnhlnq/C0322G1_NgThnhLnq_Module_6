@@ -4,108 +4,101 @@
     <div class="container-fluid">
       <div class="row px-xl-5">
         <div class="col-lg-8 table-responsive mb-5">
-          <table class="table table-light table-borderless table-hover text-center mb-0">
+          <table class="table">
             <thead class="thead-dark">
             <tr>
               <th>Tên sách</th>
               <th>Giá</th>
               <th>Số lượng</th>
               <th>Tổng tiền</th>
-              <th>Xóa</th>
+              <th></th>
             </tr>
             </thead>
-            <tbody class="align-middle">
+            <tbody>
             <tr>
-              <td class="align-middle"><img
-                src="https://cdn.chanhtuoi.com/uploads/2018/05/nhung-cuon-sach-hay-1.jpg.webp" alt=""
-                style="width: 50px;"> Đắc Nhân Tâm
+              <td class="align-middle">
+                <img src="assets/img/thientaibentraikedienbenphai.jpg" alt="" style="width: 50px;"> Thiên Tài Bên Trái,
+                Kẻ Điên Bên Phải
               </td>
-              <td class="align-middle">260.000 VNĐ</td>
+              <td class="align-middle">260.000 đ</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-minus1">-</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                     id="var-value1">1</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-plus1">+</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus1">-</button></li>
+                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value1">1</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus1">+</button></li>
                 </ul>
               </td>
-              <td class="align-middle">260.000 VNĐ</td>
+              <td class="align-middle">260.000 đ</td>
               <td class="align-middle">
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>
             <tr>
-              <td class="align-middle"><img src="https://sachvui.vn/wp-content/uploads/image_195509_1_36793.jpeg"
-                                            alt="" style="width: 50px;"> Nhà giả kim
+              <td class="align-middle">
+                <img src="assets/img/loi-canh-bao.jpg" alt="" style="width: 50px;"> Lời Cảnh Báo
               </td>
-              <td class="align-middle">220.000 VNĐ</td>
+              <td class="align-middle">220.000 đ</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-minus2">-</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                     id="var-value2">1</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-plus2">+</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus2">-</button></li>
+                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value2">1</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus2">+</button></li>
                 </ul>
               </td>
-              <td class="align-middle">220.000 VNĐ</td>
+              <td class="align-middle">220.000 đ</td>
               <td class="align-middle">
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>
             <tr>
-              <td class="align-middle"><img src="https://sachvui.vn/wp-content/uploads/luat-tam-thuc-download.jpg"
-                                            alt="" style="width: 50px;"> Luật tâm thức
+              <td class="align-middle">
+                <img src="assets/img/ce-sau-17-nam.jpg" alt="" style="width: 50px;"> Ve Sầu 17 Năm
               </td>
-              <td class="align-middle">160.000 VNĐ</td>
+              <td class="align-middle">160.000 đ</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-minus3">-</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                     id="var-value3">1</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-plus3">+</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus3">-</button></li>
+                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value3">1</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus3">+</button></li>
                 </ul>
               </td>
-              <td class="align-middle">160.000 VNĐ</td>
+              <td class="align-middle">160.000 đ</td>
               <td class="align-middle">
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>
             <tr>
-              <td class="align-middle"><img
-                src="https://cdn.chanhtuoi.com/uploads/2018/05/nhung-cuon-sach-hay-9.jpg.webp" alt=""
-                style="width: 50px;"> Trên đường băng
+              <td class="align-middle">
+                <img src="assets/img/14-ngay-kinh-hoang.jpg" alt="" style="width: 50px;"> 14 Ngày Kinh Hoàng
               </td>
-              <td class="align-middle">170.000 VNĐ</td>
+              <td class="align-middle">170.000 đ</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-minus4">-</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                     id="var-value4">1</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-plus4">+</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus4">-</button></li>
+                  <li class="list-inline-item"><button class="btn btn-success badge bg-secondary" id="var-value4">1</button></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus4">+</button></li>
                 </ul>
               </td>
-              <td class="align-middle">170.000 VNĐ</td>
+              <td class="align-middle">170.000 đ</td>
               <td class="align-middle">
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>
             <tr>
-              <td class="align-middle"><img
-                src="https://cdn.chanhtuoi.com/uploads/2018/05/nhung-cuon-sach-hay-5.jpg.webp" alt=""
-                style="width: 50px;"> Đọc vị bất kì ai
+              <td class="align-middle">
+                <img src="assets/img/nguoi-chet-de-da.jpg" alt="" style="width: 50px;"> Người Chết Để Da
               </td>
-              <td class="align-middle">210.000 VNĐ</td>
+              <td class="align-middle">210.000 đ</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                     id="var-value">1</span></li>
-                  <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus">-</button></li>
+                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value">1</span></li>
+                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus">+</button></li>
                 </ul>
               </td>
-              <td class="align-middle">210.000 VNĐ</td>
+              <td class="align-middle">210.000 đ</td>
               <td class="align-middle">
-                <button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button>
+                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
               </td>
             </tr>
             </tbody>
@@ -124,25 +117,44 @@
               <div class="border-bottom pb-2">
                 <div class="d-flex justify-content-between mb-3">
                   <h3>Tổng tiền</h3>
-                  <h3>1.020.000 VNĐ</h3>
+                  <h3>1.020.000 đ</h3>
                 </div>
                 <div class="d-flex justify-content-between">
                   <h3 class="font-weight-medium">Phí vận chuyển</h3>
-                  <h3 class="font-weight-medium">30.000 VNĐ</h3>
+                  <h3 class="font-weight-medium">30.000 đ</h3>
                 </div>
               </div>
               <div class="pt-2">
                 <div class="d-flex justify-content-between mt-2">
                   <h3>Tổng</h3>
-                  <h3>1.050.000 VNĐ</h3>
+                  <h3>1.050.000 đ</h3>
                 </div>
-                <button class="btn btn-success">Thanh Toán</button>
+                <button mat-raised-button color="primary">Thanh Toán</button>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- Cart End -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title mt-2" id="staticBackdropLabel"><b>Thông Báo </b></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn Muốn Xoá Sản Phẩm <span style="color: red"> Name </span>Không ?
+      </div>
+      <div class="modal-footer">
+        <button class="me-3" mat-raised-button color="warn" type="button" data-bs-dismiss="modal"><mat-icon>clear</mat-icon></button>
+        <button mat-raised-button color="primary" type="button" data-bs-dismiss="modal"><mat-icon>delete_forever</mat-icon></button>
+      </div>
     </div>
   </div>
 </div>

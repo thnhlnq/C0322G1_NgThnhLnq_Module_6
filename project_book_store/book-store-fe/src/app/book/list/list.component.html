@@ -1,0 +1,147 @@
+<div class="container my-5">
+  <div class="row">
+    <!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active mt-3"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1" class="mt-3"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2" class="mt-3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                <img class="img-fluid" src="/src/assets/image/4126705.jpg" alt="" height="2000">
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left align-self-center">
+                  <h1 class="h1 text-success"><b>International Literacy Day</b></h1>
+                  <h3 class="h2">Ngày Quốc Tế Biết đọc biết viết</h3>
+                  <p>
+                    Ngày Quốc Tế Biết đọc biết viết diễn ra vào ngày 8 tháng 9 hàng năm nhằm nâng cao nhận thức và mối
+                    quan tâm đến các vấn đề về mù chữ đang tồn tại trong cộng đồng địa phương của chúng ta cũng như trên
+                    toàn cầu...
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                <img class="img-fluid" src="/src/assets/image/5044478.jpg" alt="">
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left">
+                  <h1 class="h1 text-success"><b>World Book Day</b></h1>
+                  <h3 class="h2">Ngày Sách Thế Giới</h3>
+                  <p>
+                    Ngày Sách Thế giới được Tổ chức Giáo dục, Khoa học và Văn hóa của Liên hợp quốc (UNESCO) tổ chức
+                    ngày 23 tháng 4 năm 1995. Tuy nhiên, mối liên hệ giữa niên đại đó và sách được thực hiện ở Tây Ban
+                    Nha vào năm 1923, vì đây là ngày kỷ niệm ngày mất của William Shakespeare và Inca Garcilaso de la
+                    Vega, Biên niên sử Tây Ban Nha nổi tiếng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row p-5">
+              <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                <img class="img-fluid" src="/src/assets/image/5074163.jpg" alt="">
+              </div>
+              <div class="col-lg-6 mb-0 d-flex align-items-center">
+                <div class="text-align-left">
+                  <h1 class="h1 text-success"><b>Happy Book Day</b></h1>
+                  <h3 class="h2">Ngày Sách Thế Giới</h3>
+                  <p>
+                    Ngày Sách Thế giới được Tổ chức Giáo dục, Khoa học và Văn hóa của Liên hợp quốc (UNESCO) tổ chức
+                    ngày 23 tháng 4 năm 1995. Tuy nhiên, mối liên hệ giữa niên đại đó và sách được thực hiện ở Tây Ban
+                    Nha vào năm 1923, vì đây là ngày kỷ niệm ngày mất của William Shakespeare và Inca Garcilaso de la
+                    Vega, Biên niên sử Tây Ban Nha nổi tiếng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
+         role="button" data-bs-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
+         role="button" data-bs-slide="next">
+        <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+    <!-- End Banner Hero -->
+    <h1 class="text-center my-5" style="font-size: 50px">Sách Mới - Tái Bản</h1>
+    <!-- Start Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6" style="display: flex; justify-content: flex-end">
+          <mat-form-field appearance="outline" class="me-3">
+            <mat-label>Tìm Kiếm</mat-label>
+            <input matInput type="search" placeholder="Tìm Kiếm">
+            <!--                    <mat-error></mat-error>-->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Thể Loại</mat-label>
+            <mat-select>
+              <mat-option>Văn Học Việt Nam</mat-option>
+              <mat-option>Văn Học Nước Ngoài</mat-option>
+              <mat-option>Thiếu Nhi</mat-option>
+              <mat-option>Thời Sự - Chính Trị</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let item of books">
+          <div class="card mb-4 product-wap rounded-0" style="border: none;">
+            <div class="card rounded-0" style="border: none">
+              <img class="card-img rounded-0 img-fluid" [src]="item.image" alt="">
+              <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                <ul class="list-unstyled">
+                  <li><a href="">
+                    <button mat-raised-button color="primary"><i class="far fa-heart"></i></button>
+                  </a></li>
+                  <li class="mt-2"><a [routerLink]="['/detail', item.id]">
+                    <button mat-raised-button color="primary"><i class="far fa-eye"></i></button>
+                  </a></li>
+                  <li class="mt-2"><a href="/cart">
+                    <button mat-raised-button color="primary"><i class="fas fa-cart-plus"></i></button>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-body text-center">
+              <a [routerLink]="['/detail', item.id]" class="mb-0 h3 text-decoration-none w-100"><b>{{item.name}}</b></a>
+              <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                <li class="pt-2">
+                  <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                  <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                  <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                  <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                  <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                </li>
+              </ul>
+              <p class="text-center text-danger mb-0"><b>{{item.price | currency: 'đ '}}</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <mat-paginator color="primary" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </div>
+    <!-- End Content -->
+  </div>
+</div>
