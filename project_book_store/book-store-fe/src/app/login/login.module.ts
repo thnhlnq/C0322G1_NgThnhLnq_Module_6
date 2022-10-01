@@ -8,19 +8,21 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
   declarations: [LoginComponent],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCheckboxModule
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSlideToggleModule
+    ]
 })
 export class LoginModule {
 }

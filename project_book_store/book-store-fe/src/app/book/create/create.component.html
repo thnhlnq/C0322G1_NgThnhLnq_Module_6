@@ -1,1 +1,180 @@
-<p>create works!</p>
+<div class="body">
+  <div class="container py-5">
+    <div class="row ">
+      <div class="col-lg-3"></div>
+      <form class="col-lg-6" [formGroup]="bookForm">
+        <div class="mb-3 text-center">
+          <h2><b>Thêm Mới Sách</b></h2>
+        </div>
+        <hr>
+        <div class="mx-4">
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Mã Sách <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Mã Sách" formControlName="code">
+                  <!--                  <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Tên Sách" formControlName="name">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Tác Giả <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Tên Tác Giả" formControlName="author">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Tên Dịch Giả" formControlName="translator">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Kích Thước <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Kích Thước" formControlName="dimension">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
+                  <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nhà Xuất Bản <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" placeholder="Nhập Nhà Xuất Bản" formControlName="publisher">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Ngày Xuất Bản <span><i>(*)</i></span></mat-label>
+                  <input matInput type="date" formControlName="releaseDate">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" formControlName="quantity">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
+                  <input matInput type="text" formControlName="totalPages">
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
+                  <mat-select formControlName="category">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Chiết Khấu <span><i>(*)</i></span></mat-label>
+                  <mat-select formControlName="discount">
+                    <mat-option *ngFor="let discount of discounts"
+                                [value]="discount.id">{{discount.percent}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-12 d-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Mô Tả <span><i>(*)</i></span></mat-label>
+                  <textarea matInput type="textarea" rows="5" formControlName="description"></textarea>
+                  <!--        <mat-error></mat-error>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="row">
+              <div class="col-lg-12 d-grid">
+<!--                <mat-form-field appearance="outline">-->
+<!--                  <mat-label>Chọn Ảnh <span><i>(*)</i></span></mat-label>-->
+<!--                  <input type="file" (change)="selectFile($event); onFileSelected($event)">-->
+                  <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Choose File</button>
+                  <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
+                  <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">
+                  <img class="form-control mt-2" [src]="url" *ngIf="editImageState" width="100%" height="auto" alt="">
+                  <div class="form-text" *ngIf="checkImgSize == true">Kích thước ảnh quá lớn !!</div>
+                  <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">Vui
+                    lòng chọn ảnh.
+                  </div>
+                  <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">Chỉ chấp nhận ảnh có định
+                    dạng .jpg.
+                  </div>
+<!--                          <mat-error></mat-error>-->
+<!--                </mat-form-field>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-around">
+            <a routerLink="">
+              <button mat-raised-button color="warn"> Quay Lại</button>
+            </a>
+            <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
+                    [disabled]="!bookForm.valid"> Thêm mới
+            </button>
+            <button *ngIf="!loader" mat-raised-button color="primary">
+              <div class="spinner-border spinner-border-sm me-1"></div>
+              Đang tải ...
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+</div>

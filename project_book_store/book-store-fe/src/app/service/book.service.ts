@@ -18,7 +18,16 @@ export class BookService {
     return this.http.get<any>(API_URL + '/book');
   }
 
+  save(book: Book): Observable<Book> {
+    return this.http.post<Book>(API_URL + '/book/create', book);
+  }
+
   findById(id: number): Observable<Book> {
     return this.http.get<Book>(`${API_URL}/book/${id}`);
+  }
+
+  delete(id: number): Observable<Book> {
+    // @ts-ignore
+    return this.http.patch<Book>(`${API_URL}/book/${id}`);
   }
 }

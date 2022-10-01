@@ -21,6 +21,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,14 @@ import {HttpClientModule} from '@angular/common/http';
     MatSlideToggleModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      progressBar: true,
+      tapToDismiss: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

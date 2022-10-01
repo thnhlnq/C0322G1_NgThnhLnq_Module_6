@@ -8,19 +8,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
   declarations: [RegisterComponent],
-  imports: [
-    CommonModule,
-    RegisterRoutingModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatCheckboxModule
-  ]
+    imports: [
+        CommonModule,
+        RegisterRoutingModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatCheckboxModule,
+        MatSlideToggleModule
+    ]
 })
 export class RegisterModule {
 }

@@ -85,8 +85,10 @@
     <!-- Start Content -->
     <div class="container">
       <div class="row">
-        <div class="col-md-6"></div>
-        <div class="col-md-6" style="display: flex; justify-content: flex-end">
+        <div class="col-md-6 align-middle">
+          <a routerLink="/create"><button mat-raised-button color="primary">Thêm Mới</button></a>
+        </div>
+        <div class="col-md-6 align-middle" style="display: flex; justify-content: flex-end">
           <mat-form-field appearance="outline" class="me-3">
             <mat-label>Tìm Kiếm</mat-label>
             <input matInput type="search" placeholder="Tìm Kiếm">
@@ -104,14 +106,14 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3" *ngFor="let item of books">
+        <div class="col-md-3 col" *ngFor="let item of books">
           <div class="card mb-4 product-wap rounded-0" style="border: none;">
             <div class="card rounded-0" style="border: none">
               <img class="card-img rounded-0 img-fluid" [src]="item.image" alt="">
               <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                 <ul class="list-unstyled">
                   <li><a href="">
-                    <button mat-raised-button color="primary"><i class="far fa-heart"></i></button>
+                    <button mat-raised-button color="primary"><i class="fas	fa-pencil-alt"></i></button>
                   </a></li>
                   <li class="mt-2"><a [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary"><i class="far fa-eye"></i></button>
@@ -119,6 +121,9 @@
                   <li class="mt-2"><a href="/cart">
                     <button mat-raised-button color="primary"><i class="fas fa-cart-plus"></i></button>
                   </a></li>
+                  <li class="mt-2">
+                    <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openDelete(item.id, item.name)"><i class="fas fa-trash-alt"></i></button>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -133,7 +138,7 @@
                   <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
                 </li>
               </ul>
-              <p class="text-center text-danger mb-0"><b>{{item.price | currency: 'đ '}}</b></p>
+              <p class="text-center text-danger"><b>{{item.price | currency: 'đ '}}</b></p>
             </div>
           </div>
         </div>
@@ -143,5 +148,23 @@
       </div>
     </div>
     <!-- End Content -->
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title mt-2" id="staticBackdropLabel"><b>Thông Báo </b></h2>
+      </div>
+      <div class="modal-body">
+        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} </span>Không ?
+      </div>
+      <div class="modal-footer">
+        <button class="me-3" mat-raised-button color="warn" type="button" data-bs-dismiss="modal"><mat-icon>clear</mat-icon></button>
+        <button mat-raised-button color="primary" type="button" data-bs-dismiss="modal" (click)="delete(id)"><mat-icon>delete_forever</mat-icon></button>
+      </div>
+    </div>
   </div>
 </div>

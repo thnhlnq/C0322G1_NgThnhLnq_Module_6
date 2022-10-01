@@ -1,0 +1,8 @@
+span, i {
+  color: red;
+  font-weight: bold;
+}
+
+mat-label {
+  font-weight: bold;
+}

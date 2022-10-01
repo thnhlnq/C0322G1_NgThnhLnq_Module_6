@@ -11,20 +11,22 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [ListComponent, CreateComponent, EditComponent],
-  imports: [
-    CommonModule,
-    BookRoutingModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatInputModule
-  ]
+    imports: [
+        CommonModule,
+        BookRoutingModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatInputModule,
+        ReactiveFormsModule
+    ]
 })
 export class BookModule {
 }

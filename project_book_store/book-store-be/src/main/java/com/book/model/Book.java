@@ -12,8 +12,12 @@ public class Book {
     private Integer id;
     private String code;
     private String author;
+
+    @Column(columnDefinition = "longtext")
     private String description;
     private String dimension;
+
+    @Column(columnDefinition = "longtext")
     private String image;
     private String name;
     private double price;

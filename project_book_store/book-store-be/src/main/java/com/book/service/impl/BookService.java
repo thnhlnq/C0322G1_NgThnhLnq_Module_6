@@ -21,7 +21,17 @@ public class BookService implements IBookService {
     }
 
     @Override
+    public void save(Book book) {
+        bookRepository.save(book);
+    }
+
+    @Override
     public Optional<Book> findById(Integer id) {
         return bookRepository.findById(id);
+    }
+
+    @Override
+    public void delete(int id) {
+        bookRepository.delete(id);
     }
 }
