@@ -193,9 +193,7 @@
             <div class="row">
               <div class="col-lg-12 d-grid image">
                 <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-                <img *ngIf="!editImageState"
-                     src="https://www.lyon-ortho-clinic.com/files/cto_layout/img/placeholder/book.jpg" width="300px"
-                     height="300px" (click)="fileInput.click()">
+                <img *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">
                 <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
                 <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
                 <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"
@@ -218,10 +216,11 @@
             <button *ngIf="loader" type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid"
                     (click)="submit()"> Thêm mới
             </button>
-            <button *ngIf="!loader" mat-raised-button color="primary" disabled>
-              <div class="spinner-border spinner-border-sm me-1"></div>
-              Đang tải ...
-            </button>
+<!--            <button *ngIf="!loader" mat-raised-button color="primary" disabled>-->
+<!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
+<!--              Đang tải ...-->
+<!--            </button>-->
+            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40" height="40">
             <button (click)="reset()" type="reset" mat-raised-button color="accent"> Nhập Lại
             </button>
           </div>

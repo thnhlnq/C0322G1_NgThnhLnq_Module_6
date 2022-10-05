@@ -1,8 +1,8 @@
 <!-- Header -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow">
   <div class="container d-flex justify-content-between align-items-center">
-    <a routerLink=""><img src="/assets/image/240_F_211078107_d7jQeiFY2JfdTKUu6zC8Y5d28WhYaQP4.jpg" width="100"
-                          height="100" alt=""></a>
+    <a routerLink=""><img src="https://cdn-icons-gif.flaticon.com/6454/6454149.gif" width="70"
+                          height="70" alt=""></a>
     <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
          id="templatemo_main_nav">
       <div class="flex-fill">
@@ -23,12 +23,16 @@
       </div>
       <div class="navbar align-self-center d-flex">
         <a class="nav-icon position-relative text-decoration-none" routerLink="/cart">
-          <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+<!--          <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>-->
+          <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40">
           <span
             class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{totalQuantity}}</span>
         </a>
         <button class="nav-icon position-relative text-decoration-none" style="border: none; background: none">
-          <button mat-button [matMenuTriggerFor]="belowMenu"><i class="fa fa-fw fa-user text-dark"></i></button>
+          <button mat-button [matMenuTriggerFor]="belowMenu">
+<!--            <i class="fa fa-fw fa-user text-dark"></i>-->
+            <img src="https://cdn-icons-gif.flaticon.com/8121/8121295.gif" alt="" width="40" height="40">
+          </button>
           <mat-menu #belowMenu="matMenu" yPosition="below">
             <a routerLink="/register" class="text-decoration-none" [hidden]="isLoggedIn">
               <button mat-menu-item>Đăng Kí</button>

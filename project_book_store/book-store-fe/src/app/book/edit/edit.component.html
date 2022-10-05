@@ -139,7 +139,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
                 <mat-select formControlName="category">
-                  <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+                  <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                 </mat-select>
                 <mat-error
                   *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">
@@ -197,10 +197,11 @@
             <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
                     [disabled]="bookForm.invalid"> Chỉnh Sửa
             </button>
-            <button *ngIf="!loader" mat-raised-button color="primary" disabled>
-              <div class="spinner-border spinner-border-sm me-1"></div>
-              Đang tải ...
-            </button>
+<!--            <button *ngIf="!loader" mat-raised-button disabled>-->
+<!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
+<!--              Đang tải ...-->
+<!--            </button>-->
+            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40" height="40">
             <button (click)="reset(id)" type="reset" mat-raised-button color="accent"> Nhập Lại
             </button>
           </div>
