@@ -1,0 +1,10 @@
+.col {
+  display: flex;
+  align-items: stretch;
+}
+
+.card {
+  border: none;
+  width: 100%;
+  height: 100%;
+}

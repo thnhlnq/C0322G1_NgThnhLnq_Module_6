@@ -13,16 +13,16 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [RegisterComponent],
-    imports: [
-        CommonModule,
-        RegisterRoutingModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatCheckboxModule,
-        MatSlideToggleModule
-    ]
+  imports: [
+    CommonModule,
+    RegisterRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
+  ]
 })
 export class RegisterModule {
 }

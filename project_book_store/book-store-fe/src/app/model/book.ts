@@ -13,7 +13,7 @@ export interface Book {
   publisher?: string;
   quantity?: number;
   releaseDate?: string;
-  totalPages?: string;
+  totalPages?: number;
   translator?: string;
   status?: boolean;
   category?: Category;

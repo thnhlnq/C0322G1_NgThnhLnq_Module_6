@@ -1,6 +1,6 @@
 package com.book.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,23 +10,25 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String email;
     private String username;
     private String password;
     private boolean status;
 
-    @JsonIgnore
+    @JsonBackReference
     @OneToOne(mappedBy = "users")
     private Customer customer;
 
     @OneToMany(mappedBy = "users")
-    @JsonIgnore
+    @JsonBackReference
     private List<UserRole> userRoles;
 
     public Users() {
     }
 
-    public Users(Integer id, String username, String password, boolean status, Customer customer, List<UserRole> userRoles) {
+    public Users(Integer id, String email, String username, String password, boolean status, Customer customer, List<UserRole> userRoles) {
         this.id = id;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.status = status;
@@ -40,6 +42,14 @@ public class Users {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

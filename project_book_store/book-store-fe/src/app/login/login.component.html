@@ -1,42 +1,45 @@
-<div class="container">
+<div class="container" style="margin-top: 125px">
   <div class="row mt-5">
     <div class="col-lg-8">
-      <img src="https://img.freepik.com/free-vector/people-sitting-bookshelves-reading-books-bookstore-students-studying-library_74855-14138.jpg?w=1060&t=st=1664175377~exp=1664175977~hmac=599bcb4767869dd9185268de375a24444d213629af67b95826d65296598b3e91" alt="" width="100%">
+      <img
+        src="https://img.freepik.com/free-vector/people-sitting-bookshelves-reading-books-bookstore-students-studying-library_74855-14138.jpg?w=1060&t=st=1664175377~exp=1664175977~hmac=599bcb4767869dd9185268de375a24444d213629af67b95826d65296598b3e91"
+        alt="" width="100%">
     </div>
     <div class="col-lg-4">
       <div style="text-align: center">
         <img src="assets/image/240_F_211078107_d7jQeiFY2JfdTKUu6zC8Y5d28WhYaQP4.jpg" width="240" height="240" alt="">
       </div>
+      <form [formGroup]="formGroup">
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Tên Tài Khoản</mat-label>
+            <input matInput type="text" placeholder="Nhập Tên Tài Khoản" formControlName="username">
+            <button mat-icon-button matSuffix>
+              <mat-icon>person</mat-icon>
+            </button>
+            <!--        <mat-error></mat-error>-->
+          </mat-form-field>
+        </div>
 
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" placeholder="Email">
-          <button mat-icon-button matSuffix>
-            <mat-icon>mail_outline</mat-icon>
-          </button>
-          <!--        <mat-error></mat-error>-->
-        </mat-form-field>
-      </div>
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Mật Khẩu</mat-label>
+            <input matInput placeholder="Nhập Mật Khẩu" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
 
-      <div class="example-container">
-        <mat-form-field appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-
-      <section class="example-section d-flex justify-content-between align-items-center mb-4">
-        <mat-slide-toggle color="primary">Lưu Mật Khẩu</mat-slide-toggle>
-        <a class="example-margin">Quên Mật Khẩu</a>
-      </section>
-      <div class="mt-top d-grid">
-        <button mat-raised-button color="primary">Đăng Nhập</button>
-      </div>
+        <section class="example-section d-flex justify-content-between align-items-center mb-4">
+          <mat-slide-toggle color="primary" formControlName="remember_me">Lưu Mật Khẩu</mat-slide-toggle>
+          <a class="example-margin" routerLink="/reset-password">Quên Mật Khẩu</a>
+        </section>
+        <div class="mt-top d-grid">
+          <button mat-raised-button color="primary" (click)="onSubmit()">Đăng Nhập</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

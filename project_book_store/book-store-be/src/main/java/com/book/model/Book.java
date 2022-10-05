@@ -3,6 +3,7 @@ package com.book.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Book {
     private double price;
     private String publisher;
     private int quantity;
-    private String releaseDate;
+    private LocalDate releaseDate;
     private int totalPages;
     private String translator;
     private boolean status;
@@ -36,14 +37,14 @@ public class Book {
     @JoinColumn(name = "discount_id", referencedColumnName = "id")
     private Discount discount;
 
-    @OneToMany(mappedBy = "book")
     @JsonIgnore
+    @OneToMany(mappedBy = "book")
     private List<CartDetail> cartDetails;
 
     public Book() {
     }
 
-    public Book(Integer id, String code, String author, String description, String dimension, String image, String name, double price, String publisher, int quantity, String releaseDate, int totalPages, String translator, boolean status, Category category, Discount discount, List<CartDetail> cartDetails) {
+    public Book(Integer id, String code, String author, String description, String dimension, String image, String name, double price, String publisher, int quantity, LocalDate releaseDate, int totalPages, String translator, boolean status, Category category, Discount discount, List<CartDetail> cartDetails) {
         this.id = id;
         this.code = code;
         this.author = author;
@@ -143,11 +144,11 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public String getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 

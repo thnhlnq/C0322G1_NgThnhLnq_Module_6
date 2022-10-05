@@ -9,24 +9,32 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
+import {CreateComponent} from './create/create.component';
+import {EditComponent} from './edit/edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DetailComponent} from './detail/detail.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
-  declarations: [ListComponent, CreateComponent, EditComponent],
-    imports: [
-        CommonModule,
-        BookRoutingModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatPaginatorModule,
-        MatIconModule,
-        MatInputModule,
-        ReactiveFormsModule
-    ]
+  declarations: [
+    ListComponent,
+    CreateComponent,
+    EditComponent,
+    DetailComponent
+  ],
+  imports: [
+    CommonModule,
+    BookRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDatepickerModule
+  ]
 })
 export class BookModule {
 }

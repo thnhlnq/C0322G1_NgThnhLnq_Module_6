@@ -4,6 +4,8 @@ import com.book.model.Book;
 import com.book.repository.IBookRepository;
 import com.book.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +35,15 @@ public class BookService implements IBookService {
     @Override
     public void delete(int id) {
         bookRepository.delete(id);
+    }
+
+    @Override
+    public Page<Book> findAllAndSearch(Pageable pageable, String keyCategory, String keyName, String keyAuthor) {
+        return bookRepository.findAllAndSearch(pageable, "%" + keyCategory + "%", "%" + keyName + "%", "%" + keyAuthor + "%");
+    }
+
+    @Override
+    public Boolean existsCode(String code) {
+        return code.equals(bookRepository.existsCode(code));
     }
 }

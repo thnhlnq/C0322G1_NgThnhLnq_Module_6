@@ -1,109 +1,53 @@
 <div class="container my-5">
-  <div class="row">
+  <div class="row" style="margin-top: 135px">
     <!-- Cart Start -->
     <div class="container-fluid">
-      <div class="row px-xl-5">
+      <div class="row px-xl-5" *ngIf="carts.length">
         <div class="col-lg-8 table-responsive mb-5">
           <table class="table">
             <thead class="thead-dark">
-            <tr>
+            <tr style="font-size: 17px">
+              <th>STT</th>
               <th>Tên sách</th>
               <th>Giá</th>
               <th>Số lượng</th>
               <th>Tổng tiền</th>
-              <th></th>
+              <th>
+                <button mat-raised-button color="warn" (click)="deleteAll()">Xoá Tất Cả</button>
+              </th>
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr *ngFor="let item of carts; index as i">
+              <td class="align-middle">{{i + 1}}</td>
               <td class="align-middle">
-                <img src="assets/img/thientaibentraikedienbenphai.jpg" alt="" style="width: 50px;"> Thiên Tài Bên Trái,
-                Kẻ Điên Bên Phải
+                <img [src]="item.image" alt="" style="width: 50px;">{{item.name}}
               </td>
-              <td class="align-middle">260.000 đ</td>
+              <td class="align-middle">{{item.price | currency: ' '}} ₫</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus1">-</button></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value1">1</span></li>
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus1">+</button></li>
+                  <li class="list-inline-item">
+                    <button (click)="decrease(i, item.quantity)" mat-raised-button color="primary" id="btn-minus1">-
+                    </button>
+                  </li>
+                  <li class="list-inline-item"><input type="number" style="width: 50px"
+                                                      (change)="updateQuantity(i, $event)" id="var-value1"
+                                                      [value]="item.quantity"></li>
+                  <li class="list-inline-item">
+                    <button (click)="increase(i, item.quantity)" mat-raised-button color="primary" id="btn-plus1">+
+                    </button>
+                  </li>
                 </ul>
               </td>
-              <td class="align-middle">260.000 đ</td>
+              <td class="align-middle">{{total(item) | currency: ' '}} ₫</td>
               <td class="align-middle">
-                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/loi-canh-bao.jpg" alt="" style="width: 50px;"> Lời Cảnh Báo
-              </td>
-              <td class="align-middle">220.000 đ</td>
-              <td class="align-middle">
-                <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus2">-</button></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value2">1</span></li>
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus2">+</button></li>
-                </ul>
-              </td>
-              <td class="align-middle">220.000 đ</td>
-              <td class="align-middle">
-                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/ce-sau-17-nam.jpg" alt="" style="width: 50px;"> Ve Sầu 17 Năm
-              </td>
-              <td class="align-middle">160.000 đ</td>
-              <td class="align-middle">
-                <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus3">-</button></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value3">1</span></li>
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus3">+</button></li>
-                </ul>
-              </td>
-              <td class="align-middle">160.000 đ</td>
-              <td class="align-middle">
-                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/14-ngay-kinh-hoang.jpg" alt="" style="width: 50px;"> 14 Ngày Kinh Hoàng
-              </td>
-              <td class="align-middle">170.000 đ</td>
-              <td class="align-middle">
-                <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus4">-</button></li>
-                  <li class="list-inline-item"><button class="btn btn-success badge bg-secondary" id="var-value4">1</button></li>
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus4">+</button></li>
-                </ul>
-              </td>
-              <td class="align-middle">170.000 đ</td>
-              <td class="align-middle">
-                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
-              </td>
-            </tr>
-            <tr>
-              <td class="align-middle">
-                <img src="assets/img/nguoi-chet-de-da.jpg" alt="" style="width: 50px;"> Người Chết Để Da
-              </td>
-              <td class="align-middle">210.000 đ</td>
-              <td class="align-middle">
-                <ul class="list-inline mt-3">
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-minus">-</button></li>
-                  <li class="list-inline-item"><span class="btn btn-success badge bg-secondary" id="var-value">1</span></li>
-                  <li class="list-inline-item"><button mat-raised-button color="primary" id="btn-plus">+</button></li>
-                </ul>
-              </td>
-              <td class="align-middle">210.000 đ</td>
-              <td class="align-middle">
-                <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><mat-icon>delete_forever</mat-icon></button>
+                <button mat-raised-button color="warn" (click)="deleteCart(i)"><i class="fas fa-trash-alt"></i></button>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
+
         <div class="col-lg-4">
           <div class="">
             <div class="example-container">
@@ -114,46 +58,37 @@
             </div>
 
             <div class="bg-light p-30 mb-5">
-              <div class="border-bottom pb-2">
-                <div class="d-flex justify-content-between mb-3">
-                  <h3>Tổng tiền</h3>
-                  <h3>1.020.000 đ</h3>
-                </div>
+              <div class="border-bottom">
                 <div class="d-flex justify-content-between">
-                  <h3 class="font-weight-medium">Phí vận chuyển</h3>
-                  <h3 class="font-weight-medium">30.000 đ</h3>
+                  <h3>Tổng Số Lượng</h3>
+                  <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
                 </div>
+                <!--                <div class="d-flex justify-content-between mb-3">-->
+                <!--                  <h3>Tổng Tiền</h3>-->
+                <!--                  <h3>{{totalPrice | currency: ' '}} ₫</h3>-->
+                <!--                </div>-->
               </div>
               <div class="pt-2">
                 <div class="d-flex justify-content-between mt-2">
-                  <h3>Tổng</h3>
-                  <h3>1.050.000 đ</h3>
+                  <h3>Tổng Thanh Toán</h3>
+                  <h3><b class="text-muted me-2">{{totalPrice | currency: ' '}} ₫</b></h3>
                 </div>
-                <button mat-raised-button color="primary">Thanh Toán</button>
+              </div>
+              <div class="d-flex justify-content-evenly">
+                <a routerLink="">
+                  <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
+                </a>
+                <button mat-raised-button color="primary"> Thanh Toán</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Cart End -->
-    </div>
-  </div>
-</div>
 
-<!-- Modal Delete -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title mt-2" id="staticBackdropLabel"><b>Thông Báo </b></h2>
+      <div class="alert alert-danger" style="margin-top: 35px" *ngIf="carts.length == 0">
+        <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng ! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
       </div>
-      <div class="modal-body">
-        Bạn Muốn Xoá Sản Phẩm <span style="color: red"> Name </span>Không ?
-      </div>
-      <div class="modal-footer">
-        <button class="me-3" mat-raised-button color="warn" type="button" data-bs-dismiss="modal"><mat-icon>clear</mat-icon></button>
-        <button mat-raised-button color="primary" type="button" data-bs-dismiss="modal"><mat-icon>delete_forever</mat-icon></button>
-      </div>
+      <!-- Cart End -->
     </div>
   </div>
 </div>

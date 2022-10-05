@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="row">
+  <div class="row" style="margin-top: 100px">
     <!-- Start Banner Hero -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
@@ -12,7 +12,9 @@
           <div class="container">
             <div class="row p-5">
               <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                <img class="img-fluid" src="/src/assets/image/4126705.jpg" alt="" height="2000">
+                <img class="img-fluid"
+                     src="https://img.freepik.com/free-vector/international-literacy-day-with-lots-books_23-2148608688.jpg?w=740&t=st=1664625306~exp=1664625906~hmac=19e6f587e9a62ca7a215118c9c5d7e203b73f5631c83168db01e13e0fc7fe381"
+                     alt="" height="2000">
               </div>
               <div class="col-lg-6 mb-0 d-flex align-items-center">
                 <div class="text-align-left align-self-center">
@@ -32,7 +34,9 @@
           <div class="container">
             <div class="row p-5">
               <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                <img class="img-fluid" src="/src/assets/image/5044478.jpg" alt="">
+                <img class="img-fluid"
+                     src="https://img.freepik.com/free-vector/hand-drawn-world-book-day-illustration-with-stack-books_23-2148868267.jpg?w=740&t=st=1664625273~exp=1664625873~hmac=9bd8e552d9a7887aaa4d6c6a63a81779847d3b1e5f140e1614c7cada69851f81"
+                     alt="">
               </div>
               <div class="col-lg-6 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
@@ -53,7 +57,9 @@
           <div class="container">
             <div class="row p-5">
               <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                <img class="img-fluid" src="/src/assets/image/5074163.jpg" alt="">
+                <img class="img-fluid"
+                     src="https://img.freepik.com/free-vector/cartoon-world-book-day-illustration_23-2148881001.jpg?w=740&t=st=1664625355~exp=1664625955~hmac=89f74c2e58f23fa7e3f5b3b992ef9c28919a95cdc4067c7cee59348921bef178"
+                     alt="">
               </div>
               <div class="col-lg-6 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
@@ -85,24 +91,32 @@
     <!-- Start Content -->
     <div class="container">
       <div class="row">
-        <div class="col-md-6 align-middle">
-          <a routerLink="/create"><button mat-raised-button color="primary">Thêm Mới</button></a>
+        <div class="col-lg-4">
+          <a routerLink="/create">
+            <button mat-raised-button color="primary">Thêm Mới</button>
+          </a>
         </div>
-        <div class="col-md-6 align-middle" style="display: flex; justify-content: flex-end">
-          <mat-form-field appearance="outline" class="me-3">
-            <mat-label>Tìm Kiếm</mat-label>
-            <input matInput type="search" placeholder="Tìm Kiếm">
-            <!--                    <mat-error></mat-error>-->
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Thể Loại</mat-label>
-            <mat-select>
-              <mat-option>Văn Học Việt Nam</mat-option>
-              <mat-option>Văn Học Nước Ngoài</mat-option>
-              <mat-option>Thiếu Nhi</mat-option>
-              <mat-option>Thời Sự - Chính Trị</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <div class="col-lg-8 align-middle" style="display: flex; justify-content: flex-end">
+          <form [formGroup]="searchForm" novalidate (ngSubmit)="searchBook()">
+            <mat-form-field formGroupName="category" appearance="outline" class="me-3">
+              <mat-label>Danh Mục</mat-label>
+              <mat-select formControlName="name">
+                <mat-option value="">Tất Cả</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="me-3">
+              <mat-label>Tìm Sách</mat-label>
+              <input formControlName="name" matInput type="search" placeholder="Tìm Tên Sách">
+              <!--                    <mat-error></mat-error>-->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="me-3">
+              <mat-label>Tìm Tác Giả</mat-label>
+              <input formControlName="author" matInput type="search" placeholder="Tìm Tên Tác Giả">
+              <!--                    <mat-error></mat-error>-->
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" (keyup.enter)="searchBook()">Tìm Kiếm</button>
+          </form>
         </div>
       </div>
       <div class="row">
@@ -112,39 +126,58 @@
               <img class="card-img rounded-0 img-fluid" [src]="item.image" alt="">
               <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                 <ul class="list-unstyled">
-                  <li><a href="">
+                  <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a [routerLink]="['/edit', item.id]">
                     <button mat-raised-button color="primary"><i class="fas	fa-pencil-alt"></i></button>
                   </a></li>
-                  <li class="mt-2"><a [routerLink]="['/detail', item.id]">
+                  <li class="mt-2"><a
+                    [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary"><i class="far fa-eye"></i></button>
                   </a></li>
-                  <li class="mt-2"><a href="/cart">
-                    <button mat-raised-button color="primary"><i class="fas fa-cart-plus"></i></button>
+                  <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a>
+                    <button type="button" mat-raised-button color="primary" (click)="onAddToCart(item)"><i
+                      class="fas fa-cart-plus"></i></button>
                   </a></li>
-                  <li class="mt-2">
-                    <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openDelete(item.id, item.name)"><i class="fas fa-trash-alt"></i></button>
+                  <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" class="mt-2">
+                    <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            (click)="openDelete(item.id, item.name, item.author)"><i class="fas fa-trash-alt"></i>
+                    </button>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="card-body text-center">
+            <div class="card-body text-center d-grid align-content-between">
               <a [routerLink]="['/detail', item.id]" class="mb-0 h3 text-decoration-none w-100"><b>{{item.name}}</b></a>
-              <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                <li class="pt-2">
-                  <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                  <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                </li>
-              </ul>
-              <p class="text-center text-danger"><b>{{item.price | currency: 'đ '}}</b></p>
+              <p class="text-center text-danger"><b>{{item.price | currency: ' '}} ₫</b></p>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <mat-paginator color="primary" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <!--        <mat-paginator color="primary" [length]="totalElements" [pageSize]="8" [pageSizeOptions]="[8, 16, totalElements]"></mat-paginator>-->
+        <!--phan trang-->
+        <div style="height: 50px; position: relative" class="container mb-3">
+          <ul class="pagination justify-content-end" style="text-align: right">
+            <li class="page-item">
+              <select class="form-select" (change)="totalElement($event)">
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="24">24</option>
+                <option value="full">Tất Cả</option>
+              </select>
+            </li>
+            <li class="page-item">
+              <button class="align-middle" mat-raised-button color="primary" (click)="previousPage($event)"
+                      [ngStyle]="{'display':previousPageStyle}" type="button"><i class="fas fa-chevron-left"></i>
+              </button>
+              <span class="align-middle" style="margin: 0 20px 0 20px">{{pageSize * indexPagination + 1}}
+                - {{pageSize * indexPagination + numberOfElement}} trên {{totalElements}}</span>
+              <button class="align-middle" mat-raised-button color="primary" (click)="nextPage($event)"
+                      [ngStyle]="{'display':nextPageStyle}" type="button"><i class="fas fa-chevron-right"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <!-- kết thúc phân trang-->
       </div>
     </div>
     <!-- End Content -->
@@ -152,18 +185,23 @@
 </div>
 
 <!-- Modal Delete -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title mt-2" id="staticBackdropLabel"><b>Thông Báo </b></h2>
+        <h2 class="modal-title pt-3" id="staticBackdropLabel"><b>Thông Báo </b></h2>
       </div>
       <div class="modal-body">
-        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} </span>Không ?
+        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} <br> </span> Của Tác Giả <span
+        style="color: red"> {{author}} </span> Không ?
       </div>
       <div class="modal-footer">
-        <button class="me-3" mat-raised-button color="warn" type="button" data-bs-dismiss="modal"><mat-icon>clear</mat-icon></button>
-        <button mat-raised-button color="primary" type="button" data-bs-dismiss="modal" (click)="delete(id)"><mat-icon>delete_forever</mat-icon></button>
+        <button class="me-3" mat-raised-button color="primary" type="button" data-bs-dismiss="modal">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" type="button" data-bs-dismiss="modal" (click)="delete(id)"><i
+          class="fas fa-trash-alt"></i></button>
       </div>
     </div>
   </div>

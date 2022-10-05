@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CartService} from '../service/cart.service';
+import {DataService} from '../service/data.service';
+import {ShareService} from '../service/share.service';
+import {TokenStorageService} from '../service/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  currentUser: string;
+  role: string;
+  isLoggedIn = false;
+
+  totalQuantity: any = 0;
 
   ngOnInit(): void {
+    this.loadHeader();
+    this.dataService.getData.subscribe((result: any) => {
+      this.totalQuantity = result.quantity;
+    });
   }
 
+  constructor(private tokenStorageService: TokenStorageService,
+              private shareService: ShareService,
+              private cartService: CartService,
+              private dataService: DataService) {
+    this.shareService.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
+  }
+
+  loadHeader(): void {
+    if (this.tokenStorageService.getToken()) {
+      this.currentUser = this.tokenStorageService.getUser().username;
+      this.role = this.tokenStorageService.getUser().roles[0];
+      this.username = this.tokenStorageService.getUser().username;
+    }
+    this.isLoggedIn = this.username != null;
+  }
+
+  logOut() {
+    this.tokenStorageService.signOut();
+  }
 }

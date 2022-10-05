@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../../model/category';
 import {Discount} from '../../model/discount';
 import {BookService} from '../../service/book.service';
@@ -12,6 +12,7 @@ import {formatDate} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {finalize} from 'rxjs/operators';
 import {Book} from '../../model/book';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -32,21 +33,20 @@ export class CreateComponent implements OnInit {
 
   bookForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    code: new FormControl(''),
-    author: new FormControl(''),
-    description: new FormControl(''),
-    dimension: new FormControl(''),
+    code: new FormControl('', [Validators.required]),
+    author: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    dimension: new FormControl('', [Validators.required]),
     image: new FormControl(''),
-    name: new FormControl(''),
-    price: new FormControl(''),
-    publisher: new FormControl(''),
-    quantity: new FormControl(''),
-    releaseDate: new FormControl(''),
-    totalPages: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.min(1)]),
+    publisher: new FormControl('', [Validators.required]),
+    quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    releaseDate: new FormControl('', [Validators.required]),
+    totalPages: new FormControl('', [Validators.required, Validators.min(1)]),
     translator: new FormControl(''),
-    status: new FormControl(0),
-    category: new FormControl(''),
-    discount: new FormControl('')
+    category: new FormControl('', [Validators.required]),
+    discount: new FormControl(1)
   });
 
   categories: Category[] = [];
@@ -83,27 +83,10 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  // submit(): void {
-  //   const book = this.bookForm.value;
-  //   this.categoryService.findById(book.category).subscribe(category => {
-  //     book.category = {
-  //       id: category.id,
-  //       name: category.name
-  //     };
-  //     this.bookService.save(book).subscribe(() => {
-  //       this.bookForm.reset();
-  //       this.toast.success('Thêm Sách Thành Công..', 'Thông Báo');
-  //       this.router.navigate(['']);
-  //     }, e => {
-  //       console.log(e);
-  //     });
-  //   });
-  // }
-
   submit() {
     this.loader = false;
     const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
-    const filePath = `employee/${nameImg}`;
+    const filePath = `book/${nameImg}`;
     const fileRef = this.storage.ref(filePath);
     // const book = this.bookForm.value;
     let book: Book;
@@ -123,20 +106,28 @@ export class CreateComponent implements OnInit {
             releaseDate: this.bookForm.value.releaseDate,
             totalPages: this.bookForm.value.totalPages,
             translator: this.bookForm.value.translator,
-            category: this.bookForm.value.category,
-            discount: this.bookForm.value.discount
-            // category: {
-            //   id: this.bookForm.value.category.id,
-            //   password: this.employeeForm.value.password,
-            //   email: this.employeeForm.value.email,
-            // }
+            category: {
+              id: this.bookForm.value.category,
+            },
+            status: false
           };
           console.log(book);
           this.bookService.save(book).subscribe(() => {
             this.bookForm.reset();
-            this.toast.success('Thêm Sách Thành Công..', 'Thông Báo');
             this.router.navigateByUrl('');
+            Swal.fire({
+              title: 'Thông Báo!',
+              text: 'Thêm Mới Thành Công',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
           }, e => {
+            Swal.fire({
+              title: 'Đã Có Lỗi Xảy Ra !!',
+              text: 'Thêm Mới Thất Bại',
+              icon: 'error',
+              confirmButtonText: 'Thử Lại'
+            });
             console.log(e);
           });
         });
@@ -144,16 +135,25 @@ export class CreateComponent implements OnInit {
     ).subscribe();
   }
 
-// checkCode($event: Event) {
-//   this.employeeService.checkCode(String($event)).subscribe(value => {
-//       if (value) {
-//         this.isExitsCode = true;
-//       } else {
-//         this.isExitsCode = false;
-//       }
-//     }
-//   );
-// }
+  reset() {
+    this.bookForm.reset();
+    this.selectedImage = null;
+    this.checkImgSize = false;
+    this.regexImageUrl = false;
+    this.editImageState = false;
+    this.checkImg = false;
+  }
+
+  checkCode($event: Event) {
+    this.bookService.checkCode(String($event)).subscribe(value => {
+        if (value) {
+          this.isExitsCode = true;
+        } else {
+          this.isExitsCode = false;
+        }
+      }
+    );
+  }
 
   onFileSelected(event) {
     this.regexImageUrl = false;

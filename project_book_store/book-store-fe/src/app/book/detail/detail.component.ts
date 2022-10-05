@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {BookService} from '../service/book.service';
+import {BookService} from '../../service/book.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {Book} from '../../model/book';
+import {Category} from '../../model/category';
+import {CategoryService} from '../../service/category.service';
+import {ShareService} from '../../service/share.service';
+import {TokenStorageService} from '../../service/token-storage.service';
 
 @Component({
   selector: 'app-detail',
@@ -9,6 +14,15 @@ import {Title} from '@angular/platform-browser';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+
+  username: string;
+  currentUser: string;
+  role: string;
+  isLoggedIn = false;
+
+  books: Book[] = [];
+
+  categories: Category[] = [];
 
   id: number;
   code: string;
@@ -21,10 +35,13 @@ export class DetailComponent implements OnInit {
   publisher: string;
   quantity: number;
   releaseDate: string;
-  totalPages: string;
+  totalPages: number;
   translator: string;
 
   constructor(private bookService: BookService,
+              private categoryService: CategoryService,
+              private shareService: ShareService,
+              private tokenStorageService: TokenStorageService,
               private activatedRoute: ActivatedRoute,
               private title: Title) {
     this.title.setTitle('Chi Tiết Sách');
@@ -32,9 +49,36 @@ export class DetailComponent implements OnInit {
       this.id = +paramMap.get('id');
       this.getDetail(this.id);
     });
+    this.shareService.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
   }
 
   ngOnInit(): void {
+    this.loadHeader();
+    this.getAll();
+    this.getCategory();
+  }
+
+  loadHeader(): void {
+    if (this.tokenStorageService.getToken()) {
+      this.currentUser = this.tokenStorageService.getUser().username;
+      this.role = this.tokenStorageService.getUser().roles[0];
+      this.username = this.tokenStorageService.getUser().username;
+    }
+    this.isLoggedIn = this.username != null;
+  }
+
+  getAll() {
+    this.bookService.getList().subscribe(book => {
+      this.books = book;
+    });
+  }
+
+  getCategory(): void {
+    this.categoryService.getAll().subscribe(category => {
+      this.categories = category;
+    });
   }
 
   getDetail(id: number) {

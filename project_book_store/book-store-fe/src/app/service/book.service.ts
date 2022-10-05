@@ -14,8 +14,12 @@ export class BookService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<any> {
-    return this.http.get<any>(API_URL + '/book');
+  getList(): Observable<Book[]> {
+    return this.http.get<Book[]>(API_URL + '/book');
+  }
+
+  getAll(page: number, category: string, name: string, author: string, size: number): Observable<Book[]> {
+    return this.http.get<Book[]>(API_URL + '/book/search?page=' + page + '&keyCategory=' + category + '&keyName=' + name + '&keyAuthor=' + author + '&size=' + size);
   }
 
   save(book: Book): Observable<Book> {
@@ -26,8 +30,25 @@ export class BookService {
     return this.http.get<Book>(`${API_URL}/book/${id}`);
   }
 
+  edit(id: number, book: Book): Observable<Book> {
+    return this.http.put<Book>(`${API_URL}/book/edit/${id}`, book);
+  }
+
   delete(id: number): Observable<Book> {
     // @ts-ignore
     return this.http.patch<Book>(`${API_URL}/book/${id}`);
+  }
+
+  checkCode(code: string): Observable<string> {
+    return this.http.get<string>(API_URL + '/book/checkCode/' + code);
+  }
+
+  getCart() {
+    const cartJson = sessionStorage.getItem('cart');
+    if (cartJson) {
+      return JSON.parse(cartJson);
+    } else {
+      return [];
+    }
   }
 }

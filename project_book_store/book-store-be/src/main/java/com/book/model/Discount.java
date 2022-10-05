@@ -10,7 +10,7 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String percent;
+    private double percent;
 
     @OneToMany(mappedBy = "discount")
     @JsonIgnore
@@ -19,7 +19,7 @@ public class Discount {
     public Discount() {
     }
 
-    public Discount(Integer id, String percent, List<Book> books) {
+    public Discount(Integer id, double percent, List<Book> books) {
         this.id = id;
         this.percent = percent;
         this.books = books;
@@ -33,11 +33,11 @@ public class Discount {
         this.id = id;
     }
 
-    public String getPercent() {
+    public double getPercent() {
         return percent;
     }
 
-    public void setPercent(String percent) {
+    public void setPercent(double percent) {
         this.percent = percent;
     }
 

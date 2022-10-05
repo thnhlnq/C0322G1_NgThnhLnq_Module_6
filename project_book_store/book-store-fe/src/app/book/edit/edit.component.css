@@ -1,0 +1,27 @@
+.form-text, span, i, mat-error {
+  color: red;
+  font-weight: bold;
+}
+
+mat-label, label {
+  font-weight: bold;
+  color: black;
+}
+
+.col {
+  display: flex;
+  align-items: stretch;
+}
+
+.image {
+  text-align: center;
+}
+
+.image img {
+  display: flex;
+  margin: 0 auto;
+  align-content: center;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+}

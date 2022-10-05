@@ -1,6 +1,5 @@
 package com.book.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -14,12 +13,10 @@ public class Customer {
     private String name;
     private String address;
     private LocalDate birthday;
-    private String email;
     private String gender;
     private String phone;
     private boolean status;
 
-    @JsonBackReference
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private Users users;
@@ -31,12 +28,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer id, String name, String address, LocalDate birthday, String email, String gender, String phone, boolean status, Users users, Cart cart) {
+    public Customer(Integer id, String name, String address, LocalDate birthday, String gender, String phone, boolean status, Users users, Cart cart) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.birthday = birthday;
-        this.email = email;
         this.gender = gender;
         this.phone = phone;
         this.status = status;
@@ -74,14 +70,6 @@ public class Customer {
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getGender() {
