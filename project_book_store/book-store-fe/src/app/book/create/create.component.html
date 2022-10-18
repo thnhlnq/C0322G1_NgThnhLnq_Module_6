@@ -67,7 +67,7 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Giá Sách" formControlName="price">
+                <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price">
                 <mat-error
                   *ngIf="bookForm.controls.price.hasError('required') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
                   Vui Lòng Không Để Trống.
@@ -107,7 +107,7 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" formControlName="quantity">
+                <input matInput type="number" formControlName="quantity">
                 <mat-error
                   *ngIf="bookForm.controls.quantity.hasError('required') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
                   Vui Lòng Không Để Trống.
@@ -121,7 +121,7 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" formControlName="totalPages">
+                <input matInput type="number" formControlName="totalPages">
                 <mat-error
                   *ngIf="bookForm.controls.totalPages.hasError('required') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
                   Vui Lòng Không Để Trống.
@@ -146,14 +146,6 @@
                   Vui Lòng Không Để Trống.
                 </mat-error>
               </mat-form-field>
-              <!--                <mat-form-field appearance="outline">-->
-              <!--                  <mat-label>Chiết Khấu <span><i>(*)</i></span></mat-label>-->
-              <!--                  <mat-select formControlName="discount">-->
-              <!--                    <mat-option *ngFor="let discount of discounts"-->
-              <!--                                [value]="discount.id">{{discount.percent}}</mat-option>-->
-              <!--                  </mat-select>-->
-              <!--                </mat-form-field>-->
-              <!--                <label class="form-label">Chọn Ảnh <span><i>(*)</i></span></label>-->
             </div>
           </div>
 
@@ -170,30 +162,13 @@
             </div>
           </div>
 
-          <!--          <div class="mb-3">-->
-          <!--            <div class="row">-->
-          <!--              <div class="col-lg-12 d-grid image">-->
-          <!--                <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>-->
-          <!--                <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Nhấn Vào Đây Để Chọn Ảnh</button>-->
-          <!--                <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">-->
-          <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
-          <!--                <img class="form-control mt-2" [src]="url" *ngIf="editImageState" width="auto" height="auto" alt="">-->
-          <!--                <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>-->
-          <!--                <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">-->
-          <!--                  Vui Lòng Không Để Trống.-->
-          <!--                </div>-->
-          <!--                <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">-->
-          <!--                  Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
-
           <div class="mb-3">
             <div class="row">
               <div class="col-lg-12 d-grid image">
                 <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-                <img *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">
+                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState"
+                     src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px"
+                     (click)="fileInput.click()">
                 <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
                 <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
                 <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"
@@ -210,17 +185,18 @@
           </div>
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-around">
-            <a routerLink="">
+            <a class="d-grid text-decoration-none" routerLink="">
               <button mat-raised-button color="warn"> Quay Lại</button>
             </a>
             <button *ngIf="loader" type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid"
                     (click)="submit()"> Thêm mới
             </button>
-<!--            <button *ngIf="!loader" mat-raised-button color="primary" disabled>-->
-<!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
-<!--              Đang tải ...-->
-<!--            </button>-->
-            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40" height="40">
+            <!--            <button *ngIf="!loader" mat-raised-button color="primary" disabled>-->
+            <!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
+            <!--              Đang tải ...-->
+            <!--            </button>-->
+            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40"
+                 height="40">
             <button (click)="reset()" type="reset" mat-raised-button color="accent"> Nhập Lại
             </button>
           </div>

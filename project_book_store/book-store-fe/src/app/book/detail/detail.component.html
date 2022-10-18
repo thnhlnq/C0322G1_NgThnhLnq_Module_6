@@ -5,91 +5,108 @@
       <div class="row">
         <div class="col-lg-5 mt-5 col">
           <div class="card">
-            <img class="card-img img-fluid" [src]="image" alt="Card image cap" id="product-detail">
+            <img class="card-img img-fluid" [src]="book?.image" alt="Card image cap" id="product-detail">
           </div>
         </div>
         <!-- col end -->
         <div class="col-lg-7 mt-5 col">
           <div class="card">
             <div class="card-body">
-              <h1 class="h2 text-center pb-1">{{name | titlecase}}</h1>
+              <h1 class="h2 text-center pb-1">{{book?.name | titlecase}}</h1>
               <ul class="list-inline">
                 <li class="list-inline-item w-25">
                   <p>Mã Sản Phẩm: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{code}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.code}}</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Tác Giả: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{author}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.author}}</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Dịch Giả: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{translator}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.translator}}</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Nhà Xuất Bản: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{publisher}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.publisher}}</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Số Trang: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{totalPages}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.totalPages}} trang</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Kích Thước: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{dimension}} cm</strong></p>
+                  <p class="text-muted"><strong>{{book?.dimension}} cm</strong></p>
                 </li>
                 <li class="list-inline-item w-25">
                   <p>Ngày Phát Hành: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{releaseDate | date: 'dd/MM/yyyy'}}</strong></p>
+                  <p class="text-muted"><strong>{{book?.releaseDate | date: 'dd/MM/yyyy'}}</strong></p>
+                </li>
+                <li class="list-inline-item w-25">
+                  <p>Giá: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="h3 text-danger align-middle"><strong>{{book?.price | currency: ' ': ' ': '5.0'}} ₫</strong>
+                  </p>
+                </li>
+                <li class="list-inline-item w-25">
+                  <p>Giới Thiệu:</p>
+                </li>
+                <li class="list-inline-item w-100">
+                  <p class="text-muted" style="text-align: justify"><strong>{{book?.description}}</strong></p>
                 </li>
               </ul>
 
-              <p>Giới Thiệu:</p>
-              <p>{{description}}</p>
-
               <div>
-                <input type="hidden" name="product-title" value="Activewear">
-                <div class="row">
-                  <div class="col-12 d-flex justify-content-between mt-3">
-                    <ul class="list-inline align-middle">
-                      <li class="list-inline-item text-right">Số Lượng:
-                        <input type="hidden" name="product-quanity" id="product-quanity" value="1">
-                      </li>
-                      <li class="list-inline-item">
-                        <button mat-raised-button color="primary" id="btn-minus">-</button>
-                      </li>
-                      <li class="list-inline-item"><span class="btn btn-success badge bg-secondary"
-                                                         id="var-value">1</span></li>
-                      <li class="list-inline-item">
-                        <button mat-raised-button color="primary" id="btn-plus">+</button>
-                      </li>
-                    </ul>
-                    <p class="h3 py-2 text-danger align-middle">{{price | currency: ' '}} ₫</p>
-                  </div>
-                </div>
+                <!--                <input type="hidden" name="product-title" value="Activewear">-->
+                <!--                <div class="row">-->
+                <!--                  <div class="col-12">-->
+                <!--                    <ul class="list-inline align-middle">Giá:-->
+                <!--                      <li class="list-inline-item text-right">Số Lượng:-->
+                <!--                        <input type="hidden" name="product-quanity" id="product-quanity" value="1">-->
+                <!--                      </li>-->
+                <!--                      <li class="list-inline-item">-->
+                <!--                        <button mat-raised-button color="primary" id="btn-minus1">-</button>-->
+                <!--                      </li>-->
+                <!--                      <li class="list-inline-item"><input type="number" style="width: 50px" id="var-value1"></li>-->
+                <!--                      <li class="list-inline-item">-->
+                <!--                        <button mat-raised-button color="primary" id="btn-plus">+</button>-->
+                <!--                      </li>-->
+                <!--                      <li class="list-inline-item w-25">-->
+                <!--                        <p>Giá: </p>-->
+                <!--                      </li>-->
+                <!--                      <li class="list-inline-item w-50">-->
+                <!--                        <p class="h3 text-danger align-middle"><strong>{{book?.price | currency: ' ': ' ': '5.0'}} ₫</strong></p>-->
+                <!--                      </li>-->
+                <!--                    </ul>-->
+                <!--                    <p class="h3 py-2 text-danger align-middle">{{book?.price | currency: ' ': ' ': '5.0'}} ₫</p>-->
+                <!--                  </div>-->
+                <!--                </div>-->
                 <div class="row mt-3">
                   <div class="col d-flex justify-content-evenly">
                     <button routerLink="" mat-raised-button color="warn">Quay Lại</button>
                   </div>
+                  <!--                  <div class="col d-flex justify-content-evenly">-->
+                  <!--                    <button type="submit" routerLink="/cart" mat-raised-button color="primary">Mua Hàng</button>-->
+                  <!--                  </div>-->
                   <div class="col d-flex justify-content-evenly">
-                    <button type="submit" routerLink="/cart" mat-raised-button color="primary">Mua Hàng</button>
-                  </div>
-                  <div class="col d-flex justify-content-evenly">
-                    <button type="submit" mat-raised-button color="primary">Thêm Vào Giỏ Hàng</button>
+                    <button type="submit" mat-raised-button color="primary" (click)="onAddToCart(book)">Thêm Vào Giỏ
+                      Hàng
+                    </button>
                   </div>
                 </div>
               </div>

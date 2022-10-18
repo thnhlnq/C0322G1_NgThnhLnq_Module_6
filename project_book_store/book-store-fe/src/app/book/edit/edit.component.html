@@ -138,7 +138,7 @@
             <div class="col-lg-12 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
-                <mat-select formControlName="category">
+                <mat-select formControlName="category" [compareWith]="compare">
                   <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                 </mat-select>
                 <mat-error
@@ -173,12 +173,12 @@
           <div class="row mb-3">
             <div class="col-lg-12 d-grid image">
               <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-              <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Nhấn Vào Đây Để
-                Chọn
-                Ảnh
-              </button>
+              <!--              <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Nhấn Vào Đây Để Thay Đổi Ảnh-->
+              <!--              </button>-->
+              <!--              <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
               <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
-              <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">
+              <img *ngIf="!editImageState" [src]="bookForm.get('image').value" (click)="fileInput.click()" width="100%"
+                   height="auto" alt="">
               <img class="form-control mt-2" [src]="url" *ngIf="editImageState" width="auto" height="auto" alt="">
               <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>
               <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">
@@ -190,6 +190,26 @@
             </div>
           </div>
 
+          <!--          <div class="mb-3">-->
+          <!--            <div class="row">-->
+          <!--              <div class="col-lg-12 d-grid image">-->
+          <!--                <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>-->
+          <!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
+          <!--                <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">-->
+          <!--                &lt;!&ndash;                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">&ndash;&gt;-->
+          <!--                <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"-->
+          <!--                     width="auto" height="auto" alt="">-->
+          <!--                <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>-->
+          <!--                <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">-->
+          <!--                  Vui Lòng Không Để Trống.-->
+          <!--                </div>-->
+          <!--                <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">-->
+          <!--                  Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+
           <div class="d-grid gap-2 d-md-flex justify-content-md-around">
             <a routerLink="">
               <button mat-raised-button color="warn"> Quay Lại</button>
@@ -197,11 +217,12 @@
             <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
                     [disabled]="bookForm.invalid"> Chỉnh Sửa
             </button>
-<!--            <button *ngIf="!loader" mat-raised-button disabled>-->
-<!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
-<!--              Đang tải ...-->
-<!--            </button>-->
-            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40" height="40">
+            <!--            <button *ngIf="!loader" mat-raised-button disabled>-->
+            <!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
+            <!--              Đang tải ...-->
+            <!--            </button>-->
+            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40"
+                 height="40">
             <button (click)="reset(id)" type="reset" mat-raised-button color="accent"> Nhập Lại
             </button>
           </div>

@@ -7,6 +7,9 @@ import {Category} from '../../model/category';
 import {CategoryService} from '../../service/category.service';
 import {ShareService} from '../../service/share.service';
 import {TokenStorageService} from '../../service/token-storage.service';
+import Swal from 'sweetalert2';
+import {CartService} from '../../service/cart.service';
+import {DataService} from '../../service/data.service';
 
 @Component({
   selector: 'app-detail',
@@ -21,24 +24,18 @@ export class DetailComponent implements OnInit {
   isLoggedIn = false;
 
   books: Book[] = [];
-
   categories: Category[] = [];
 
+  book: Book;
   id: number;
-  code: string;
-  author: string;
-  description: string;
-  dimension: string;
-  image: string;
-  name: string;
-  price: number;
-  publisher: string;
-  quantity: number;
-  releaseDate: string;
-  totalPages: number;
-  translator: string;
+
+  carts: any = this.cartService.getCart();
+  totalPrice: number = this.cartService.getTotalPrice();
+  totalQuantity: number = this.cartService.getTotalQuantity();
 
   constructor(private bookService: BookService,
+              private cartService: CartService,
+              private dataService: DataService,
               private categoryService: CategoryService,
               private shareService: ShareService,
               private tokenStorageService: TokenStorageService,
@@ -47,7 +44,7 @@ export class DetailComponent implements OnInit {
     this.title.setTitle('Chi Tiết Sách');
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      this.getDetail(this.id);
+      this.findById(this.id);
     });
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
@@ -58,6 +55,12 @@ export class DetailComponent implements OnInit {
     this.loadHeader();
     this.getAll();
     this.getCategory();
+  }
+
+  findById(id: number) {
+    return this.bookService.findById(id).subscribe(book => {
+      this.book = book;
+    });
   }
 
   loadHeader(): void {
@@ -81,22 +84,71 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  getDetail(id: number) {
-    return this.bookService.findById(id).subscribe(book => {
-      this.id = book.id;
-      this.code = book.code;
-      this.author = book.author;
-      this.description = book.description;
-      this.dimension = book.dimension;
-      this.image = book.image;
-      this.name = book.name;
-      this.price = book.price;
-      this.publisher = book.publisher;
-      this.quantity = book.quantity;
-      this.releaseDate = book.releaseDate;
-      this.totalPages = book.totalPages;
-      this.translator = book.translator;
-      console.log(book);
+  onAddToCart(book: any) {
+    const index = this.carts.findIndex((item: any) => {
+      return item.id === book.id;
+    });
+
+    if (index >= 0) {
+      return this.carts[index].quantity += 1;
+    } else {
+      const cartItem: any = {
+        id: book.id,
+        name: book.name,
+        price: book.price,
+        quantity: 1,
+        image: book.image
+      };
+      this.carts.push(cartItem);
+    }
+
+    this.cartService.saveCart(this.carts);
+    this.dataService.changeData({
+      totalQuantity: this.cartService.getTotalQuantity()
+    });
+    Swal.fire({
+      title: 'Thông Báo',
+      text: 'Thêm Vào Giỏ Hàng Thành Công',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  updateQuantity(index: number, event: any) {
+    let quantity = event.target.value;
+    quantity = quantity > 0 ? quantity : 1;
+    quantity = quantity <= 100 ? quantity : 100;
+    event.target.value = quantity;
+    this.carts[index].quantity = quantity;
+    this.cartService.saveCart(this.carts);
+    this.totalPrice = this.cartService.getTotalPrice();
+    this.totalQuantity = this.cartService.getTotalQuantity();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
+    });
+  }
+
+  decrease(index: number, quantity: any) {
+    let decreaseQuantity = parseInt(quantity, 10) - 1;
+    decreaseQuantity = decreaseQuantity > 0 ? decreaseQuantity : 1;
+    this.carts[index].quantity = decreaseQuantity;
+    this.cartService.saveCart(this.carts);
+    this.totalPrice = this.cartService.getTotalPrice();
+    this.totalQuantity = this.cartService.getTotalQuantity();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
+    });
+  }
+
+  increase(index: number, quantity: any) {
+    let increaseQuantity = parseInt(quantity, 10) + 1;
+    increaseQuantity = increaseQuantity <= 100 ? increaseQuantity : 100;
+    this.carts[index].quantity = increaseQuantity;
+    this.cartService.saveCart(this.carts);
+    this.totalPrice = this.cartService.getTotalPrice();
+    this.totalQuantity = this.cartService.getTotalQuantity();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
     });
   }
 }

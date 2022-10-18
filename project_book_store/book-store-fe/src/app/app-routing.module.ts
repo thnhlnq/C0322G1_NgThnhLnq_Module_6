@@ -29,6 +29,12 @@ const routes: Routes = [{
   // data: {
   //   roles: ['ROLE_ADMIN', 'ROLE_USER']
   // }
+}, {
+  path: 'about',
+  loadChildren: () => import('./about/about.module').then(module => module.AboutModule),
+}, {
+  path: 'contact',
+  loadChildren: () => import('./contact/contact.module').then(module => module.ContactModule),
 }];
 
 @NgModule({

@@ -3,17 +3,19 @@
     <!-- Cart Start -->
     <div class="container-fluid">
       <div class="row px-xl-5" *ngIf="carts.length">
-        <div class="col-lg-8 table-responsive mb-5">
+        <div class="col-lg-9 table-responsive mb-5">
           <table class="table">
             <thead class="thead-dark">
             <tr style="font-size: 17px">
               <th>STT</th>
+              <th>Ảnh</th>
               <th>Tên sách</th>
               <th>Giá</th>
               <th>Số lượng</th>
               <th>Tổng tiền</th>
               <th>
-                <button mat-raised-button color="warn" (click)="deleteAll()">Xoá Tất Cả</button>
+                <button mat-raised-button color="warn" (click)="deleteAll()" matTooltip="Xoá Tất Cả"><i
+                  class="fas fa-trash-alt"></i></button>
               </th>
             </tr>
             </thead>
@@ -21,25 +23,26 @@
             <tr *ngFor="let item of carts; index as i">
               <td class="align-middle">{{i + 1}}</td>
               <td class="align-middle">
-                <img [src]="item.image" alt="" style="width: 50px;">{{item.name}}
+                <img [src]="item.image" alt="" style="width: 50px;">
               </td>
-              <td class="align-middle">{{item.price | currency: ' '}} ₫</td>
+              <td style="max-width: 200px">{{item.name}}</td>
+              <td class="align-middle">{{item.price | currency: ' ': ' ': '5.0'}} ₫</td>
               <td class="align-middle">
                 <ul class="list-inline mt-3">
                   <li class="list-inline-item">
-                    <button (click)="decrease(i, item.quantity)" mat-raised-button color="primary" id="btn-minus1">-
-                    </button>
+                    <button (click)="decrease(i, item.quantity)" mat-raised-button color="primary">-</button>
                   </li>
-                  <li class="list-inline-item"><input type="number" style="width: 50px"
-                                                      (change)="updateQuantity(i, $event)" id="var-value1"
-                                                      [value]="item.quantity"></li>
                   <li class="list-inline-item">
-                    <button (click)="increase(i, item.quantity)" mat-raised-button color="primary" id="btn-plus1">+
+                    <input type="number" style="width: 50px" (change)="updateQuantity(i, $event)"
+                           [value]="item.quantity">
+                  </li>
+                  <li class="list-inline-item">
+                    <button (click)="increase(i, item.quantity)" mat-raised-button color="primary">+
                     </button>
                   </li>
                 </ul>
               </td>
-              <td class="align-middle">{{total(item) | currency: ' '}} ₫</td>
+              <td class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
               <td class="align-middle">
                 <button mat-raised-button color="warn" (click)="deleteCart(i)"><i class="fas fa-trash-alt"></i></button>
               </td>
@@ -48,7 +51,7 @@
           </table>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="">
             <div class="example-container">
               <mat-form-field appearance="outline" class="w-100">
@@ -71,7 +74,7 @@
               <div class="pt-2">
                 <div class="d-flex justify-content-between mt-2">
                   <h3>Tổng Thanh Toán</h3>
-                  <h3><b class="text-muted me-2">{{totalPrice | currency: ' '}} ₫</b></h3>
+                  <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
                 </div>
               </div>
               <div class="d-flex justify-content-evenly">

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
 import {CartService} from '../service/cart.service';
 import {DataService} from '../service/data.service';
+import {Book} from '../model/book';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,7 @@ import {DataService} from '../service/data.service';
 export class CartComponent implements OnInit {
 
   carts: any = [];
+  book: Book;
 
   totalPrice: number = this.cartService.getTotalPrice();
   totalQuantity: number = this.cartService.getTotalQuantity();

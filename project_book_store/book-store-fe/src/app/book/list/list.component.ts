@@ -6,11 +6,11 @@ import {Category} from '../../model/category';
 import {CategoryService} from '../../service/category.service';
 import {Title} from '@angular/platform-browser';
 import {FormControl, FormGroup} from '@angular/forms';
-import Swal from 'sweetalert2';
 import {DataService} from '../../service/data.service';
 import {CartService} from '../../service/cart.service';
 import {ShareService} from '../../service/share.service';
 import {TokenStorageService} from '../../service/token-storage.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -34,9 +34,7 @@ export class ListComponent implements OnInit {
   });
 
   books: Book[] = [];
-
   categories: Category[] = [];
-
   carts: any = this.bookService.getCart();
 
   id: number;
@@ -48,14 +46,13 @@ export class ListComponent implements OnInit {
   authorSearch = '';
   number: number;
   indexPagination = 0;
-  totalPage: string[];
+  totalPage?: string[];
   numberOfElement = 0;
   totalElements = 0;
   pageSize: number;
   previousPageStyle = 'inline-block';
   nextPageStyle = 'inline-block';
   displayPagination = 'inline-block';
-
 
   constructor(private bookService: BookService,
               private categoryService: CategoryService,
@@ -86,12 +83,6 @@ export class ListComponent implements OnInit {
     }
     this.isLoggedIn = this.username != null;
   }
-
-  // getAll() {
-  //   this.bookService.getAll().subscribe(book => {
-  //     this.books = book;
-  //   });
-  // }
 
   getCategory(): void {
     this.categoryService.getAll().subscribe(category => {
@@ -140,19 +131,14 @@ export class ListComponent implements OnInit {
         name: book.name,
         price: book.price,
         quantity: 1,
-        totalPrice() {
-          return this.price * this.quantity;
-        }
+        image: book.image
       };
       this.carts.push(cartItem);
     }
 
-    // lưu vào Storage
-    // const cartJson = JSON.stringify(this.carts);
-    // sessionStorage.setItem('cart', cartJson);
     this.cartService.saveCart(this.carts);
     this.dataService.changeData({
-      quantity: this.cartService.getTotalQuantity()
+      totalQuantity: this.cartService.getTotalQuantity()
     });
     Swal.fire({
       title: 'Thông Báo',

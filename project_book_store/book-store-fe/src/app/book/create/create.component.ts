@@ -106,9 +106,10 @@ export class CreateComponent implements OnInit {
             releaseDate: this.bookForm.value.releaseDate,
             totalPages: this.bookForm.value.totalPages,
             translator: this.bookForm.value.translator,
-            category: {
-              id: this.bookForm.value.category,
-            },
+            category: this.bookForm.value.category,
+            // category: {
+            //   id: this.bookForm.value.category,
+            // },
             status: false
           };
           console.log(book);

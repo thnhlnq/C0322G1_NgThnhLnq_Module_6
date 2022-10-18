@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4dc15a52-a4a8-4f73-a56f-02af7433963e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SecondLargest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Triangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/about/about-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/about/about.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/about/about.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/about/about.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/about/about.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/contact/contact-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/contact/contact.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/contact/contact.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/contact/contact.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/contact/contact.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../exam_module_6/exam-module6_fe" beforeDir="false" afterPath="$PROJECT_DIR$/../exam_module_6/exam-module6_fe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/BookStoreBeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/BookStoreBeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/book.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/book.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/create/create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/create/create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/detail/detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/detail/detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/detail/detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/detail/detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/edit/edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/edit/edit.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/list/list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/header/header.component.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GFRiNrOWxXmh46kuk2461EqEQl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/C0322G1_NgThnhLnq/Module_6_Project/algorithm"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.SecondLargest">
+    <configuration name="SecondLargest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SecondLargest" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Triangle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Triangle" />
+      <module name="algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SecondLargest" />
+        <item itemvalue="Application.Triangle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4dc15a52-a4a8-4f73-a56f-02af7433963e" name="Changes" comment="" />
+      <created>1665982471436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665982471436</updated>
+      <workItem from="1665982472686" duration="1095000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

@@ -14,6 +14,7 @@ import {EditComponent} from './edit/edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DetailComponent} from './detail/detail.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatTooltipModule
   ]
 })
 export class BookModule {

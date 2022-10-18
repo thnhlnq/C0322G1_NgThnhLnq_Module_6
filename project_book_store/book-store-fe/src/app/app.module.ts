@@ -25,6 +25,7 @@ import {ToastrModule} from 'ngx-toastr';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -58,9 +59,11 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
       positionClass: 'toast-top-right',
       progressBar: true,
       tapToDismiss: true
-    })
+    }),
+    MatTooltipModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

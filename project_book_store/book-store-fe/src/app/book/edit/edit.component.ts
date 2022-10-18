@@ -46,7 +46,7 @@ export class EditComponent implements OnInit {
     totalPages: new FormControl(''),
     translator: new FormControl(''),
     category: new FormControl(''),
-    // discount: new FormControl(1)
+    // discount: new FormControl('')
   });
 
   id: number;
@@ -105,6 +105,10 @@ export class EditComponent implements OnInit {
     this.discountService.getAll().subscribe(discount => {
       this.discounts = discount;
     });
+  }
+
+  compare(value, option): boolean {
+    return value.id === option.id;
   }
 
   submit() {

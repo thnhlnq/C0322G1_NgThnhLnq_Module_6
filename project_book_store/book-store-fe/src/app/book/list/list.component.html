@@ -93,8 +93,9 @@
       <div class="row">
         <div class="col-lg-4 mt-2">
           <a routerLink="/create">
-            <button mat-raised-button>
-              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="" width="40" height="40">Thêm Mới
+            <button mat-raised-button color="primary" matTooltip="Thêm Mới Sách">
+              <!--              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="" width="40" height="40">-->
+              <i class="fas fa-plus"></i> &nbsp; Thêm Mới
             </button>
           </a>
         </div>
@@ -117,8 +118,9 @@
               <input formControlName="author" matInput type="search" placeholder="Tìm Tên Tác Giả">
               <!--                    <mat-error></mat-error>-->
             </mat-form-field>
-            <button mat-raised-button type="submit" (keyup.enter)="searchBook()">
-              <img src="https://cdn-icons-gif.flaticon.com/6569/6569137.gif" alt="" width="40" height="40" (keyup.enter)="searchBook()">&nbsp; Tìm Kiếm
+            <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()">
+              <!--              <img src="https://cdn-icons-gif.flaticon.com/6569/6569137.gif" alt="" width="40" height="40" (keyup.enter)="searchBook()">-->
+              <i class="fas fa-search"></i> &nbsp; Tìm Kiếm
             </button>
           </form>
         </div>
@@ -131,28 +133,30 @@
               <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                 <ul class="list-unstyled">
                   <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a [routerLink]="['/edit', item.id]">
-                    <button mat-raised-button>
-<!--                      <i class="fas	fa-pencil-alt"></i>-->
-                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="" width="40" height="40">
+                    <button mat-raised-button color="primary" matTooltip="Chỉnh Sửa Thông Tin">
+                      <i class="fas	fa-pencil-alt"></i>
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="" width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2"><a
                     [routerLink]="['/detail', item.id]">
-                    <button mat-raised-button>
-<!--                      <i class="far fa-eye"></i>-->
-                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="" width="40" height="40">
+                    <button mat-raised-button color="primary" matTooltip="Xem Chi Tiết">
+                      <i class="far fa-eye"></i>
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="" width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a>
-                    <button type="button" mat-raised-button (click)="onAddToCart(item)">
-<!--                      <i class="fas fa-cart-plus"></i>-->
-                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40">
+                    <button type="button" mat-raised-button color="primary" (click)="onAddToCart(item)"
+                            matTooltip="Thêm Vào Giỏ Hàng">
+                      <i class="fas fa-cart-plus"></i>
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40">-->
                     </button>
                   </a></li>
                   <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" class="mt-2">
-                    <button mat-raised-button data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openDelete(item.id, item.name, item.author)">
-<!--                      <i class="fas fa-trash-alt"></i>-->
-                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="" width="40" height="40">
+                    <button color="warn" mat-raised-button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            (click)="openDelete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
+                      <i class="fas fa-trash-alt"></i>
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="" width="40" height="40">-->
                     </button>
                   </li>
                 </ul>
@@ -160,14 +164,13 @@
             </div>
             <div class="card-body text-center d-grid align-content-between">
               <a [routerLink]="['/detail', item.id]" class="mb-0 h3 text-decoration-none w-100"><b>{{item.name}}</b></a>
-              <p class="text-center text-danger"><b>{{item.price | currency: ' '}} ₫</b></p>
+              <p class="text-center text-danger"><b>{{item.price | currency: ' ': ' ': '5.0'}} ₫</b></p>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <!--        <mat-paginator color="primary" [length]="totalElements" [pageSize]="8" [pageSizeOptions]="[8, 16, totalElements]"></mat-paginator>-->
-        <!--phan trang-->
         <div style="height: 50px; position: relative" class="container mb-3">
           <ul class="pagination justify-content-end" style="text-align: right">
             <li class="page-item me-2">
@@ -179,19 +182,21 @@
               </select>
             </li>
             <li class="page-item">
-<!--              <button class="align-middle" mat-raised-button (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}" type="button">-->
-<!--                <i class="fas fa-chevron-left"></i>-->
-                <img src="https://cdn-icons-gif.flaticon.com/6839/6839001.gif" alt="" width="40" height="40" (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}">
-<!--              </button>-->
-              <span class="align-middle" style="margin: 0 20px 0 20px">{{pageSize * indexPagination + 1}}- {{pageSize * indexPagination + numberOfElement}} trên {{totalElements}}</span>
-<!--              <button class="align-middle" mat-raised-button (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}" type="button">-->
-<!--                <i class="fas fa-chevron-right"></i>-->
-                <img src="https://cdn-icons-gif.flaticon.com/6844/6844383.gif" alt="" width="40" height="40" (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}">
-<!--              </button>-->
+              <button class="align-middle" color="primary" mat-raised-button (click)="previousPage($event)"
+                      [ngStyle]="{'display':previousPageStyle}" type="button">
+                <i class="fas fa-chevron-left"></i>
+                <!--                <img src="https://cdn-icons-gif.flaticon.com/6839/6839001.gif" alt="" width="40" height="40" (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}">-->
+              </button>
+              <span class="align-middle" style="margin: 0 20px 0 20px">{{pageSize * indexPagination + 1}}
+                - {{pageSize * indexPagination + numberOfElement}} trên {{totalElements}}</span>
+              <button class="align-middle" color="primary" mat-raised-button (click)="nextPage($event)"
+                      [ngStyle]="{'display':nextPageStyle}" type="button">
+                <i class="fas fa-chevron-right"></i>
+                <!--                <img src="https://cdn-icons-gif.flaticon.com/6844/6844383.gif" alt="" width="40" height="40" (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}">-->
+              </button>
             </li>
           </ul>
         </div>
-        <!-- kết thúc phân trang-->
       </div>
     </div>
     <!-- End Content -->
@@ -204,10 +209,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title pt-3" id="staticBackdropLabel"><b>Thông Báo </b></h2>
+        <h2 class="modal-title pt-3" id="staticBackdropLabel">Thông Báo</h2>
       </div>
       <div class="modal-body">
-        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} <br> </span> Của Tác Giả <span
+        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} </span> Của Tác Giả <span
         style="color: red"> {{author}} </span> Không ?
       </div>
       <div class="modal-footer">

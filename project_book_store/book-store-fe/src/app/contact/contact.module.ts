@@ -1,26 +1,25 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {CartRoutingModule} from './cart-routing.module';
-import {CartComponent} from './cart.component';
-import {MatButtonModule} from '@angular/material/button';
+import {ContactRoutingModule} from './contact-routing.module';
+import {ContactComponent} from './contact.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonModule} from '@angular/material/button';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [ContactComponent],
   imports: [
     CommonModule,
-    CartRoutingModule,
-    MatButtonModule,
+    ContactRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatTooltipModule
+    MatButtonModule,
+    ReactiveFormsModule,
   ]
 })
-export class CartModule {
-}
+export class ContactModule { }
