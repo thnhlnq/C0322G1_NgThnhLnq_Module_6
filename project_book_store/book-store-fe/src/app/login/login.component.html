@@ -33,7 +33,15 @@
         </div>
 
         <section class="example-section d-flex justify-content-between align-items-center mb-4">
-          <mat-slide-toggle color="primary" formControlName="remember_me">Lưu Mật Khẩu</mat-slide-toggle>
+<!--          <mat-slide-toggle color="primary" formControlName="remember_me">Lưu Mật Khẩu</mat-slide-toggle>-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="remember_me"/>-->
+<!--            <label class="form-check-label" for="flexCheckDefault">Lưu Mật Khẩu</label>-->
+<!--          </div>-->
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" formControlName="remember_me">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Lưu Mật Khẩu</label>
+          </div>
           <a class="example-margin" routerLink="/reset-password">Quên Mật Khẩu</a>
         </section>
         <div class="mt-top d-grid">

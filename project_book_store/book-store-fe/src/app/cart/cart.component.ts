@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import {CartService} from '../service/cart.service';
 import {DataService} from '../service/data.service';
 import {Book} from '../model/book';
+import {render} from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-cart',
@@ -32,12 +33,33 @@ export class CartComponent implements OnInit {
     this.carts = this.cartService.getCart();
   }
 
+  payment() {
+    render({
+      id: '#paypal',
+      currency: 'USD',
+      value: String((this.totalPrice / 23000).toFixed(2)),
+      onApprove: (details) => {
+        Swal.fire({
+          title: 'Thanh Toán Thành Công',
+          icon: 'success',
+          iconColor: ' #EBA850',
+        });
+        document.getElementById('close').click();
+        this.carts = [];
+        this.cartService.saveCart(this.carts);
+        this.dataService.changeData({
+          quantity: this.cartService.getTotalQuantity()
+        });
+      }
+    });
+  }
+
   total(cart: any) {
     return cart.quantity * cart.price;
   }
 
   updateQuantity(index: number, event: any) {
-    let quantity = event.target.value;
+    let quantity = parseInt(event.target.value, 10);
     quantity = quantity > 0 ? quantity : 1;
     quantity = quantity <= 100 ? quantity : 100;
     event.target.value = quantity;

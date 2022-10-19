@@ -92,7 +92,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mt-2">
-          <a routerLink="/create">
+          <a routerLink="/create" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
             <button mat-raised-button color="primary" matTooltip="Thêm Mới Sách">
               <!--              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="" width="40" height="40">-->
               <i class="fas fa-plus"></i> &nbsp; Thêm Mới
@@ -138,7 +138,7 @@
                       <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="" width="40" height="40">-->
                     </button>
                   </a></li>
-                  <li class="mt-2"><a
+                  <li class="mt-2" *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1"><a
                     [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Xem Chi Tiết">
                       <i class="far fa-eye"></i>

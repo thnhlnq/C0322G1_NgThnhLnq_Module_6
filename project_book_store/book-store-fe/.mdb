@@ -1,0 +1,8 @@
+{
+  "projectName": "book",
+  "meta": {
+    "type": "frontend"
+  },
+  "packageManager": "npm",
+  "hash": "077d8dca"
+}

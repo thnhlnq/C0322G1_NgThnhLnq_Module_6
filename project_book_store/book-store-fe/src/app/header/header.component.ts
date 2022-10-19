@@ -20,8 +20,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadHeader();
+    this.loadData();
+  }
+
+  loadData() {
     this.dataService.getData.subscribe((result: any) => {
-      this.totalQuantity = result.quantity;
+      this.totalQuantity = parseInt(result.quantity, 10);
     });
   }
 

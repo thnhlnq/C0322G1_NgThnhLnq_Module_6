@@ -165,6 +165,7 @@ export class ListComponent implements OnInit {
       this.checkPreviousAndNext();
     }, error => {
       this.books = null;
+      console.log(error);
     });
   }
 

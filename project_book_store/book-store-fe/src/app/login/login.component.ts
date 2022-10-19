@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         title: 'Thông Báo',
         text: 'Đăng Nhập Thành Công',
         icon: 'success',
-        confirmButtonText: 'Về Trang Chủ'
+        confirmButtonText: 'Trang Chủ'
       });
       // this.toast.success('Đăng Nhập Thành Công', 'Thông Báo ');
       this.shareService.sendClickEvent();
