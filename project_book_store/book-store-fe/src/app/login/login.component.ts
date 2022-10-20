@@ -4,7 +4,6 @@ import {TokenStorageService} from '../service/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {ShareService} from '../service/share.service';
-import {CookieService} from 'ngx-cookie-service';
 import {AuthService} from '../service/auth.service';
 import Swal from 'sweetalert2';
 
@@ -28,8 +27,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private toast: ToastrService,
-              private shareService: ShareService,
-              private cookieService: CookieService) {
+              private shareService: ShareService) {
   }
 
   ngOnInit(): void {
@@ -62,23 +60,24 @@ export class LoginComponent implements OnInit {
       this.username = this.tokenStorageService.getUser().username;
       this.roles = this.tokenStorageService.getUser().roles;
       this.formGroup.reset();
-      this.router.navigateByUrl(this.returnUrl);
+      this.router.navigateByUrl(this.returnUrl).then();
       Swal.fire({
-        title: 'Thông Báo',
+        title: 'Thông Báo !!',
         text: 'Đăng Nhập Thành Công',
         icon: 'success',
         confirmButtonText: 'Trang Chủ'
-      });
+      }).then();
       // this.toast.success('Đăng Nhập Thành Công', 'Thông Báo ');
       this.shareService.sendClickEvent();
     }, err => {
       this.authService.isLoggedIn = false;
       Swal.fire({
-        title: 'Đã Có Lỗi Xảy Ra !!',
-        text: 'Sai Tên Đăng Nhập Hoặc Sai Mật Khẩu',
+        title: 'Thông Báo !!',
+        text: 'Đã Có Lỗi Xảy Ra. Sai Tên Đăng Nhập Hoặc Sai Mật Khẩu',
         icon: 'error',
         confirmButtonText: 'Thử Lại'
-      });
+      }).then();
+      console.log(err);
       // this.toast.error('Sai Tên Đăng Nhập Hoặc Sai Mật Khẩu Hoặc Tài Khoản Chưa Được Kích Hoạt', 'Thông Báo ');
     });
   }

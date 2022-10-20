@@ -115,20 +115,10 @@ export class CreateComponent implements OnInit {
           console.log(book);
           this.bookService.save(book).subscribe(() => {
             this.bookForm.reset();
-            this.router.navigateByUrl('');
-            Swal.fire({
-              title: 'Thông Báo!',
-              text: 'Thêm Mới Thành Công',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            });
+            this.router.navigateByUrl('').then();
+            Swal.fire('Thông Báo !!', 'Thêm Mới Thành Công', 'success').then();
           }, e => {
-            Swal.fire({
-              title: 'Đã Có Lỗi Xảy Ra !!',
-              text: 'Thêm Mới Thất Bại',
-              icon: 'error',
-              confirmButtonText: 'Thử Lại'
-            });
+            Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Thêm Mới Thất Bại', 'error').then();
             console.log(e);
           });
         });
@@ -147,11 +137,7 @@ export class CreateComponent implements OnInit {
 
   checkCode($event: Event) {
     this.bookService.checkCode(String($event)).subscribe(value => {
-        if (value) {
-          this.isExitsCode = true;
-        } else {
-          this.isExitsCode = false;
-        }
+        this.isExitsCode = !!value;
       }
     );
   }

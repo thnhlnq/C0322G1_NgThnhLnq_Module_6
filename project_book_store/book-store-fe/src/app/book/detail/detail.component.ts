@@ -30,8 +30,6 @@ export class DetailComponent implements OnInit {
   id: number;
 
   carts: any = this.cartService.getCart();
-  totalPrice: number = this.cartService.getTotalPrice();
-  totalQuantity: number = this.cartService.getTotalQuantity();
 
   constructor(private bookService: BookService,
               private cartService: CartService,
@@ -55,6 +53,9 @@ export class DetailComponent implements OnInit {
     this.loadHeader();
     this.getAll();
     this.getCategory();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
+    });
   }
 
   findById(id: number) {
@@ -90,7 +91,7 @@ export class DetailComponent implements OnInit {
     });
 
     if (index >= 0) {
-      return this.carts[index].quantity += 1;
+      this.carts[index].quantity += 1;
     } else {
       const cartItem: any = {
         id: book.id,
@@ -104,51 +105,8 @@ export class DetailComponent implements OnInit {
 
     this.cartService.saveCart(this.carts);
     this.dataService.changeData({
-      totalQuantity: this.cartService.getTotalQuantity()
-    });
-    Swal.fire({
-      title: 'Thông Báo',
-      text: 'Thêm Vào Giỏ Hàng Thành Công',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    });
-  }
-
-  updateQuantity(index: number, event: any) {
-    let quantity = event.target.value;
-    quantity = quantity > 0 ? quantity : 1;
-    quantity = quantity <= 100 ? quantity : 100;
-    event.target.value = quantity;
-    this.carts[index].quantity = quantity;
-    this.cartService.saveCart(this.carts);
-    this.totalPrice = this.cartService.getTotalPrice();
-    this.totalQuantity = this.cartService.getTotalQuantity();
-    this.dataService.changeData({
       quantity: this.cartService.getTotalQuantity()
     });
-  }
-
-  decrease(index: number, quantity: any) {
-    let decreaseQuantity = parseInt(quantity, 10) - 1;
-    decreaseQuantity = decreaseQuantity > 0 ? decreaseQuantity : 1;
-    this.carts[index].quantity = decreaseQuantity;
-    this.cartService.saveCart(this.carts);
-    this.totalPrice = this.cartService.getTotalPrice();
-    this.totalQuantity = this.cartService.getTotalQuantity();
-    this.dataService.changeData({
-      quantity: this.cartService.getTotalQuantity()
-    });
-  }
-
-  increase(index: number, quantity: any) {
-    let increaseQuantity = parseInt(quantity, 10) + 1;
-    increaseQuantity = increaseQuantity <= 100 ? increaseQuantity : 100;
-    this.carts[index].quantity = increaseQuantity;
-    this.cartService.saveCart(this.carts);
-    this.totalPrice = this.cartService.getTotalPrice();
-    this.totalQuantity = this.cartService.getTotalQuantity();
-    this.dataService.changeData({
-      quantity: this.cartService.getTotalQuantity()
-    });
+    Swal.fire('Thông Báo !!', 'Thêm Vào Giỏ Hàng Thành Công', 'success').then();
   }
 }

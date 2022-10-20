@@ -31,26 +31,8 @@ export class CartComponent implements OnInit {
       });
     }, 1);
     this.carts = this.cartService.getCart();
-  }
-
-  payment() {
-    render({
-      id: '#paypal',
-      currency: 'USD',
-      value: String((this.totalPrice / 23000).toFixed(2)),
-      onApprove: (details) => {
-        Swal.fire({
-          title: 'Thanh Toán Thành Công',
-          icon: 'success',
-          iconColor: ' #EBA850',
-        });
-        document.getElementById('close').click();
-        this.carts = [];
-        this.cartService.saveCart(this.carts);
-        this.dataService.changeData({
-          quantity: this.cartService.getTotalQuantity()
-        });
-      }
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
     });
   }
 
@@ -100,20 +82,16 @@ export class CartComponent implements OnInit {
     // tslint:disable-next-line:variable-name
     const _this = this;
     Swal.fire({
-      title: 'Thông Báo !',
+      title: 'Thông Báo !!',
       text: 'Bạn Muốn Xoá Sản Phẩm Này Khỏi Giỏ Hàng ?!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: 'success',
+      cancelButtonColor: 'error',
       confirmButtonText: 'Đồng Ý'
     }).then((result: any) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Thông Báo !',
-          'Đã Xoá Sản Phẩm Khỏi Giỏ Hàng.',
-          'success'
-        );
+        Swal.fire('Thông Báo !!', 'Đã Xoá Sản Phẩm Khỏi Giỏ Hàng.', 'success').then();
         _this.carts.splice(index, 1);
         _this.cartService.saveCart(_this.carts);
         this.totalPrice = this.cartService.getTotalPrice();
@@ -127,7 +105,7 @@ export class CartComponent implements OnInit {
 
   deleteAll() {
     Swal.fire({
-      title: 'Thông Báo !',
+      title: 'Thông Báo !!',
       text: 'Bạn Muốn Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng ?!',
       icon: 'warning',
       showCancelButton: true,
@@ -136,16 +114,29 @@ export class CartComponent implements OnInit {
       confirmButtonText: 'Đồng Ý'
     }).then((result: any) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Thông Báo !',
-          'Đã Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng.',
-          'success'
-        );
+        Swal.fire('Thông Báo !!', 'Đã Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng.', 'success').then();
         sessionStorage.clear();
         this.carts = [];
         this.carts.saveCart(this.carts);
         this.totalPrice = this.cartService.getTotalPrice();
         this.totalQuantity = this.cartService.getTotalQuantity();
+        this.dataService.changeData({
+          quantity: this.cartService.getTotalQuantity()
+        });
+      }
+    });
+  }
+
+  payment() {
+    render({
+      id: '#paypal',
+      currency: 'USD',
+      value: String((this.totalPrice / 23000).toFixed(2)),
+      onApprove: (details) => {
+        Swal.fire('Thông Báo !!', 'Thanh Toán Thành Công. Sách Của Bạn Sẽ Được Giao Trong Vòng 3 Ngày Tới', 'success').then();
+        document.getElementById('close').click();
+        this.carts = [];
+        this.cartService.saveCart(this.carts);
         this.dataService.changeData({
           quantity: this.cartService.getTotalQuantity()
         });

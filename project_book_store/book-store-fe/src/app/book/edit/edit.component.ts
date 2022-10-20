@@ -46,7 +46,6 @@ export class EditComponent implements OnInit {
     totalPages: new FormControl(''),
     translator: new FormControl(''),
     category: new FormControl(''),
-    // discount: new FormControl('')
   });
 
   id: number;
@@ -143,20 +142,10 @@ export class EditComponent implements OnInit {
           console.log(this.bookForm.value);
           this.bookService.edit(this.id, this.bookForm.value).subscribe(() => {
             this.bookForm.reset();
-            this.router.navigateByUrl('');
-            Swal.fire({
-              title: 'Thông Báo!',
-              text: 'Chỉnh Sửa Thành Công',
-              icon: 'success',
-              confirmButtonText: 'OK'
-            });
+            this.router.navigateByUrl('').then();
+            Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
           }, e => {
-            Swal.fire({
-              title: 'Đã Có Lỗi Xảy Ra !!',
-              text: 'Chỉnh Sửa Thất Bại',
-              icon: 'error',
-              confirmButtonText: 'Thử Lại'
-            });
+            Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
             console.log(e);
           });
         });

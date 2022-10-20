@@ -73,6 +73,9 @@ export class ListComponent implements OnInit {
     this.getCategory();
     this.searchBook();
     this.getListSearch();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
+    });
   }
 
   loadHeader(): void {
@@ -98,21 +101,11 @@ export class ListComponent implements OnInit {
 
   delete(id: number): void {
     this.bookService.delete(id).subscribe(() => {
-      Swal.fire({
-        title: 'Thông Báo!',
-        text: 'Xoá Thành Công',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
+      Swal.fire('Thông Báo !!', 'Xoá Thành Công', 'success').then();
       // this.toast.success('Xoá Thành Công..', 'Thông Báo');
       this.getListSearch();
     }, e => {
-      Swal.fire({
-        title: 'Đã Có Lỗi Xảy Ra !!',
-        text: 'Vui Lòng Thử Lại',
-        icon: 'error',
-        confirmButtonText: 'Thử Lại'
-      });
+      Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Vui Lòng Thử Lại', 'error').then();
       // this.toast.error('Xoá Thất Bại..', 'Thông Báo');
       console.log(e);
     });
@@ -124,28 +117,23 @@ export class ListComponent implements OnInit {
     });
 
     if (index >= 0) {
-      return this.carts[index].quantity += 1;
+      this.carts[index].quantity += 1;
     } else {
       const cartItem: any = {
         id: book.id,
         name: book.name,
         price: book.price,
         quantity: 1,
-        image: book.image
+        image: book.image,
       };
       this.carts.push(cartItem);
     }
 
     this.cartService.saveCart(this.carts);
     this.dataService.changeData({
-      totalQuantity: this.cartService.getTotalQuantity()
+      quantity: this.cartService.getTotalQuantity()
     });
-    Swal.fire({
-      title: 'Thông Báo',
-      text: 'Thêm Vào Giỏ Hàng Thành Công',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    });
+    Swal.fire('Thông Báo !!', 'Thêm Vào Giỏ Hàng Thành Công', 'success').then();
   }
 
   getListSearch() {

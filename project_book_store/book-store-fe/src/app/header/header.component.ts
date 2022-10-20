@@ -19,14 +19,10 @@ export class HeaderComponent implements OnInit {
   totalQuantity: any = 0;
 
   ngOnInit(): void {
-    this.loadHeader();
-    this.loadData();
-  }
-
-  loadData() {
     this.dataService.getData.subscribe((result: any) => {
       this.totalQuantity = parseInt(result.quantity, 10);
     });
+    this.loadHeader();
   }
 
   constructor(private tokenStorageService: TokenStorageService,
