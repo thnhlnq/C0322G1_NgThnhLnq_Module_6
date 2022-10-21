@@ -4,30 +4,29 @@
       <div class="col-lg-2"></div>
       <form class="col-lg-8" [formGroup]="bookForm">
         <div class="mb-3 text-center">
-          <h2><b>Thêm Mới Sách</b></h2>
+          <h1 class="h1">Thêm Mới Sách</h1>
         </div>
         <hr>
         <div class="mx-4">
           <div class="row mb-3">
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
-                <mat-label>Mã Sách <span><i>(*)</i></span></mat-label>
-                <input (change)="checkCode($event.target.value)" matInput type="text" placeholder="Nhập Mã Sách"
-                       formControlName="code">
-                <mat-error
-                  *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-              <div *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</div>
-
-            </div>
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
                 <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
                 <input matInput type="text" placeholder="Nhập Tên Sách" formControlName="name">
                 <mat-error
                   *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">
+                  Vui Lòng Không Để Trống.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-6 d-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">
                   Vui Lòng Không Để Trống.
                 </mat-error>
               </mat-form-field>
@@ -47,9 +46,12 @@
             </div>
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
-                <mat-label>Dịch Giả</mat-label>
+                <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
                 <input matInput type="text" placeholder="Nhập Tên Dịch Giả" formControlName="translator">
-                <!--        <mat-error></mat-error>-->
+                <mat-error
+                  *ngIf="bookForm.controls.translator.hasError('required') && (bookForm.controls.translator.touched || bookForm.controls.translator.dirty)">
+                  Vui Lòng Không Để Trống.
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -138,20 +140,20 @@
             </div>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-lg-12 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
-                <mat-select formControlName="category">
-                  <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
-                </mat-select>
-                <mat-error
-                  *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
+<!--          <div class="row mb-3">-->
+<!--            <div class="col-lg-12 d-grid">-->
+<!--              <mat-form-field appearance="outline">-->
+<!--                <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>-->
+<!--                <mat-select formControlName="category">-->
+<!--                  <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>-->
+<!--                </mat-select>-->
+<!--                <mat-error-->
+<!--                  *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">-->
+<!--                  Vui Lòng Không Để Trống.-->
+<!--                </mat-error>-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--          </div>-->
 
           <div class="row mb-3">
             <div class="col-lg-12 d-grid">

@@ -44,5 +44,6 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void {
     this.tokenStorageService.signOut();
+    this.username = '';
   }
 }

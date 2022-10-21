@@ -24,6 +24,11 @@ public class BookService implements IBookService {
 
     @Override
     public void save(Book book) {
+        String code = bookRepository.getMaxCode();
+        int temp = Integer.parseInt(code.substring(2));
+        temp += 1;
+        code = "MS" + String.format("%05d", temp);
+        book.setCode(code);
         bookRepository.save(book);
     }
 

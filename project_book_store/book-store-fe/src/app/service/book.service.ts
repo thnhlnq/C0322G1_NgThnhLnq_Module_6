@@ -23,6 +23,7 @@ export class BookService {
   }
 
   save(book: Book): Observable<Book> {
+    console.log(book);
     return this.http.post<Book>(API_URL + '/book/create', book);
   }
 

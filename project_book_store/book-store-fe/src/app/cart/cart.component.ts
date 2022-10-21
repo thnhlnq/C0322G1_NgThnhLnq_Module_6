@@ -103,29 +103,29 @@ export class CartComponent implements OnInit {
     });
   }
 
-  deleteAll() {
-    Swal.fire({
-      title: 'Thông Báo !!',
-      text: 'Bạn Muốn Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng ?!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Đồng Ý'
-    }).then((result: any) => {
-      if (result.isConfirmed) {
-        Swal.fire('Thông Báo !!', 'Đã Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng.', 'success').then();
-        sessionStorage.clear();
-        this.carts = [];
-        this.carts.saveCart(this.carts);
-        this.totalPrice = this.cartService.getTotalPrice();
-        this.totalQuantity = this.cartService.getTotalQuantity();
-        this.dataService.changeData({
-          quantity: this.cartService.getTotalQuantity()
-        });
-      }
-    });
-  }
+  // deleteAll() {
+  //   Swal.fire({
+  //     title: 'Thông Báo !!',
+  //     text: 'Bạn Muốn Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng ?!',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'Đồng Ý'
+  //   }).then((result: any) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire('Thông Báo !!', 'Đã Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng.', 'success').then();
+  //       sessionStorage.clear();
+  //       this.carts = [];
+  //       this.carts.saveCart(this.carts);
+  //       this.totalPrice = this.cartService.getTotalPrice();
+  //       this.totalQuantity = this.cartService.getTotalQuantity();
+  //       this.dataService.changeData({
+  //         quantity: this.cartService.getTotalQuantity()
+  //       });
+  //     }
+  //   });
+  // }
 
   payment() {
     document.getElementById('paypal').innerHTML = '<div id="btnPayPal"></div>';

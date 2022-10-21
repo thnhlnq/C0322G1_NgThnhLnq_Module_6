@@ -36,13 +36,13 @@ Table of contents
 .h1 {
   font-family: 'Roboto', sans-serif;
   font-size: 48px !important;
-  font-weight: 200 !important;
+  font-weight: 300 !important;
 }
 
 .h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 30px !important;
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .h3 {
@@ -61,6 +61,10 @@ Table of contents
 
 .text-muted {
   color: #bcbcbc !important;
+}
+
+.text-primary {
+  color: #3F51B5 !important;
 }
 
 .text-success {
@@ -143,15 +147,15 @@ Table of contents
 
 /* Product */
 .product-wap {
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .product-wap .product-color-dot.color-dot-red {
-  background: #f71515;
+  background: #F44336;
 }
 
 .product-wap .product-color-dot.color-dot-blue {
-  background: #6db4fe;
+  background: #3F51B5;
 }
 
 .product-wap .product-color-dot.color-dot-black {

@@ -29,7 +29,6 @@ export class EditComponent implements OnInit {
   url: any;
   msg = '';
   loader = true;
-  isExitsCode = false;
 
   bookForm: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -77,7 +76,7 @@ export class EditComponent implements OnInit {
           quantity: new FormControl(book.quantity, [Validators.required, Validators.min(1)]),
           releaseDate: new FormControl(book.releaseDate, [Validators.required]),
           totalPages: new FormControl(book.totalPages, [Validators.required, Validators.min(1)]),
-          translator: new FormControl(book.translator),
+          translator: new FormControl(book.translator, [Validators.required]),
           category: new FormControl(book.category, [Validators.required])
           // discount: new FormControl(book.discount)
         });
@@ -115,6 +114,7 @@ export class EditComponent implements OnInit {
     const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
     const filePath = `book/${nameImg}`;
     const fileRef = this.storage.ref(filePath);
+    console.log(filePath);
     // const book = this.bookForm.value;
     let book: Book;
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
@@ -153,18 +153,6 @@ export class EditComponent implements OnInit {
     ).subscribe();
   }
 
-  checkCode($event: Event) {
-    this.bookService.checkCode(String($event)).subscribe(value => {
-        // if (value) {
-        //   this.isExitsCode = true;
-        // } else {
-        //   this.isExitsCode = false;
-        // }
-        this.isExitsCode = !!value;
-      }
-    );
-  }
-
   reset(id: number) {
     this.selectedImage = null;
     this.checkImgSize = false;
@@ -187,7 +175,7 @@ export class EditComponent implements OnInit {
         totalPages: new FormControl(book.totalPages),
         translator: new FormControl(book.translator),
         category: new FormControl(book.category),
-        // discount: new FormControl(1)
+        // discount: new FormControl()
       });
     });
   }

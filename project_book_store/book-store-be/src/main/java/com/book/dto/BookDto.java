@@ -11,7 +11,7 @@ public class BookDto {
 
     private Integer id;
 
-    @NotBlank(message = "Vui Lòng Không Để Trống.")
+//    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String code;
 
     @NotBlank(message = "Vui Lòng Không Để Trống.")

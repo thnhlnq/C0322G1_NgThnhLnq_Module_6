@@ -18,8 +18,8 @@
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left align-self-center">
-                  <h1 class="h1 text-success"><b>International Literacy Day</b></h1>
-                  <h3 class="h2">Ngày Quốc Tế Biết đọc biết viết</h3>
+                  <h1 class="h1 text-success">International Literacy Day</h1>
+                  <h3 class="h3">Ngày Quốc Tế Biết đọc biết viết</h3>
                   <p>
                     Ngày Quốc Tế Biết đọc biết viết diễn ra vào ngày 8 tháng 9 hàng năm nhằm nâng cao nhận thức và mối
                     quan tâm đến các vấn đề về mù chữ đang tồn tại trong cộng đồng địa phương của chúng ta cũng như trên
@@ -40,8 +40,8 @@
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
-                  <h1 class="h1 text-success"><b>World Book Day</b></h1>
-                  <h3 class="h2">Ngày Sách Thế Giới</h3>
+                  <h1 class="h1 text-success">World Book Day</h1>
+                  <h3 class="h3">Ngày Sách Thế Giới</h3>
                   <p>
                     Ngày Sách Thế giới được Tổ chức Giáo dục, Khoa học và Văn hóa của Liên hợp quốc (UNESCO) tổ chức
                     ngày 23 tháng 4 năm 1995. Tuy nhiên, mối liên hệ giữa niên đại đó và sách được thực hiện ở Tây Ban
@@ -63,8 +63,8 @@
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
-                  <h1 class="h1 text-success"><b>Happy Book Day</b></h1>
-                  <h3 class="h2">Ngày Sách Thế Giới</h3>
+                  <h1 class="h1 text-success">Happy Book Day</h1>
+                  <h3 class="h3">Ngày Sách Thế Giới</h3>
                   <p>
                     Ngày Sách Thế giới được Tổ chức Giáo dục, Khoa học và Văn hóa của Liên hợp quốc (UNESCO) tổ chức
                     ngày 23 tháng 4 năm 1995. Tuy nhiên, mối liên hệ giữa niên đại đó và sách được thực hiện ở Tây Ban
@@ -87,7 +87,7 @@
       </a>
     </div>
     <!-- End Banner Hero -->
-    <h1 class="text-center my-5" style="font-size: 50px">Sách Mới - Tái Bản</h1>
+    <h1 class="h1 text-center my-5" style="font-size: 50px">Sách Mới - Tái Bản</h1>
     <!-- Start Content -->
     <div class="container">
       <div class="row">
@@ -153,8 +153,9 @@
                     </button>
                   </a></li>
                   <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
-                    <button color="warn" mat-raised-button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            (click)="openDelete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
+<!--                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"-->
+                    <button color="warn" mat-raised-button
+                            (click)="delete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
                       <i class="fas fa-trash-alt"></i>
                       <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="..." width="40" height="40">-->
                     </button>
@@ -163,8 +164,8 @@
               </div>
             </div>
             <div class="card-body text-center d-grid align-content-between">
-              <a [routerLink]="['/detail', item.id]" class="mb-0 h3 text-decoration-none w-100"><b>{{item.name}}</b></a>
-              <p class="text-center text-danger"><b>{{item.price | currency: ' ': ' ': '5.0'}} ₫</b></p>
+              <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100">{{item.name}}</a>
+              <p class="h3 text-center text-danger">{{item.price | currency: ' ': ' ': '5.0'}} ₫</p>
             </div>
           </div>
         </div>
@@ -200,28 +201,5 @@
       </div>
     </div>
     <!-- End Content -->
-  </div>
-</div>
-
-<!-- Modal Delete -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title pt-3" id="staticBackdropLabel">Thông Báo</h2>
-      </div>
-      <div class="modal-body">
-        Bạn Muốn Xoá Sách <span style="color: red"> {{name}} </span> Của Tác Giả <span
-        style="color: red"> {{author}} </span> Không ?
-      </div>
-      <div class="modal-footer">
-        <button class="me-3" mat-raised-button color="primary" type="button" data-bs-dismiss="modal">
-          <mat-icon>clear</mat-icon>
-        </button>
-        <button mat-raised-button color="warn" type="button" data-bs-dismiss="modal" (click)="delete(id)"><i
-          class="fas fa-trash-alt"></i></button>
-      </div>
-    </div>
   </div>
 </div>

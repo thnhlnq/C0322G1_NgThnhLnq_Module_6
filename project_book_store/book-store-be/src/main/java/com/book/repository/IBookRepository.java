@@ -35,4 +35,7 @@ public interface IBookRepository extends JpaRepository<Book, Integer> {
 
     @Query(value = "select `code` from `book` where `code` = :code", nativeQuery = true)
     String existsCode(@Param("code") String code);
+
+    @Query(value = "select max(code) from book", nativeQuery = true)
+    String getMaxCode();
 }

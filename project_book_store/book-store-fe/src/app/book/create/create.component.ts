@@ -29,11 +29,10 @@ export class CreateComponent implements OnInit {
   url: any;
   msg = '';
   loader = true;
-  isExitsCode = false;
 
   bookForm: FormGroup = new FormGroup({
     id: new FormControl(''),
-    code: new FormControl('', [Validators.required]),
+    // code: new FormControl('', [Validators.required]),
     author: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     dimension: new FormControl('', [Validators.required]),
@@ -44,9 +43,9 @@ export class CreateComponent implements OnInit {
     quantity: new FormControl('', [Validators.required, Validators.min(1)]),
     releaseDate: new FormControl('', [Validators.required]),
     totalPages: new FormControl('', [Validators.required, Validators.min(1)]),
-    translator: new FormControl(''),
+    translator: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
-    discount: new FormControl(1)
+    // discount: new FormControl('')
   });
 
   categories: Category[] = [];
@@ -94,7 +93,7 @@ export class CreateComponent implements OnInit {
         fileRef.getDownloadURL().subscribe((url) => {
           this.bookForm.patchValue({image: url});
           book = {
-            code: this.bookForm.value.code,
+            // code: '',
             author: this.bookForm.value.author,
             description: this.bookForm.value.description,
             dimension: this.bookForm.value.dimension,
@@ -133,13 +132,6 @@ export class CreateComponent implements OnInit {
     this.regexImageUrl = false;
     this.editImageState = false;
     this.checkImg = false;
-  }
-
-  checkCode($event: Event) {
-    this.bookService.checkCode(String($event)).subscribe(value => {
-        this.isExitsCode = !!value;
-      }
-    );
   }
 
   onFileSelected(event) {

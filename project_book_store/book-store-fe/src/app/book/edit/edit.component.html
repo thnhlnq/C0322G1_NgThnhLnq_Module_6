@@ -4,7 +4,7 @@
       <div class="col-lg-2"></div>
       <form class="col-lg-8" [formGroup]="bookForm">
         <div class="mb-3 text-center">
-          <h2><b>Chỉnh Sửa Sách</b></h2>
+          <h1 class="h1">Chỉnh Sửa Sách</h1>
         </div>
         <hr>
         <div class="mx-4">
@@ -12,13 +12,12 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Mã Sách <span><i>(*)</i></span></mat-label>
-                <input (change)="checkCode($event.target.value)" matInput type="text" placeholder="Nhập Mã Sách"
-                       formControlName="code">
+                <input matInput type="text" placeholder="Nhập Mã Sách"
+                       formControlName="code" readonly="true">
                 <mat-error
                   *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">
                   Vui Lòng Không Để Trống.
                 </mat-error>
-                <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>
               </mat-form-field>
             </div>
             <div class="col-lg-6 d-grid">
@@ -48,7 +47,10 @@
               <mat-form-field appearance="outline">
                 <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
                 <input matInput type="text" placeholder="Nhập Tên Dịch Giả" formControlName="translator">
-                <!--        <mat-error></mat-error>-->
+                <mat-error
+                  *ngIf="bookForm.controls.translator.hasError('required') && (bookForm.controls.translator.touched || bookForm.controls.translator.dirty)">
+                  Vui Lòng Không Để Trống.
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -179,7 +181,8 @@
               <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
               <img *ngIf="!editImageState" [src]="bookForm.get('image').value" (click)="fileInput.click()" width="100%"
                    height="auto" alt="">
-              <img class="form-control mt-2" [src]="url" *ngIf="editImageState" width="auto" height="auto" alt="">
+              <img class="form-control mt-2" [src]="url" *ngIf="editImageState" (click)="fileInput.click()" width="auto"
+                   height="auto" alt="">
               <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>
               <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">
                 Vui Lòng Không Để Trống.
@@ -189,26 +192,6 @@
               </div>
             </div>
           </div>
-
-          <!--          <div class="mb-3">-->
-          <!--            <div class="row">-->
-          <!--              <div class="col-lg-12 d-grid image">-->
-          <!--                <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>-->
-          <!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
-          <!--                <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">-->
-          <!--                &lt;!&ndash;                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">&ndash;&gt;-->
-          <!--                <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"-->
-          <!--                     width="auto" height="auto" alt="">-->
-          <!--                <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>-->
-          <!--                <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">-->
-          <!--                  Vui Lòng Không Để Trống.-->
-          <!--                </div>-->
-          <!--                <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">-->
-          <!--                  Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.-->
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
 
           <div class="d-grid gap-2 d-md-flex justify-content-md-around">
             <a routerLink="">
