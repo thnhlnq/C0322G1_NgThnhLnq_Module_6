@@ -306,7 +306,7 @@ Table of contents
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   #templatemo_main_nav .navbar-nav {
-    max-width: 550px;
+    max-width: 700px;
   }
 
   #template-mo-zay-hero-carousel .carousel-item {

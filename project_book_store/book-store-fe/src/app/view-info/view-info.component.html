@@ -1,0 +1,73 @@
+<div class="container">
+  <!-- Open Content -->
+  <section class="bg-light" style="margin-top: 100px">
+    <div class="container pb-5">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <!-- col end -->
+        <div class="col-lg-6 mt-5">
+          <h1 class="h2 text-center">Thông Tin Tài Khoản</h1>
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-inline ms-4 mt-4">
+
+                <li class="list-inline-item w-25">
+                  <p>Họ Và Tên: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{customer.name}}</strong></p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Tên Tài Khoản: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{username}}</strong></p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Email: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted" type="email"><strong>{{customer.users.email}}</strong></p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Ngày Sinh: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{customer.birthday | date: 'dd/MM/yyyy'}}</strong></p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Giới Tính: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{customer.gender}}</strong>
+                  </p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Số Điện Thoại: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{customer.phone}}</strong></p>
+                </li>
+
+                <li class="list-inline-item w-25">
+                  <p>Địa Chỉ: </p>
+                </li>
+                <li class="list-inline-item w-50">
+                  <p class="text-muted"><strong>{{customer.address}}</strong></p>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+    </div>
+  </section>
+  <!-- Close Content -->
+</div>

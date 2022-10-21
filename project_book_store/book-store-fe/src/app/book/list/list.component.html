@@ -14,7 +14,7 @@
               <div class="mx-auto col-md-8 col-lg-4 order-lg-last">
                 <img class="img-fluid"
                      src="https://img.freepik.com/free-vector/international-literacy-day-with-lots-books_23-2148608688.jpg?w=740&t=st=1664625306~exp=1664625906~hmac=19e6f587e9a62ca7a215118c9c5d7e203b73f5631c83168db01e13e0fc7fe381"
-                     alt="" width="346" height="346">
+                     alt="..." width="346" height="346">
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left align-self-center">
@@ -36,7 +36,7 @@
               <div class="mx-auto col-md-8 col-lg-4 order-lg-last">
                 <img class="img-fluid"
                      src="https://img.freepik.com/free-vector/hand-drawn-world-book-day-illustration-with-stack-books_23-2148868267.jpg?w=740&t=st=1664625273~exp=1664625873~hmac=9bd8e552d9a7887aaa4d6c6a63a81779847d3b1e5f140e1614c7cada69851f81"
-                     alt="" width="346" height="346">
+                     alt="..." width="346" height="346">
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
@@ -59,7 +59,7 @@
               <div class="mx-auto col-md-8 col-lg-4 order-lg-last">
                 <img class="img-fluid"
                      src="https://img.freepik.com/free-vector/cartoon-world-book-day-illustration_23-2148881001.jpg?w=740&t=st=1664625355~exp=1664625955~hmac=89f74c2e58f23fa7e3f5b3b992ef9c28919a95cdc4067c7cee59348921bef178"
-                     alt="" width="346" height="346">
+                     alt="..." width="346" height="346">
               </div>
               <div class="col-lg-8 mb-0 d-flex align-items-center">
                 <div class="text-align-left">
@@ -94,7 +94,7 @@
         <div class="col-lg-4 mt-2">
           <a routerLink="/create" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
             <button mat-raised-button color="primary" matTooltip="Thêm Mới Sách">
-              <!--              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="" width="40" height="40">-->
+              <!--              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="..." width="40" height="40">-->
               <i class="fas fa-plus"></i> &nbsp; Thêm Mới
             </button>
           </a>
@@ -119,7 +119,7 @@
               <!--                    <mat-error></mat-error>-->
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()">
-              <!--              <img src="https://cdn-icons-gif.flaticon.com/6569/6569137.gif" alt="" width="40" height="40" (keyup.enter)="searchBook()">-->
+              <!--              <img src="https://cdn-icons-gif.flaticon.com/6569/6569137.gif" alt="..." width="40" height="40" (keyup.enter)="searchBook()">-->
               <i class="fas fa-search"></i> &nbsp; Tìm Kiếm
             </button>
           </form>
@@ -129,34 +129,34 @@
         <div class="col-md-3 col" *ngFor="let item of books">
           <div class="card mb-4 product-wap rounded-0" style="border: none;">
             <div class="card rounded-0" style="border: none">
-              <img class="card-img rounded-0 img-fluid" [src]="item.image" alt="">
+              <img class="card-img rounded-0 img-fluid" [src]="item.image" alt="...">
               <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                 <ul class="list-unstyled">
                   <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a [routerLink]="['/edit', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Chỉnh Sửa Thông Tin">
                       <i class="fas	fa-pencil-alt"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="" width="40" height="40">-->
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2" *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1"><a
                     [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Xem Chi Tiết">
                       <i class="far fa-eye"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="" width="40" height="40">-->
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a>
                     <button type="button" mat-raised-button color="primary" (click)="onAddToCart(item)"
                             matTooltip="Thêm Vào Giỏ Hàng">
                       <i class="fas fa-cart-plus"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40">-->
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" class="mt-2">
                     <button color="warn" mat-raised-button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             (click)="openDelete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
                       <i class="fas fa-trash-alt"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="" width="40" height="40">-->
+                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="..." width="40" height="40">-->
                     </button>
                   </li>
                 </ul>
@@ -185,14 +185,14 @@
               <button class="align-middle" color="primary" mat-raised-button (click)="previousPage($event)"
                       [ngStyle]="{'display':previousPageStyle}" type="button">
                 <i class="fas fa-chevron-left"></i>
-                <!--                <img src="https://cdn-icons-gif.flaticon.com/6839/6839001.gif" alt="" width="40" height="40" (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}">-->
+                <!--                <img src="https://cdn-icons-gif.flaticon.com/6839/6839001.gif" alt="..." width="40" height="40" (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}">-->
               </button>
               <span class="align-middle" style="margin: 0 20px 0 20px">{{pageSize * indexPagination + 1}}
                 - {{pageSize * indexPagination + numberOfElement}} trên {{totalElements}}</span>
               <button class="align-middle" color="primary" mat-raised-button (click)="nextPage($event)"
                       [ngStyle]="{'display':nextPageStyle}" type="button">
                 <i class="fas fa-chevron-right"></i>
-                <!--                <img src="https://cdn-icons-gif.flaticon.com/6844/6844383.gif" alt="" width="40" height="40" (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}">-->
+                <!--                <img src="https://cdn-icons-gif.flaticon.com/6844/6844383.gif" alt="..." width="40" height="40" (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}">-->
               </button>
             </li>
           </ul>

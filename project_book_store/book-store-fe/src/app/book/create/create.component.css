@@ -1,6 +1,10 @@
-.form-text, span, i, mat-error {
+.form-text, span, i {
   color: red;
   font-weight: bold;
+}
+
+mat-error {
+  color: red;
 }
 
 mat-label, label {

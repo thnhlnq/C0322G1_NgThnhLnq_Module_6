@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   username: string;
   returnUrl: string;
 
-
   constructor(private formBuild: FormBuilder,
               private tokenStorageService: TokenStorageService,
               private authService: AuthService,
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.authService.login(this.formGroup.value).subscribe(data => {
       if (this.formGroup.value.remember_me === true) {
         this.tokenStorageService.saveTokenLocal(data.token);

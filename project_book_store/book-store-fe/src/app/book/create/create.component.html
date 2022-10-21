@@ -18,8 +18,9 @@
                   *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">
                   Vui Lòng Không Để Trống.
                 </mat-error>
-                <mat-error *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</mat-error>
               </mat-form-field>
+              <div *ngIf="isExitsCode">Mã Sách Đã Tồn Tại. Vui Lòng Nhập Lại.</div>
+
             </div>
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
@@ -67,7 +68,8 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price">
+                <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price" min="1"
+                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
                 <mat-error
                   *ngIf="bookForm.controls.price.hasError('required') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
                   Vui Lòng Không Để Trống.
@@ -107,7 +109,8 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" formControlName="quantity">
+                <input matInput type="number" formControlName="quantity" min="1"
+                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
                 <mat-error
                   *ngIf="bookForm.controls.quantity.hasError('required') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
                   Vui Lòng Không Để Trống.
@@ -121,7 +124,8 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" formControlName="totalPages">
+                <input matInput type="number" formControlName="totalPages" min="1"
+                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
                 <mat-error
                   *ngIf="bookForm.controls.totalPages.hasError('required') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
                   Vui Lòng Không Để Trống.
@@ -166,9 +170,8 @@
             <div class="row">
               <div class="col-lg-12 d-grid image">
                 <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState"
-                     src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px"
-                     (click)="fileInput.click()">
+<!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
+                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-png.flaticon.com/512/4131/4131597.png" width="300px" height="300px" (click)="fileInput.click()">
                 <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
                 <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
                 <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"

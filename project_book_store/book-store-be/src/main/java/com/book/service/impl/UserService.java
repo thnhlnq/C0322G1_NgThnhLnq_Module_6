@@ -52,7 +52,7 @@ public class UserService implements IUserService {
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
-        helper.setFrom("sangnguyenjp97@gmail.com", "CODE GYM");
+        helper.setFrom("ntlonq14@gmail.com", "CODEGYM");
         helper.setTo(email);
         helper.setSubject(subject);
         mailContent = "<p sytle='color:red;'>Xin chào " + userName + " ,<p>" + "<p> Nhấn vào link sau để xác thực email của bạn:</p>" +

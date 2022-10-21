@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
   updateQuantity(index: number, event: any) {
     let quantity = parseInt(event.target.value, 10);
     quantity = quantity > 0 ? quantity : 1;
-    quantity = quantity <= 100 ? quantity : 100;
+    quantity = quantity <= 999 ? quantity : 999;
     event.target.value = quantity;
     this.carts[index].quantity = quantity;
     this.cartService.saveCart(this.carts);
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
 
   increase(index: number, quantity: any) {
     let increaseQuantity = parseInt(quantity, 10) + 1;
-    increaseQuantity = increaseQuantity <= 100 ? increaseQuantity : 100;
+    increaseQuantity = increaseQuantity <= 999 ? increaseQuantity : 999;
     this.carts[index].quantity = increaseQuantity;
     this.cartService.saveCart(this.carts);
     this.totalPrice = this.cartService.getTotalPrice();
@@ -86,8 +86,8 @@ export class CartComponent implements OnInit {
       text: 'Bạn Muốn Xoá Sản Phẩm Này Khỏi Giỏ Hàng ?!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: 'success',
-      cancelButtonColor: 'error',
+      confirmButtonColor: '#3F51B5',
+      cancelButtonColor: '#F44336',
       confirmButtonText: 'Đồng Ý'
     }).then((result: any) => {
       if (result.isConfirmed) {
@@ -128,6 +128,7 @@ export class CartComponent implements OnInit {
   }
 
   payment() {
+    document.getElementById('paypal').innerHTML = '<div id="btnPayPal"></div>';
     render({
       id: '#paypal',
       currency: 'USD',

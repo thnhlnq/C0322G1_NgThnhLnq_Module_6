@@ -7,13 +7,13 @@
           <table class="table">
             <thead class="thead-dark">
             <tr style="font-size: 17px">
-              <th>STT</th>
-              <th>Ảnh</th>
-              <th>Tên sách</th>
-              <th>Giá</th>
-              <th>Số lượng</th>
-              <th>Tổng tiền</th>
-              <th>
+              <th style="width: 5%">STT</th>
+              <th style="width: 10%; text-align: center">Ảnh</th>
+              <th style="width: 20%">Tên sách</th>
+              <th style="width: 10%">Giá</th>
+              <th style="width: 30%; text-align: center">Số lượng</th>
+              <th style="width: 20%">Tổng tiền</th>
+              <th style="width: 5%">
                 <!--                <button mat-raised-button color="warn" (click)="deleteAll()" matTooltip="Xoá Tất Cả"><i-->
                 <!--                  class="fas fa-trash-alt"></i></button>-->
               </th>
@@ -21,29 +21,35 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of carts; index as i">
-              <td class="align-middle">{{i + 1}}</td>
-              <td class="align-middle">
-                <img [src]="item.image" alt="" style="width: 50px;">
+              <td style="width: 5%" class="align-middle text-center">{{i + 1}}</td>
+              <td style="width: 10%" class="align-middle">
+                <img [src]="item.image" alt="..." width="100%" height="100%">
               </td>
-              <td style="max-width: 200px">{{item.name}}</td>
-              <td class="align-middle">{{item.price | currency: ' ': ' ': '5.0'}} ₫</td>
-              <td class="align-middle">
-                <ul class="list-inline mt-3">
+              <td style="max-width: 200px; width: 20%">{{item.name}}</td>
+              <td style="width: 10%" class="align-middle">{{item.price | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td style="width: 30%" class="align-middle text-center">
+                <ul class="list-inline mt-">
                   <li class="list-inline-item">
-                    <button (click)="decrease(i, item.quantity)" mat-raised-button color="primary">-</button>
+                    <button *ngIf="item.quantity == 1" (click)="decrease(i, item.quantity)" mat-raised-button disabled
+                            color="primary">-
+                    </button>
+                    <button *ngIf="item.quantity > 1" (click)="decrease(i, item.quantity)" mat-raised-button
+                            color="primary">-
+                    </button>
                   </li>
                   <li class="list-inline-item">
-                    <input type="number" style="width: 50px" (change)="updateQuantity(i, $event)"
+                    <input type="number" style="width: 50px; border: hidden; text-align: center" min="1"
+                           oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1"
+                           (change)="updateQuantity(i, $event)"
                            [value]="item.quantity">
                   </li>
                   <li class="list-inline-item">
-                    <button (click)="increase(i, item.quantity)" mat-raised-button color="primary">+
-                    </button>
+                    <button (click)="increase(i, item.quantity)" mat-raised-button color="primary">+</button>
                   </li>
                 </ul>
               </td>
-              <td class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
-              <td class="align-middle">
+              <td style="width: 20%" class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td style="width: 5%" class="align-middle">
                 <button mat-raised-button color="warn" (click)="deleteCart(i)"><i class="fas fa-trash-alt"></i></button>
               </td>
             </tr>
@@ -81,23 +87,24 @@
                 <a routerLink="">
                   <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
                 </a>
-                <button (click)="payment()" mat-raised-button color="primary" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"> Thanh Toán
+                <button (click)="payment()" mat-raised-button color="primary">
+                  <!--                        data-bs-toggle="modal" data-bs-target="#exampleModal"-->
+                  Thanh Toán
                 </button>
               </div>
             </div>
+            <div id="paypal" class="mx-2"></div>
           </div>
         </div>
       </div>
 
       <div class="alert alert-danger" style="margin-top: 35px" *ngIf="carts.length == 0">
-        <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng ! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
+        <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng !! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
       </div>
       <!-- Cart End -->
     </div>
   </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -108,7 +115,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div id="paypal"></div>
+
       </div>
       <div class="modal-footer">
         <button mat-raised-button id="close" type="button" color="primary" data-bs-dismiss="modal">Đóng</button>

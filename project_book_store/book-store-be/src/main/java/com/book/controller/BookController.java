@@ -1,12 +1,8 @@
 package com.book.controller;
 
 import com.book.dto.BookDto;
-import com.book.model.Book;
-import com.book.model.Category;
-import com.book.model.Discount;
-import com.book.service.IBookService;
-import com.book.service.ICategoryService;
-import com.book.service.IDiscountService;
+import com.book.model.*;
+import com.book.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +29,12 @@ public class BookController {
 
     @Autowired
     IDiscountService discountService;
+
+    @Autowired
+    ICustomerService customerService;
+
+    @Autowired
+    IUserService userService;
 
     @GetMapping("")
     public ResponseEntity<List<Book>> getAll() {
@@ -136,8 +138,26 @@ public class BookController {
         return new ResponseEntity<>(bookPage, HttpStatus.OK);
     }
 
+    @PostMapping("/{username}")
+    public ResponseEntity<Customer> findByUsername(@PathVariable String username) {
+        Customer customer = customerService.findByUsername(username);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
     @GetMapping("/checkCode/{code}")
     public ResponseEntity<?> checkCode(@PathVariable("code") String code) {
         return new ResponseEntity<>(bookService.existsCode(code), HttpStatus.OK);
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Users>> getAllUsers() {
+        List<Users> users = userService.findAll();
+        if (users.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }

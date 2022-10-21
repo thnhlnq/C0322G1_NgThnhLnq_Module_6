@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   currentUser: string;
   role: string;
   isLoggedIn = false;
-
   totalQuantity: any = 0;
 
   ngOnInit(): void {
@@ -43,7 +42,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = this.username != null;
   }
 
-  logOut() {
+  logOut(): void {
     this.tokenStorageService.signOut();
   }
 }

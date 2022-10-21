@@ -2,6 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow">
   <div class="container d-flex justify-content-between align-items-center">
     <a routerLink=""><img src="https://cdn-icons-gif.flaticon.com/6454/6454149.gif" width="70" height="70" alt=""></a>
+    <!--    <a routerLink=""><img src="https://img.freepik.com/premium-vector/fisherman-sitting-book-with-spinning-rod-catching-ideas_460848-15542.jpg" width="70" height="70" alt=""></a>-->
     <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
          id="templatemo_main_nav">
       <div class="flex-fill">
@@ -13,7 +14,7 @@
             <a class="nav-link" routerLink="/about"><b> Về Chúng Tôi </b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink=""><b> Shop </b></a>
+            <a class="nav-link" routerLink=""><b> Lịch Sử Mua Hàng </b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/contact"><b> Liên Hệ </b></a>
@@ -23,9 +24,10 @@
       <div class="navbar align-self-center d-flex">
         <a class="nav-icon position-relative text-decoration-none" routerLink="/cart">
           <!--          <i class="fas fa-shopping-cart w-75 h-75" matTooltip="Xem Giỏ Hàng"></i>-->
-          <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40">
-          <span class="position-absolute top-0 left-50 translate-middle badge rounded-pill text-dark">{{totalQuantity}}</span>
-<!--                    <span class="position-absolute top-0 left-50 translate-middle badge rounded-pill text-dark"></span>-->
+          <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40"
+               matTooltip="Xem Giỏ Hàng">
+          <span
+            class="position-absolute top-0 left-50 translate-middle badge rounded-pill text-dark">{{totalQuantity}}</span>
         </a>
         <button class="nav-icon position-relative text-decoration-none" style="border: none; background: none">
           <button mat-button [matMenuTriggerFor]="belowMenu">
@@ -41,8 +43,11 @@
             <a routerLink="/login" class="text-decoration-none" [hidden]="isLoggedIn">
               <button mat-menu-item>Đăng Nhập</button>
             </a>
+            <a routerLink="/view-info" class="text-decoration-none" [hidden]="!isLoggedIn">
+              <button mat-menu-item>Thông Tin Tài Khoản</button>
+            </a>
             <a routerLink="/login" class="text-decoration-none" [hidden]="!isLoggedIn">
-              <button mat-menu-item (click)="logOut()">Đăng Xuất</button>
+              <button mat-menu-item (click)="logOut()" style="color: #F44336">Đăng Xuất</button>
             </a>
           </mat-menu>
           <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill text-dark"
