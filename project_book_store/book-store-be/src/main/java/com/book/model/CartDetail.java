@@ -4,9 +4,11 @@ import javax.persistence.*;
 
 @Entity
 public class CartDetail {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private int quantity;
 
     @ManyToOne

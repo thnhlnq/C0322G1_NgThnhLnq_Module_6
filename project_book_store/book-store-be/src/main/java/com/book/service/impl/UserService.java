@@ -43,7 +43,6 @@ public class UserService implements IUserService {
         userRepository.saveNewPassword(password, name);
     }
 
-
     public void sendVerificationEmailForResetPassWord(String userName, String email) throws MessagingException, UnsupportedEncodingException {
         String subject = "Hãy xác thực email của bạn";
         String mailContent = "";

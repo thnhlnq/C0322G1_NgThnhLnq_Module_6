@@ -170,8 +170,10 @@
             <div class="row">
               <div class="col-lg-12 d-grid image">
                 <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-<!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
-                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-png.flaticon.com/512/4131/4131597.png" width="300px" height="300px" (click)="fileInput.click()">
+                <!--                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState" src="https://cdn-icons-gif.flaticon.com/8121/8121335.gif" width="300px" height="300px" (click)="fileInput.click()">-->
+                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState"
+                     src="https://cdn-icons-png.flaticon.com/512/4131/4131597.png" width="300px" height="300px"
+                     (click)="fileInput.click()">
                 <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
                 <!--                <img *ngIf="!editImageState" [src]="bookForm.get('image').value" width="100%" height="auto" alt="">-->
                 <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"

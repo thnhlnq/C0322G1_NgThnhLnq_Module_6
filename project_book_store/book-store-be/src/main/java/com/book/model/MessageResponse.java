@@ -1,6 +1,7 @@
 package com.book.model;
 
 public class MessageResponse {
+
     private String message;
 
     public MessageResponse(String message) {

@@ -12,7 +12,6 @@ import {ShareService} from '../../service/share.service';
 import {TokenStorageService} from '../../service/token-storage.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-book',
   templateUrl: './list.component.html',

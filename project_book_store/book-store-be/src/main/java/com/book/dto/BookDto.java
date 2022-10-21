@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class BookDto {
+
     private Integer id;
 
     @NotBlank(message = "Vui Lòng Không Để Trống.")

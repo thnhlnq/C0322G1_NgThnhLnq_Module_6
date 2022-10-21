@@ -31,7 +31,7 @@ public interface IBookRepository extends JpaRepository<Book, Integer> {
             "join `category` on `category`.id = `book`.category_id " +
             "where `book`.status = 0 and `category`.name like :keyCategory and `book`.name like :keyName and `book`.author like :keyAuthor " +
             " order by `book`.id desc ", nativeQuery = true)
-    Page<Book> findAllAndSearch(Pageable pageable, @Param("keyCategory") String keyCategory, @Param("keyName") String keyName,  @Param("keyAuthor") String keyAuthor);
+    Page<Book> findAllAndSearch(Pageable pageable, @Param("keyCategory") String keyCategory, @Param("keyName") String keyName, @Param("keyAuthor") String keyAuthor);
 
     @Query(value = "select `code` from `book` where `code` = :code", nativeQuery = true)
     String existsCode(@Param("code") String code);

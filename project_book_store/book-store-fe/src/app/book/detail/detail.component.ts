@@ -73,7 +73,7 @@ export class DetailComponent implements OnInit {
     this.isLoggedIn = this.username != null;
   }
 
-  getAll() {
+  getAll(): void {
     this.bookService.getList().subscribe(book => {
       this.books = book;
     });

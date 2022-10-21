@@ -138,21 +138,21 @@
                       <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
-                  <li class="mt-2" *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1"><a
+                  <li class="mt-2"><a
                     [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Xem Chi Tiết">
                       <i class="far fa-eye"></i>
                       <!--                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
-                  <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a>
+                  <li class="mt-2"><a>
                     <button type="button" mat-raised-button color="primary" (click)="onAddToCart(item)"
                             matTooltip="Thêm Vào Giỏ Hàng">
                       <i class="fas fa-cart-plus"></i>
                       <!--                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
-                  <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" class="mt-2">
+                  <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
                     <button color="warn" mat-raised-button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             (click)="openDelete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
                       <i class="fas fa-trash-alt"></i>

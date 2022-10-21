@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 public class Roles {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

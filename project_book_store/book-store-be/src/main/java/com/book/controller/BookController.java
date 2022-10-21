@@ -86,9 +86,7 @@ public class BookController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Book> update(@PathVariable int id, @Valid @RequestBody BookDto bookDto) {
-//        book.setId(id);
-//        bookService.save(book);
-//        return new ResponseEntity<>(book, HttpStatus.OK);
+
         Optional<Book> book = bookService.findById(id);
 
         if (!book.isPresent()) {

@@ -7,14 +7,21 @@ import java.time.LocalDate;
 
 @Entity
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     private String address;
+
     private LocalDate birthday;
+
     private String gender;
+
     private String phone;
+
     private boolean status;
 
     @OneToOne(cascade = CascadeType.ALL)

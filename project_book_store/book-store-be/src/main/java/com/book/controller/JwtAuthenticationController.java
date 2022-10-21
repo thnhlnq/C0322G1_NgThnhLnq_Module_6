@@ -80,7 +80,7 @@ public class JwtAuthenticationController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<?> reset(@RequestBody JwtRequest authenticationRequest) throws MessagingException, UnsupportedEncodingException, MessagingException {
+    public ResponseEntity<?> reset(@RequestBody JwtRequest authenticationRequest) throws UnsupportedEncodingException, MessagingException {
         if (appUserService.existsByUserName(authenticationRequest.getUsername()) != null) {
             return ResponseEntity.ok(new MessageResponse("Sent Email "));
         }

@@ -7,9 +7,11 @@ import java.util.List;
 
 @Entity
 public class Discount {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private double percent;
 
     @OneToMany(mappedBy = "discount")

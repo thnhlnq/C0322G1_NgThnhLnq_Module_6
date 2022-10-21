@@ -12,17 +12,17 @@ export class TokenStorageService {
   constructor() {
   }
 
-  signOut() {
+  signOut(): void {
     window.localStorage.clear();
     window.sessionStorage.clear();
   }
 
-  public saveTokenLocal(token: string) {
+  public saveTokenLocal(token: string): void {
     window.localStorage.removeItem(TOKEN_KEY);
     window.localStorage.setItem(TOKEN_KEY, token);
   }
 
-  public saveTokenSession(token: string) {
+  public saveTokenSession(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
@@ -35,12 +35,12 @@ export class TokenStorageService {
     }
   }
 
-  public saveUserLocal(user) {
+  public saveUserLocal(user): void {
     window.localStorage.removeItem(USER_KEY);
     window.localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public saveUserSession(user) {
+  public saveUserSession(user): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
