@@ -164,14 +164,13 @@
               </div>
             </div>
             <div class="card-body text-center d-grid align-content-between">
-              <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100">{{item.name}}</a>
+              <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100 text">{{item.name}}</a>
               <p class="h3 text-center text-danger">{{item.price | currency: ' ': ' ': '5.0'}} ₫</p>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <!--        <mat-paginator color="primary" [length]="totalElements" [pageSize]="8" [pageSizeOptions]="[8, 16, totalElements]"></mat-paginator>-->
         <div style="height: 50px; position: relative" class="container mb-3">
           <ul class="pagination justify-content-end" style="text-align: right">
             <li class="page-item me-2">

@@ -13,7 +13,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Mã Sách <span><i>(*)</i></span></mat-label>
                 <input matInput type="text" placeholder="Nhập Mã Sách"
-                       formControlName="code" readonly="true">
+                       formControlName="code" readonly matTooltip="Mã Sách Không Được Chỉnh Sửa">
                 <mat-error
                   *ngIf="bookForm.controls.code.hasError('required') && (bookForm.controls.code.touched)">
                   Vui Lòng Không Để Trống.
@@ -59,7 +59,7 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Kích Thước (cm) <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Kích Thước" formControlName="dimension">
+                <input matInput type="text" placeholder="Nhập Kích Thước (dài x rộng)" formControlName="dimension">
                 <mat-error
                   *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">
                   Vui Lòng Không Để Trống.
@@ -148,14 +148,6 @@
                   Vui Lòng Không Để Trống.
                 </mat-error>
               </mat-form-field>
-              <!--                <mat-form-field appearance="outline">-->
-              <!--                  <mat-label>Chiết Khấu <span><i>(*)</i></span></mat-label>-->
-              <!--                  <mat-select formControlName="discount">-->
-              <!--                    <mat-option *ngFor="let discount of discounts"-->
-              <!--                                [value]="discount.id">{{discount.percent}}</mat-option>-->
-              <!--                  </mat-select>-->
-              <!--                </mat-form-field>-->
-              <!--                <label class="form-label">Chọn Ảnh <span><i>(*)</i></span></label>-->
             </div>
           </div>
 

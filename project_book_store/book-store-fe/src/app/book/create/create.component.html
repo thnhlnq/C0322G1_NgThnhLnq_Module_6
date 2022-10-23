@@ -60,7 +60,7 @@
             <div class="col-lg-6 d-grid">
               <mat-form-field appearance="outline">
                 <mat-label>Kích Thước (cm) <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Kích Thước" formControlName="dimension">
+                <input matInput type="text" placeholder="Nhập Kích Thước (dài x rộng)" formControlName="dimension">
                 <mat-error
                   *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">
                   Vui Lòng Không Để Trống.

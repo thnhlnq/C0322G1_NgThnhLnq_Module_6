@@ -45,7 +45,7 @@ export class ListComponent implements OnInit {
   authorSearch = '';
   number: number;
   indexPagination = 0;
-  totalPage?: string[];
+  totalPage?: string[] = [];
   numberOfElement = 0;
   totalElements = 0;
   pageSize: number;
@@ -152,6 +152,8 @@ export class ListComponent implements OnInit {
         this.numberOfElement = data?.numberOfElements;
         this.books = data?.content;
         this.totalElements = data?.totalElements;
+        this.totalPage = new Array(+data.totalPages);
+        console.log(this.totalPage);
       }
       this.checkPreviousAndNext();
     }, error => {
