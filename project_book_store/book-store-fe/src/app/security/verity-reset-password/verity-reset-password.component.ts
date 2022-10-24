@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
 import {ToastrService} from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-verity-reset-password',
@@ -19,19 +20,12 @@ export class VerityResetPasswordComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
   }
 
+  hide = true;
   formGroup: FormGroup;
   name: string;
   isSuccessful = true;
   isSendMail: boolean;
   isSubmited: false;
-
-  validationMessages = {
-    password: [
-      {type: 'required', message: 'Trường này không được để trống!'},
-      {type: 'minlength', message: 'Mật khẩu cần nhiều hơn 8 ký tự'},
-      {type: 'maxlength', message: 'Mật khẩu chỉ được ít hơn 32 ký tự'},
-    ]
-  };
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -56,14 +50,11 @@ export class VerityResetPasswordComponent implements OnInit {
           this.name = paramMap.get('name');
         });
         this.authService.doResetPassword(this.formGroup.value.newPassword, this.name).subscribe(data => {
-          this.toastr.success('Mật khẩu đã được thay đổi!', 'Thành công');
-          this.router.navigateByUrl('/login');
+          Swal.fire('Thông Báo !!', 'Mật Khẩu Đã Được Thay Đổi', 'success').then();
+          this.router.navigateByUrl('/login').then();
         });
       } else {
-        this.toastr.error('Trường nhập lại mật khẩu và mật khẩu không giống nhau!', 'Lỗi: ', {
-          timeOut: 3500,
-          extendedTimeOut: 1500
-        });
+        Swal.fire('Thông Báo !!', 'Trường Nhập Lại Mật Khẩu Và Mật Khẩu Không Giống Nhau', 'error').then();
         this.isSubmited = false;
       }
     }

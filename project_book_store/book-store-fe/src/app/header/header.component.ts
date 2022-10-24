@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(): void {
+    this.isLoggedIn = false;
     this.tokenStorageService.signOut();
-    this.username = '';
   }
 }

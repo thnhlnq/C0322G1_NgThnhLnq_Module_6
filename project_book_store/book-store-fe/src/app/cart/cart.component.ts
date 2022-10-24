@@ -133,9 +133,8 @@ export class CartComponent implements OnInit {
       id: '#paypal',
       currency: 'USD',
       value: String((this.totalPrice / 23000).toFixed(2)),
-      onApprove: (details) => {
+      onApprove: () => {
         Swal.fire('Thông Báo !!', 'Thanh Toán Thành Công. Sách Của Bạn Sẽ Được Giao Trong Vòng 3 Ngày Tới', 'success').then();
-        document.getElementById('close').click();
         this.carts = [];
         this.cartService.saveCart(this.carts);
         this.dataService.changeData({

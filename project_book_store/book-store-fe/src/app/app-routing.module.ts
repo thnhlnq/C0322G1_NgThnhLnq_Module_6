@@ -32,12 +32,31 @@ const routes: Routes = [{
 }, {
   path: 'about',
   loadChildren: () => import('./about/about.module').then(module => module.AboutModule),
+  // canActivate: [AuthGuard],
+  // data: {
+  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+  // }
 }, {
   path: 'contact',
   loadChildren: () => import('./contact/contact.module').then(module => module.ContactModule),
+  // canActivate: [AuthGuard],
+  // data: {
+  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+  // }
 }, {
   path: 'view-info',
   loadChildren: () => import('./view-info/view-info.module').then(module => module.ViewInfoModule),
+  // canActivate: [AuthGuard],
+  // data: {
+  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+  // }
+}, {
+  path: 'security',
+  loadChildren: () => import('./security/security.module').then(module => module.SecurityModule),
+  // canActivate: [AuthGuard],
+  // data: {
+  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+  // }
 }];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
-import {ToastrService} from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,12 +11,16 @@ import {ToastrService} from 'ngx-toastr';
 export class ResetPasswordComponent implements OnInit {
   formGroup: FormGroup;
   isSubmitted = false;
-  formValid = false;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
-              private toastr: ToastrService) {
+              private authService: AuthService) {
   }
+
+  validationMessages = {
+    username: [
+      {type: 'required', message: 'Trường này không được để trống!'},
+    ]
+  };
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
@@ -26,25 +30,14 @@ export class ResetPasswordComponent implements OnInit {
 
   onSubmit() {
     this.isSubmitted = true;
-    this.authService.resetPassword(this.formGroup.value.username).subscribe(
-      data => {
-        this.toastr.success('Email đã được gửi!', 'Thành công: ', {
-          timeOut: 2500,
-          extendedTimeOut: 1500
-        });
+    this.authService.resetPassword(this.formGroup.value.username).subscribe(data => {
+        Swal.fire('Thông Báo !!', 'Gửi Email Thành Công', 'success').then();
+        console.log(data);
       }, err => {
-        this.toastr.error('Sai tên đăng nhập hoặc tên đăng nhập chưa được đăng ký', 'Gửi email thất bại: ', {
-          timeOut: 3000,
-          extendedTimeOut: 1500
-        });
+        Swal.fire('Thông Báo !!', 'Sai Tên Đăng Nhập Hoặc Tên Đăng Nhập Chưa Được Đăng Ký', 'error').then();
+        console.log(err);
         this.isSubmitted = false;
       }
     );
   }
-
-  // validationMessages = {
-  //   username: [
-  //     {type: 'required', message: 'Trường này không được để trống!'},
-  //   ]
-  // };
 }

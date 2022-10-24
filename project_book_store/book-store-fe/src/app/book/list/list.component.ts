@@ -5,7 +5,7 @@ import {ToastrService} from 'ngx-toastr';
 import {Category} from '../../model/category';
 import {CategoryService} from '../../service/category.service';
 import {Title} from '@angular/platform-browser';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../../service/data.service';
 import {CartService} from '../../service/cart.service';
 import {ShareService} from '../../service/share.service';
@@ -25,8 +25,8 @@ export class ListComponent implements OnInit {
   isLoggedIn = false;
 
   searchForm: FormGroup = new FormGroup({
-    author: new FormControl(''),
-    name: new FormControl(''),
+    author: new FormControl('', [Validators.pattern('^[a-zA-Z0-9]+$')]),
+    name: new FormControl('', [Validators.pattern('^[a-zA-Z0-9]+$')]),
     category: new FormGroup({
       name: new FormControl('')
     })

@@ -1,6 +1,5 @@
 <div class="container my-5">
   <div class="row" style="margin-top: 100px">
-    <!-- Start Banner Hero -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
       <ol class="carousel-indicators">
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
@@ -86,15 +85,12 @@
         <i class="fas fa-chevron-right"></i>
       </a>
     </div>
-    <!-- End Banner Hero -->
     <h1 class="h1 text-center my-5" style="font-size: 50px">Sách Mới - Tái Bản</h1>
-    <!-- Start Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mt-2">
           <a routerLink="/create" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
             <button mat-raised-button color="primary" matTooltip="Thêm Mới Sách">
-              <!--              <img src="https://cdn-icons-gif.flaticon.com/6844/6844372.gif" alt="..." width="40" height="40">-->
               <i class="fas fa-plus"></i> &nbsp; Thêm Mới
             </button>
           </a>
@@ -110,16 +106,19 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="me-3">
               <mat-label>Tìm Sách</mat-label>
-              <input formControlName="name" matInput type="search" placeholder="Tìm Tên Sách">
-              <!--                    <mat-error></mat-error>-->
+              <input formControlName="name" matInput type="search" placeholder="Nhập Tên Sách">
+              <mat-error
+                *ngIf="searchForm.controls.name.hasError('pattern') && (searchForm.controls.name.touched || searchForm.controls.name.dirty)">Vui Lòng Không Nhập Kí Tự Đặc Biệt
+              </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="me-3">
               <mat-label>Tìm Tác Giả</mat-label>
-              <input formControlName="author" matInput type="search" placeholder="Tìm Tên Tác Giả">
-              <!--                    <mat-error></mat-error>-->
+              <input formControlName="author" matInput type="search" placeholder="Nhập Tên Tác Giả">
+              <mat-error
+                *ngIf="searchForm.controls.author.hasError('pattern') && (searchForm.controls.author.touched || searchForm.controls.author.dirty)">Vui Lòng Không Nhập Kí Tự Đặc Biệt
+              </mat-error>
             </mat-form-field>
-            <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()">
-              <!--              <img src="https://cdn-icons-gif.flaticon.com/6569/6569137.gif" alt="..." width="40" height="40" (keyup.enter)="searchBook()">-->
+            <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()" [disabled]="searchForm.invalid">
               <i class="fas fa-search"></i> &nbsp; Tìm Kiếm
             </button>
           </form>
@@ -135,37 +134,32 @@
                   <li *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1"><a [routerLink]="['/edit', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Chỉnh Sửa Thông Tin">
                       <i class="fas	fa-pencil-alt"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121326.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2"><a
                     [routerLink]="['/detail', item.id]">
                     <button mat-raised-button color="primary" matTooltip="Xem Chi Tiết">
                       <i class="far fa-eye"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/7920/7920840.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2"><a>
                     <button type="button" mat-raised-button color="primary" (click)="onAddToCart(item)"
                             matTooltip="Thêm Vào Giỏ Hàng">
                       <i class="fas fa-cart-plus"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="..." width="40" height="40">-->
                     </button>
                   </a></li>
                   <li class="mt-2" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
-<!--                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"-->
                     <button color="warn" mat-raised-button
                             (click)="delete(item.id, item.name, item.author)" matTooltip="Xoá Sách">
                       <i class="fas fa-trash-alt"></i>
-                      <!--                      <img src="https://cdn-icons-gif.flaticon.com/8121/8121324.gif" alt="..." width="40" height="40">-->
                     </button>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="card-body text-center d-grid align-content-between">
+            <div class="card-body d-grid align-content-between">
               <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100 text">{{item.name}}</a>
-              <p class="h3 text-center text-danger">{{item.price | currency: ' ': ' ': '5.0'}} ₫</p>
+              <h2 class="text-center text-danger fw-bold">{{item.price | currency: ' ': ' ': '5.0'}} ₫</h2>
             </div>
           </div>
         </div>
@@ -185,20 +179,17 @@
               <button class="align-middle" color="primary" mat-raised-button (click)="previousPage($event)"
                       [ngStyle]="{'display':previousPageStyle}" type="button">
                 <i class="fas fa-chevron-left"></i>
-                <!--                <img src="https://cdn-icons-gif.flaticon.com/6839/6839001.gif" alt="..." width="40" height="40" (click)="previousPage($event)" [ngStyle]="{'display':previousPageStyle}">-->
               </button>
               <span class="align-middle" style="margin: 0 20px 0 20px">{{pageSize * indexPagination + 1}}
                 - {{pageSize * indexPagination + numberOfElement}} trên {{totalElements}}</span>
               <button class="align-middle" color="primary" mat-raised-button (click)="nextPage($event)"
                       [ngStyle]="{'display':nextPageStyle}" type="button">
                 <i class="fas fa-chevron-right"></i>
-                <!--                <img src="https://cdn-icons-gif.flaticon.com/6844/6844383.gif" alt="..." width="40" height="40" (click)="nextPage($event)" [ngStyle]="{'display':nextPageStyle}">-->
               </button>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <!-- End Content -->
   </div>
 </div>

@@ -14,8 +14,6 @@
               <th style="width: 35%; text-align: center">Số lượng</th>
               <th style="width: 15%">Tổng tiền</th>
               <th style="width: 5%">
-                <!--                <button mat-raised-button color="warn" (click)="deleteAll()" matTooltip="Xoá Tất Cả"><i-->
-                <!--                  class="fas fa-trash-alt"></i></button>-->
               </th>
             </tr>
             </thead>
@@ -72,10 +70,6 @@
                   <h3>Tổng Số Lượng</h3>
                   <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
                 </div>
-                <!--                <div class="d-flex justify-content-between mb-3">-->
-                <!--                  <h3>Tổng Tiền</h3>-->
-                <!--                  <h3>{{totalPrice | currency: ' '}} ₫</h3>-->
-                <!--                </div>-->
               </div>
               <div class="pt-2">
                 <div class="d-flex justify-content-between mt-2">
@@ -88,7 +82,6 @@
                   <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
                 </a>
                 <button (click)="payment()" mat-raised-button color="primary">
-                  <!--                        data-bs-toggle="modal" data-bs-target="#exampleModal"-->
                   Thanh Toán
                 </button>
               </div>
@@ -102,24 +95,6 @@
         <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng !! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
       </div>
       <!-- Cart End -->
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Thông Báo</b></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-      </div>
-      <div class="modal-footer">
-        <button mat-raised-button id="close" type="button" color="primary" data-bs-dismiss="modal">Đóng</button>
-      </div>
     </div>
   </div>
 </div>

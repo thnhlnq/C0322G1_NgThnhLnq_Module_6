@@ -45,7 +45,6 @@ export class CreateComponent implements OnInit {
     totalPages: new FormControl('', [Validators.required, Validators.min(1)]),
     translator: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
-    // discount: new FormControl('')
   });
 
   categories: Category[] = [];
@@ -93,7 +92,7 @@ export class CreateComponent implements OnInit {
         fileRef.getDownloadURL().subscribe((url) => {
           this.bookForm.patchValue({image: url});
           book = {
-            // code: '',
+            // code: this.bookForm.value.code,
             author: this.bookForm.value.author,
             description: this.bookForm.value.description,
             dimension: this.bookForm.value.dimension,

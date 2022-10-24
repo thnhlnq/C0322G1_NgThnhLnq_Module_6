@@ -192,12 +192,10 @@
             <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
                     [disabled]="bookForm.invalid"> Chỉnh Sửa
             </button>
-            <!--            <button *ngIf="!loader" mat-raised-button disabled>-->
-            <!--              <div class="spinner-border spinner-border-sm me-1"></div>-->
-            <!--              Đang tải ...-->
-            <!--            </button>-->
-            <img *ngIf="!loader" src="https://cdn-icons-gif.flaticon.com/7211/7211795.gif" alt="" width="40"
-                 height="40">
+            <button *ngIf="!loader" mat-raised-button disabled>
+              <div class="spinner-border spinner-border-sm me-1"></div>
+              Đang tải ...
+            </button>
             <button (click)="reset(id)" type="reset" mat-raised-button color="accent"> Nhập Lại
             </button>
           </div>

@@ -78,7 +78,6 @@ export class EditComponent implements OnInit {
           totalPages: new FormControl(book.totalPages, [Validators.required, Validators.min(1)]),
           translator: new FormControl(book.translator, [Validators.required]),
           category: new FormControl(book.category, [Validators.required])
-          // discount: new FormControl(book.discount)
         });
       });
     });
@@ -111,46 +110,77 @@ export class EditComponent implements OnInit {
 
   submit() {
     this.loader = false;
-    const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
-    const filePath = `book/${nameImg}`;
-    const fileRef = this.storage.ref(filePath);
-    console.log(filePath);
-    // const book = this.bookForm.value;
     let book: Book;
-    this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          this.bookForm.patchValue({image: url});
-          book = {
-            code: this.bookForm.value.code,
-            author: this.bookForm.value.author,
-            description: this.bookForm.value.description,
-            dimension: this.bookForm.value.dimension,
-            image: this.bookForm.value.image,
-            name: this.bookForm.value.name,
-            price: this.bookForm.value.price,
-            publisher: this.bookForm.value.publisher,
-            quantity: this.bookForm.value.quantity,
-            releaseDate: this.bookForm.value.releaseDate,
-            totalPages: this.bookForm.value.totalPages,
-            translator: this.bookForm.value.translator,
-            category: {
-              id: this.bookForm.value.category.id,
-              name: this.bookForm.value.category.name
-            },
-            status: false
-          };
-          console.log(this.bookForm.value);
-          this.bookService.edit(this.id, this.bookForm.value).subscribe(() => {
-            this.bookForm.reset();
-            this.router.navigateByUrl('').then();
-            Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
-          }, e => {
-            Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
-            console.log(e);
+    if (this.editImageState === false) {
+      book = {
+        code: this.bookForm.value.code,
+        author: this.bookForm.value.author,
+        description: this.bookForm.value.description,
+        dimension: this.bookForm.value.dimension,
+        image: this.bookForm.value.image,
+        name: this.bookForm.value.name,
+        price: this.bookForm.value.price,
+        publisher: this.bookForm.value.publisher,
+        quantity: this.bookForm.value.quantity,
+        releaseDate: this.bookForm.value.releaseDate,
+        totalPages: this.bookForm.value.totalPages,
+        translator: this.bookForm.value.translator,
+        category: {
+          id: this.bookForm.value.category.id,
+          name: this.bookForm.value.category.name
+        },
+        status: false
+      };
+      console.log(this.bookForm.value);
+      this.bookService.edit(this.id, book).subscribe(() => {
+        this.bookForm.reset();
+        this.router.navigateByUrl('').then();
+        Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
+      }, e => {
+        Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
+        console.log(e);
+      });
+    } else {
+      const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
+      const filePath = `book/${nameImg}`;
+      const fileRef = this.storage.ref(filePath);
+      console.log(filePath);
+      // const book = this.bookForm.value;
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            this.bookForm.patchValue({image: url});
+            book = {
+              code: this.bookForm.value.code,
+              author: this.bookForm.value.author,
+              description: this.bookForm.value.description,
+              dimension: this.bookForm.value.dimension,
+              image: this.bookForm.value.image,
+              name: this.bookForm.value.name,
+              price: this.bookForm.value.price,
+              publisher: this.bookForm.value.publisher,
+              quantity: this.bookForm.value.quantity,
+              releaseDate: this.bookForm.value.releaseDate,
+              totalPages: this.bookForm.value.totalPages,
+              translator: this.bookForm.value.translator,
+              category: {
+                id: this.bookForm.value.category.id,
+                name: this.bookForm.value.category.name
+              },
+              status: false
+            };
+            console.log(book);
+            this.bookService.edit(this.id, this.bookForm.value).subscribe(() => {
+              this.bookForm.reset();
+              this.router.navigateByUrl('').then();
+              Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
+            }, e => {
+              Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
+              console.log(e);
+            });
           });
-        });
-      })
-    ).subscribe();
+        })
+      ).subscribe();
+    }
   }
 
   reset(id: number) {
