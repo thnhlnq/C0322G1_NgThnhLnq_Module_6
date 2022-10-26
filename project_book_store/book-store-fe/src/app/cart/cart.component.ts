@@ -4,6 +4,7 @@ import {CartService} from '../service/cart.service';
 import {DataService} from '../service/data.service';
 import {Book} from '../model/book';
 import {render} from 'creditcardpayments/creditCardPayments';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
@@ -19,7 +20,9 @@ export class CartComponent implements OnInit {
   totalQuantity: number = this.cartService.getTotalQuantity();
 
   constructor(private cartService: CartService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private title: Title) {
+    this.title.setTitle('Giỏ Hàng');
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../service/token-storage.service';
 import {UserService} from '../service/user.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-info',
@@ -14,7 +15,9 @@ export class ViewInfoComponent implements OnInit {
   users: any = [];
 
   constructor(private tokenStorageService: TokenStorageService,
-              private userService: UserService) {
+              private userService: UserService,
+              private title: Title) {
+    this.title.setTitle('Thông Tin Khách Hàng');
   }
 
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {ShareService} from '../service/share.service';
 import {AuthService} from '../service/auth.service';
 import Swal from 'sweetalert2';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,9 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private toast: ToastrService,
-              private shareService: ShareService) {
+              private shareService: ShareService,
+              private title: Title) {
+    this.title.setTitle('Đăng Nhập');
   }
 
   ngOnInit(): void {

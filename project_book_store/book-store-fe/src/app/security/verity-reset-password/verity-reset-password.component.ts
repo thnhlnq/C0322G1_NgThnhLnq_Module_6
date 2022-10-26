@@ -4,6 +4,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {AuthService} from '../../service/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-verity-reset-password',
@@ -17,7 +18,9 @@ export class VerityResetPasswordComponent implements OnInit {
               private toastr: ToastrService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private title: Title) {
+    this.title.setTitle('Xác Nhận Mật Khẩu');
   }
 
   hide = true;

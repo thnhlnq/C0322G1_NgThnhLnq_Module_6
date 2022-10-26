@@ -153,7 +153,6 @@ export class ListComponent implements OnInit {
         this.books = data?.content;
         this.totalElements = data?.totalElements;
         this.totalPage = new Array(+data.totalPages);
-        console.log(this.totalPage);
       }
       this.checkPreviousAndNext();
     }, error => {

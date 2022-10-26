@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
 import Swal from 'sweetalert2';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,7 +14,9 @@ export class ResetPasswordComponent implements OnInit {
   isSubmitted = false;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private title: Title) {
+    this.title.setTitle('Đặt Lại Mật Khẩu');
   }
 
   validationMessages = {
