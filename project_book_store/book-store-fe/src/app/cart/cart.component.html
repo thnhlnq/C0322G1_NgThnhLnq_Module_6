@@ -13,8 +13,7 @@
               <th style="width: 10%">Giá</th>
               <th style="width: 35%; text-align: center">Số lượng</th>
               <th style="width: 15%">Tổng tiền</th>
-              <th style="width: 5%">
-              </th>
+              <th style="width: 5%"></th>
             </tr>
             </thead>
             <tbody>
@@ -46,8 +45,8 @@
                   </li>
                 </ul>
               </td>
-              <td style="width: 20%" class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
-              <td style="width: 5%" class="align-middle">
+              <td style="width: 15%;" class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td style="width: 5%;" class="align-middle">
                 <button mat-raised-button color="warn" (click)="deleteCart(i)"><i class="fas fa-trash-alt"></i></button>
               </td>
             </tr>
@@ -56,38 +55,36 @@
         </div>
 
         <div class="col-lg-3">
-          <div>
-            <div class="example-container">
-              <mat-form-field appearance="outline" class="w-100">
-                <mat-label>Mã Giảm Giá</mat-label>
-                <input matInput type="text" placeholder="Mã Giảm Giá">
-              </mat-form-field>
-            </div>
-
-            <div class="bg-light mb-5">
-              <div class="border-bottom">
-                <div class="d-flex justify-content-between">
-                  <h3>Tổng Số Lượng</h3>
-                  <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
-                </div>
-              </div>
-              <div class="pt-2">
-                <div class="d-flex justify-content-between mt-2">
-                  <h3>Tổng Thanh Toán</h3>
-                  <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
-                </div>
-              </div>
-              <div class="d-flex justify-content-evenly">
-                <a routerLink="">
-                  <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
-                </a>
-                <button (click)="payment()" mat-raised-button color="primary">
-                  Thanh Toán
-                </button>
-              </div>
-            </div>
-            <div id="paypal" class="mx-2"></div>
+          <div class="example-container">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Mã Giảm Giá</mat-label>
+              <input matInput type="text" placeholder="Mã Giảm Giá">
+            </mat-form-field>
           </div>
+
+          <div class="bg-light mb-5">
+            <div class="border-bottom">
+              <div class="d-flex justify-content-between">
+                <h3>Tổng Số Lượng</h3>
+                <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
+              </div>
+            </div>
+            <div class="pt-2">
+              <div class="d-flex justify-content-between mt-2">
+                <h3>Tổng Thanh Toán</h3>
+                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
+              </div>
+            </div>
+            <div class="d-flex justify-content-evenly">
+              <a routerLink="">
+                <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
+              </a>
+              <button (click)="payment()" mat-raised-button color="primary">
+                Thanh Toán
+              </button>
+            </div>
+          </div>
+          <div id="paypal" class="mx-2"></div>
         </div>
       </div>
 

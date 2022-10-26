@@ -137,7 +137,7 @@ export class CartComponent implements OnInit {
       currency: 'USD',
       value: String((this.totalPrice / 23000).toFixed(2)),
       onApprove: () => {
-        Swal.fire('Thông Báo !!', 'Thanh Toán Thành Công. Sách Của Bạn Sẽ Được Giao Trong Vòng 3 Ngày Tới', 'success').then();
+        Swal.fire('Thông Báo !!', 'Thanh Toán Thành Công. <br>Sách Của Bạn Sẽ Được Giao Trong Vòng 3 Ngày Tới', 'success').then();
         this.carts = [];
         this.cartService.saveCart(this.carts);
         this.dataService.changeData({

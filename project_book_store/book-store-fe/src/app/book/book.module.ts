@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DetailComponent} from './detail/detail.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -24,19 +25,20 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     EditComponent,
     DetailComponent
   ],
-  imports: [
-    CommonModule,
-    BookRoutingModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatTooltipModule
-  ]
+    imports: [
+        CommonModule,
+        BookRoutingModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDatepickerModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class BookModule {
 }

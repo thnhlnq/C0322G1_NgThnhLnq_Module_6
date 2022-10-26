@@ -145,7 +145,8 @@ export class ListComponent implements OnInit {
       if (data === null) {
         this.totalPage = new Array(0);
         this.books = [];
-        this.displayPagination = 'none';
+        // this.displayPagination = 'none';
+        Swal.fire('Thông Báo !!', 'Không Tìm Thấy Kết Quả. Vui Lòng Thử Lại', 'error').then();
       } else {
         this.number = data?.number;
         this.pageSize = data?.size;

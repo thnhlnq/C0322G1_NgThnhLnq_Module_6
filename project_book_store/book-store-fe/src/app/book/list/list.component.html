@@ -88,14 +88,14 @@
     <h1 class="h1 text-center my-5" style="font-size: 50px">Sách Mới - Tái Bản</h1>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 mt-2">
+        <div class="col-lg-4 col-md-4 mt-2">
           <a routerLink="/create" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
             <button mat-raised-button color="primary" matTooltip="Thêm Mới Sách">
               <i class="fas fa-plus"></i> &nbsp; Thêm Mới
             </button>
           </a>
         </div>
-        <div class="col-lg-8 align-middle" style="display: flex; justify-content: flex-end">
+        <div class="col-lg-8 col-md-8 align-middle" style="display: flex; justify-content: flex-end">
           <form [formGroup]="searchForm" novalidate (ngSubmit)="searchBook()">
             <mat-form-field formGroupName="category" appearance="outline" class="me-3">
               <mat-label>Danh Mục</mat-label>
@@ -108,17 +108,20 @@
               <mat-label>Tìm Sách</mat-label>
               <input formControlName="name" matInput type="search" placeholder="Nhập Tên Sách">
               <mat-error
-                *ngIf="searchForm.controls.name.hasError('pattern') && (searchForm.controls.name.touched || searchForm.controls.name.dirty)">Vui Lòng Không Nhập Kí Tự Đặc Biệt
+                *ngIf="searchForm.controls.name.hasError('pattern') && (searchForm.controls.name.touched || searchForm.controls.name.dirty)">
+                Vui Lòng Không Nhập Kí Tự Đặc Biệt
               </mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="me-3">
               <mat-label>Tìm Tác Giả</mat-label>
               <input formControlName="author" matInput type="search" placeholder="Nhập Tên Tác Giả">
               <mat-error
-                *ngIf="searchForm.controls.author.hasError('pattern') && (searchForm.controls.author.touched || searchForm.controls.author.dirty)">Vui Lòng Không Nhập Kí Tự Đặc Biệt
+                *ngIf="searchForm.controls.author.hasError('pattern') && (searchForm.controls.author.touched || searchForm.controls.author.dirty)">
+                Vui Lòng Không Nhập Kí Tự Đặc Biệt
               </mat-error>
             </mat-form-field>
-            <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()" [disabled]="searchForm.invalid">
+            <button mat-raised-button type="submit" color="primary" (keyup.enter)="searchBook()"
+                    [disabled]="searchForm.invalid">
               <i class="fas fa-search"></i> &nbsp; Tìm Kiếm
             </button>
           </form>
@@ -158,12 +161,14 @@
               </div>
             </div>
             <div class="card-body d-grid align-content-between">
-              <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100 text">{{item.name}}</a>
-              <h2 class="text-center text-danger fw-bold">{{item.price | currency: ' ': ' ': '5.0'}} ₫</h2>
+              <a [routerLink]="['/detail', item.id]" class="h3 mb-0 text-decoration-none w-100 text"
+                 matTooltip="{{item.name}}">{{item.name}}</a>
+              <h2 class="h3 text-center text-danger fw-bold">{{item.price | currency: ' ': ' ': '5.0'}} ₫</h2>
             </div>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div style="height: 50px; position: relative" class="container mb-3">
           <ul class="pagination justify-content-end" style="text-align: right">
