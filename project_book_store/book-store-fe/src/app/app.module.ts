@@ -53,14 +53,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       progressBar: true,
       tapToDismiss: true
-    }),
-    MatTooltipModule
+    })
   ],
   providers: [],
   exports: [],

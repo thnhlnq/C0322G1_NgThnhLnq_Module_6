@@ -45,10 +45,6 @@ public class Book {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "discount_id", referencedColumnName = "id")
-    private Discount discount;
-
     @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<CartDetail> cartDetails;
@@ -56,7 +52,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(Integer id, String code, String author, String description, String dimension, String image, String name, double price, String publisher, int quantity, LocalDate releaseDate, int totalPages, String translator, boolean status, Category category, Discount discount, List<CartDetail> cartDetails) {
+    public Book(Integer id, String code, String author, String description, String dimension, String image, String name, double price, String publisher, int quantity, LocalDate releaseDate, int totalPages, String translator, boolean status, Category category, List<CartDetail> cartDetails) {
         this.id = id;
         this.code = code;
         this.author = author;
@@ -72,7 +68,6 @@ public class Book {
         this.translator = translator;
         this.status = status;
         this.category = category;
-        this.discount = discount;
         this.cartDetails = cartDetails;
     }
 
@@ -194,14 +189,6 @@ public class Book {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public Discount getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Discount discount) {
-        this.discount = discount;
     }
 
     public List<CartDetail> getCartDetails() {

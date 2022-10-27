@@ -19,7 +19,7 @@ public class Cart {
     private boolean status;
 
     @JsonBackReference
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 

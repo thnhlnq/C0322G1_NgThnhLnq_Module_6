@@ -34,7 +34,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User " + username + " was not found in the database");
         }
 
-        List<UserRole> userRoles = userRoleRepository.findAll();
+        List<UserRole> userRoles = userRoleRepository.findAllByUsers(users);
 
         List<GrantedAuthority> grantList = new ArrayList<>();
 

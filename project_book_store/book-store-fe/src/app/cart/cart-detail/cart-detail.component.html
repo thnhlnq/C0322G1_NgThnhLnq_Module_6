@@ -1,0 +1,99 @@
+<div class="container my-5">
+  <div class="row" style="margin-top: 90px">
+    <div class="container-fluid">
+      <div class="row m-auto" *ngIf="history?.carts?.length">
+        <h1 class="h1 text-center my-5">Lịch Sử Mua Hàng</h1>
+        <div class="col-lg-12 table-responsive d-lg-grid">
+          <table>
+            <thead style="font-weight: 300">
+            <tr>
+              <th>STT</th>
+              <th>Tên Khách Hàng</th>
+              <th>Ngày Mua</th>
+              <th>Số Điện Thoại</th>
+              <th>Địa Chỉ</th>
+              <th>Tổng Tiền</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of history.carts; index as i">
+              <td class="align-middle">{{i + 1}}</td>
+              <td class="align-middle">{{history.name}}</td>
+              <td class="align-middle">{{item.createDate | date: 'dd/MM/yyyy'}}</td>
+              <td class="align-middle">{{history.phone}}</td>
+              <td class="align-middle">{{history.address}}</td>
+              <td class="align-middle">{{getTotalPrice(item) | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td>
+                <button mat-raised-button color="primary" type="button" (click)="showDetail(item)"
+                        data-bs-toggle="modal" data-bs-target="#listModal">Chi tiết
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="history?.carts?.length == 0">
+        <div class="container">
+          <div class="row">
+            <div class="py-6 py-lg-12">
+              <div class="container">
+                <div class="row">
+                  <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
+                    <img src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-626.jpg?w=1060&t=st=1666845204~exp=1666845804~hmac=1de5a70adb5a155418e630fbbcb2c10fa4eab69ed6604749f8a3d3cfae767848"
+                         alt="" class="img-fluid mb-4"/>
+                    <div class="me-2"><b>Chưa Có Lịch Sử Mua Hàng !! </b></div>
+                    <button class="mt-2" mat-raised-button routerLink="" color="warn">Tiếp Tục Mua Sắm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-bs-backdrop="static" data-bs-keyboard="false" class="modal fade" id="listModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #3F51B5; height: 50px">
+              <span class="modal-title text-light" id="myModalLabel"
+                    style="font-size: 18px">Thông Tin Chi Tiết</span>
+        <button type="button" mat-icon-button class="text-white" data-bs-dismiss="modal">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead style="font-weight: 300">
+          <tr>
+            <th>STT</th>
+            <th>Tiêu Đề</th>
+            <th>Giá</th>
+            <th>Số Lượng</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of cart.cartDetails; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{item.book.name}}</td>
+            <td>{{item.book.price| currency: ' ': ' ': '5.0'}} ₫</td>
+            <td>{{item.quantity}}</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="text-end">Tổng Tiền</td>
+            <td colspan="2"
+                style="color: #F44336; font-weight: bold">{{getTotalPrice(cart) | currency: ' ': ' ': '5.0'}} ₫
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -62,17 +62,25 @@
             </mat-form-field>
           </div>
 
-          <div class="bg-light mb-5">
+          <div class="bg-white mb-5">
             <div class="border-bottom">
               <div class="d-flex justify-content-between">
                 <h3>Tổng Số Lượng</h3>
                 <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
               </div>
+              <div class="d-flex justify-content-between">
+                <h3>Tạm Tính</h3>
+                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3>Phí Vận Chuyển</h3>
+                <h3><b class="text-muted me-2">30.000 ₫</b></h3>
+              </div>
             </div>
             <div class="pt-2">
               <div class="d-flex justify-content-between mt-2">
                 <h3>Tổng Thanh Toán</h3>
-                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
+                <h3><b class="text-muted me-2">{{30000 + totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
               </div>
             </div>
             <div class="d-flex justify-content-evenly">
@@ -80,7 +88,7 @@
                 <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
               </a>
               <button (click)="payment()" mat-raised-button color="primary">
-                Thanh Toán
+                Đặt Hàng
               </button>
             </div>
           </div>
@@ -88,8 +96,24 @@
         </div>
       </div>
 
-      <div class="alert alert-danger" style="margin-top: 35px" *ngIf="carts.length == 0">
-        <b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng !! </b><a routerLink="">Click Vào Đây Để Mua Hàng</a>
+      <div *ngIf="carts.length == 0">
+        <div class="container">
+          <div class="row">
+            <div class="py-6 py-lg-12">
+              <div class="container">
+                <div class="row">
+                  <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
+                    <img
+                      src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?w=1060&t=st=1666842833~exp=1666843433~hmac=fbc8692571017572e34eae5a6214ae0ae57c8c9465e29a4c9c602f5567843d69"
+                      alt="" class="img-fluid mb-4"/>
+                    <div class="me-2"><b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng Của Bạn !! </b></div>
+                    <button class="mt-2" mat-raised-button routerLink="" color="warn">Tiếp Tục Mua Sắm</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Cart End -->
     </div>

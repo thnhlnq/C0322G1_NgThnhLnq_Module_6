@@ -7,3 +7,7 @@ body, ul, li, p, a, label, div {
 nav {
   z-index: 999;
 }
+
+img {
+  object-fit: cover;
+}

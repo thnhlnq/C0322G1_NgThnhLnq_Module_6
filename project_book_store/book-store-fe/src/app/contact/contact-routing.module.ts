@@ -6,7 +6,11 @@ import {ContactComponent} from './contact.component';
 const routes: Routes = [
   {
     path: '',
-    component: ContactComponent
+    component: ContactComponent,
+    // canActivate: [AuthGuard],
+    // data: {
+    //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+    // }
   }
 ];
 
@@ -14,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ContactRoutingModule { }
+export class ContactRoutingModule {
+}

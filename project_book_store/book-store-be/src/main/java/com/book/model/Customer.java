@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -29,13 +30,13 @@ public class Customer {
     private Users users;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "customer")
-    private Cart cart;
+    @OneToMany(mappedBy = "customer")
+    private Set<Cart> carts;
 
     public Customer() {
     }
 
-    public Customer(Integer id, String name, String address, LocalDate birthday, String gender, String phone, boolean status, Users users, Cart cart) {
+    public Customer(Integer id, String name, String address, LocalDate birthday, String gender, String phone, boolean status, Users users, Set<Cart> carts) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -44,7 +45,7 @@ public class Customer {
         this.phone = phone;
         this.status = status;
         this.users = users;
-        this.cart = cart;
+        this.carts = carts;
     }
 
     public Integer getId() {
@@ -111,11 +112,11 @@ public class Customer {
         this.users = users;
     }
 
-    public Cart getCart() {
-        return cart;
+    public Set<Cart> getCarts() {
+        return carts;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
     }
 }

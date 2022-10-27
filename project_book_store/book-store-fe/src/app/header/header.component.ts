@@ -45,5 +45,8 @@ export class HeaderComponent implements OnInit {
   logOut(): void {
     this.isLoggedIn = false;
     this.tokenStorageService.signOut();
+    this.dataService.changeData({
+      quantity: this.cartService.getTotalQuantity()
+    });
   }
 }

@@ -24,4 +24,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Modifying
     @Query(value = "insert into customer (`name`, `address`, `birthday`, `gender`, `phone`, `status`) values (:name, :address, :birthday, :gender, :phone, 0)", nativeQuery = true)
     void save(@Param("name") String name, @Param("address") String address, @Param("birthday") LocalDate birthday, @Param("gender") String gender, @Param("phone") String phone);
+
+    @Query(value = "select customer.* from customer join users on users.id = customer.users_id where users.username = :username", nativeQuery = true)
+    Customer findHistoryByUsername(@Param("username") String username);
 }

@@ -11,4 +11,6 @@ public interface ICustomerService {
     Customer findByUsername(String username);
 
     void save(Customer customer);
+
+    Customer findHistoryByUsername(String username);
 }

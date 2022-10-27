@@ -4,6 +4,7 @@ import {ListComponent} from './list/list.component';
 import {CreateComponent} from './create/create.component';
 import {EditComponent} from './edit/edit.component';
 import {DetailComponent} from './detail/detail.component';
+import {AuthGuard} from '../security/auth.guard.';
 
 
 const routes: Routes = [{
@@ -16,17 +17,17 @@ const routes: Routes = [{
 }, {
   path: 'create',
   component: CreateComponent,
-  // canActivate: [AuthGuard],
-  // data: {
-  //   roles: ['ROLE_ADMIN']
-  // }
+  canActivate: [AuthGuard],
+  data: {
+    roles: ['ROLE_ADMIN']
+  }
 }, {
   path: 'edit/:id',
   component: EditComponent,
-  // canActivate: [AuthGuard],
-  // data: {
-  //   roles: ['ROLE_ADMIN']
-  // }
+  canActivate: [AuthGuard],
+  data: {
+    roles: ['ROLE_ADMIN']
+  }
 }, {
   path: 'detail/:id',
   component: DetailComponent,

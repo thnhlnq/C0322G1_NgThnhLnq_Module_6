@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {VerityResetPasswordComponent} from './verity-reset-password/verity-reset-password.component';
+import {AuthGuard} from './auth.guard.';
 
 
 const routes: Routes = [

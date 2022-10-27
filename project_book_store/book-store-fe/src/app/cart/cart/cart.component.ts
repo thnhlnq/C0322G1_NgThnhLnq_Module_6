@@ -1,10 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import Swal from 'sweetalert2';
-import {CartService} from '../service/cart.service';
-import {DataService} from '../service/data.service';
-import {Book} from '../model/book';
+import {CartService} from '../../service/cart.service';
+import {DataService} from '../../service/data.service';
+import {Book} from '../../model/book';
 import {render} from 'creditcardpayments/creditCardPayments';
 import {Title} from '@angular/platform-browser';
+import {CartDetailService} from '../../service/cart-detail.service';
+import {TokenStorageService} from '../../service/token-storage.service';
+import {CartDetail} from '../../model/cart-detail';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +16,7 @@ import {Title} from '@angular/platform-browser';
 })
 export class CartComponent implements OnInit {
 
+  cartDetails: CartDetail[] = [];
   carts: any = [];
   book: Book;
 
@@ -21,6 +25,8 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService,
               private dataService: DataService,
+              private cartDetailService: CartDetailService,
+              private tokenStorageService: TokenStorageService,
               private title: Title) {
     this.title.setTitle('Giỏ Hàng');
   }
@@ -132,11 +138,18 @@ export class CartComponent implements OnInit {
 
   payment() {
     document.getElementById('paypal').innerHTML = '<div id="btnPayPal"></div>';
+    const username = this.tokenStorageService.getUser().username;
     render({
       id: '#paypal',
       currency: 'USD',
       value: String((this.totalPrice / 23000).toFixed(2)),
       onApprove: () => {
+        for (const item of this.carts) {
+          item.book = {
+            id : item.id
+          };
+        }
+        this.cartDetailService.saveCartDetail(username, this.carts).subscribe();
         Swal.fire('Thông Báo !!', 'Thanh Toán Thành Công. <br>Sách Của Bạn Sẽ Được Giao Trong Vòng 3 Ngày Tới', 'success').then();
         this.carts = [];
         this.cartService.saveCart(this.carts);

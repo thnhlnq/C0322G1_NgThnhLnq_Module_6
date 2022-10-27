@@ -1,6 +1,9 @@
 package com.book.controller;
 
 import com.book.dto.BookDto;
+import com.book.dto.CartDetailDto;
+import com.book.dto.CartDto;
+import com.book.dto.HistoryDto;
 import com.book.model.*;
 import com.book.service.*;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +33,16 @@ public class BookController {
     ICategoryService categoryService;
 
     @Autowired
-    IDiscountService discountService;
-
-    @Autowired
     ICustomerService customerService;
 
     @Autowired
     IUserService userService;
+
+    @Autowired
+    ICartService cartService;
+
+    @Autowired
+    ICartDetailService cartDetailService;
 
     @GetMapping("")
     public ResponseEntity<List<Book>> getAll() {
@@ -52,15 +60,6 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(categories, HttpStatus.OK);
-    }
-
-    @GetMapping("/discount")
-    public ResponseEntity<List<Discount>> getDiscount() {
-        List<Discount> discounts = discountService.findAll();
-        if (discounts.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(discounts, HttpStatus.OK);
     }
 
     @PostMapping("/create")
@@ -146,7 +145,7 @@ public class BookController {
     }
 
     @GetMapping("/checkCode/{code}")
-    public ResponseEntity<?> checkCode(@PathVariable("code") String code) {
+    public ResponseEntity<?> checkCode(@PathVariable String code) {
         return new ResponseEntity<>(bookService.existsCode(code), HttpStatus.OK);
     }
 
@@ -157,5 +156,45 @@ public class BookController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @PostMapping("/saveCart/{username}")
+    public ResponseEntity<List<CartDetailDto>> saveCart(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetails) {
+        Customer customer = customerService.findByUsername(username);
+        Cart cart = new Cart();
+        cart.setCreateDate(LocalDate.now());
+        cart.setCustomer(customer);
+        cart = cartService.save(cart);
+        for (CartDetailDto item : cartDetails) {
+            item.setBook(bookService.findById(item.getBook().getId()).get());
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.setCart(cart);
+            cartDetail.setBook(item.getBook());
+            cartDetail.setQuantity(item.getQuantity());
+            cartDetailService.save(cartDetail);
+        }
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/history/{username}")
+    public ResponseEntity<HistoryDto> getHistory(@PathVariable String username) {
+        HistoryDto history = new HistoryDto();
+        Customer customer = customerService.findHistoryByUsername(username);
+        BeanUtils.copyProperties(customer, history);
+        List<Cart> carts = cartService.findByCustomerId(history.getId());
+        List<CartDto> cartDtos = new LinkedList<>();
+        for (Cart cart : carts) {
+            cartDtos.add(new CartDto(cart.getId(), cart.getCreateDate().toString()));
+        }
+        history.setCarts(cartDtos);
+        for (CartDto item : history.getCarts()) {
+            List<CartDetail> cartDetails = cartDetailService.findCartDetail(item.getId());
+            List<CartDetailDto> cartDetailDtos = new LinkedList<>();
+            for (CartDetail cartDetail : cartDetails) {
+                cartDetailDtos.add(new CartDetailDto(cartDetail.getQuantity(), cartDetail.getBook()));
+            }
+            item.setCartDetails(cartDetailDtos);
+        }
+        return new ResponseEntity<>(history, HttpStatus.OK);
     }
 }

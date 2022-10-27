@@ -49,4 +49,9 @@ public class CustomerService implements ICustomerService {
         customer.setUsers(customer.getUsers());
         customerRepository.save(customer);
     }
+
+    @Override
+    public Customer findHistoryByUsername(String username) {
+        return customerRepository.findHistoryByUsername(username);
+    }
 }
