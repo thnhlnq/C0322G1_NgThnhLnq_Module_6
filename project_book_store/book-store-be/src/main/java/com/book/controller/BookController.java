@@ -144,11 +144,6 @@ public class BookController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
-    @GetMapping("/checkCode/{code}")
-    public ResponseEntity<?> checkCode(@PathVariable String code) {
-        return new ResponseEntity<>(bookService.existsCode(code), HttpStatus.OK);
-    }
-
     @GetMapping("/users")
     public ResponseEntity<List<Users>> getAllUsers() {
         List<Users> users = userService.findAll();

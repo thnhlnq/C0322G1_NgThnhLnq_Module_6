@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // const url: string = state.url;
     const currentUser = this.tokenStorageService.getUser();
     if (currentUser !== null) {
       const role = currentUser.roles[0];

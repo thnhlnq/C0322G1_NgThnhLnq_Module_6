@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../../model/category';
-import {Discount} from '../../model/discount';
 import {BookService} from '../../service/book.service';
 import {CategoryService} from '../../service/category.service';
-import {DiscountService} from '../../service/discount.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
@@ -49,11 +47,9 @@ export class EditComponent implements OnInit {
 
   id: number;
   categories: Category[] = [];
-  discounts: Discount[] = [];
 
   constructor(private bookService: BookService,
               private categoryService: CategoryService,
-              private discountService: DiscountService,
               private storage: AngularFireStorage,
               private activatedRoute: ActivatedRoute,
               private toast: ToastrService,
@@ -89,18 +85,11 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory();
-    this.getDiscount();
   }
 
   getCategory(): void {
     this.categoryService.getAll().subscribe(category => {
       this.categories = category;
-    });
-  }
-
-  getDiscount(): void {
-    this.discountService.getAll().subscribe(discount => {
-      this.discounts = discount;
     });
   }
 
@@ -131,7 +120,6 @@ export class EditComponent implements OnInit {
         },
         status: false
       };
-      console.log(this.bookForm.value);
       this.bookService.edit(this.id, book).subscribe(() => {
         this.bookForm.reset();
         this.router.navigateByUrl('').then();
@@ -144,8 +132,6 @@ export class EditComponent implements OnInit {
       const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
       const filePath = `book/${nameImg}`;
       const fileRef = this.storage.ref(filePath);
-      console.log(filePath);
-      // const book = this.bookForm.value;
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             this.bookForm.patchValue({image: url});
@@ -168,7 +154,6 @@ export class EditComponent implements OnInit {
               },
               status: false
             };
-            console.log(book);
             this.bookService.edit(this.id, this.bookForm.value).subscribe(() => {
               this.bookForm.reset();
               this.router.navigateByUrl('').then();

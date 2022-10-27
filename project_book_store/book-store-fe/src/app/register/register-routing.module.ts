@@ -5,11 +5,7 @@ import {RegisterComponent} from './register.component';
 
 const routes: Routes = [{
   path: '',
-  component: RegisterComponent,
-  // canActivate: [AuthGuard],
-  // data: {
-  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
-  // }
+  component: RegisterComponent
 }];
 
 @NgModule({

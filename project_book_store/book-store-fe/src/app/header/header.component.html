@@ -1,4 +1,3 @@
-<!-- Header -->
 <nav class="navbar navbar-expand navbar-light fixed-top bg-white shadow">
   <div class="container d-flex justify-content-between align-items-center">
     <a routerLink="">
@@ -26,7 +25,6 @@
       <div class="navbar align-self-center d-flex">
         <a class="nav-icon position-relative" routerLink="/cart">
           <i class="fab fa-opencart fa-lg me-2" matTooltip="Xem Giỏ Hàng"></i>
-          <!--          <img src="https://cdn-icons-gif.flaticon.com/6172/6172531.gif" alt="" width="40" height="40" matTooltip="Xem Giỏ Hàng">-->
           <span class="position-absolute pb-3 top-0 left-100 translate-middle badge rounded-pill"
                 style="color: #F44336">{{totalQuantity}}</span>
         </a>
@@ -34,7 +32,6 @@
           <button mat-button [matMenuTriggerFor]="belowMenu">
             <i [hidden]="isLoggedIn" class="fas fa-user fa-lg"></i>
             <i [hidden]="!isLoggedIn" class="fas fa-user-check fa-lg"></i>
-            <!--            <img src="https://cdn-icons-gif.flaticon.com/8121/8121295.gif" alt="" width="40" height="40">-->
           </button>
           <mat-menu #belowMenu="matMenu" yPosition="below">
             <a routerLink="/register" class="text-decoration-none" [hidden]="isLoggedIn">
@@ -61,4 +58,3 @@
     </div>
   </div>
 </nav>
-<!-- Close Header -->

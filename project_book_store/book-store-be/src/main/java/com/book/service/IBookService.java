@@ -18,6 +18,4 @@ public interface IBookService {
     void delete(int id);
 
     Page<Book> findAllAndSearch(Pageable pageable, String keyCategory, String keyName, String keyAuthor);
-
-    Boolean existsCode(String code);
 }

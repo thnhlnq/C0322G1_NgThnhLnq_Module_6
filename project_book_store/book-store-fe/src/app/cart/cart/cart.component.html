@@ -1,6 +1,5 @@
 <div class="container my-5">
   <div class="row" style="margin-top: 135px">
-    <!-- Cart Start -->
     <div class="container-fluid">
       <div class="row px-xl-5" *ngIf="carts.length">
         <div class="col-lg-9 table-responsive mb-5">
@@ -68,19 +67,11 @@
                 <h3>Tổng Số Lượng</h3>
                 <h3><b class="text-muted me-2">{{totalQuantity}}</b></h3>
               </div>
-              <div class="d-flex justify-content-between">
-                <h3>Tạm Tính</h3>
-                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
-              </div>
-              <div class="d-flex justify-content-between">
-                <h3>Phí Vận Chuyển</h3>
-                <h3><b class="text-muted me-2">30.000 ₫</b></h3>
-              </div>
             </div>
             <div class="pt-2">
               <div class="d-flex justify-content-between mt-2">
                 <h3>Tổng Thanh Toán</h3>
-                <h3><b class="text-muted me-2">{{30000 + totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
+                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
               </div>
             </div>
             <div class="d-flex justify-content-evenly">
@@ -88,7 +79,7 @@
                 <button mat-raised-button color="warn"> Tiếp Tục Mua Sắm</button>
               </a>
               <button (click)="payment()" mat-raised-button color="primary">
-                Đặt Hàng
+                Thanh Toán
               </button>
             </div>
           </div>
@@ -115,7 +106,6 @@
           </div>
         </div>
       </div>
-      <!-- Cart End -->
     </div>
   </div>
 </div>

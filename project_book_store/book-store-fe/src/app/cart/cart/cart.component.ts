@@ -7,7 +7,6 @@ import {render} from 'creditcardpayments/creditCardPayments';
 import {Title} from '@angular/platform-browser';
 import {CartDetailService} from '../../service/cart-detail.service';
 import {TokenStorageService} from '../../service/token-storage.service';
-import {CartDetail} from '../../model/cart-detail';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +15,6 @@ import {CartDetail} from '../../model/cart-detail';
 })
 export class CartComponent implements OnInit {
 
-  cartDetails: CartDetail[] = [];
   carts: any = [];
   book: Book;
 
@@ -112,30 +110,6 @@ export class CartComponent implements OnInit {
     });
   }
 
-  // deleteAll() {
-  //   Swal.fire({
-  //     title: 'Thông Báo !!',
-  //     text: 'Bạn Muốn Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng ?!',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Đồng Ý'
-  //   }).then((result: any) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire('Thông Báo !!', 'Đã Xoá Tất Cả Sản Phẩm Khỏi Giỏ Hàng.', 'success').then();
-  //       sessionStorage.clear();
-  //       this.carts = [];
-  //       this.carts.saveCart(this.carts);
-  //       this.totalPrice = this.cartService.getTotalPrice();
-  //       this.totalQuantity = this.cartService.getTotalQuantity();
-  //       this.dataService.changeData({
-  //         quantity: this.cartService.getTotalQuantity()
-  //       });
-  //     }
-  //   });
-  // }
-
   payment() {
     document.getElementById('paypal').innerHTML = '<div id="btnPayPal"></div>';
     const username = this.tokenStorageService.getUser().username;
@@ -146,7 +120,7 @@ export class CartComponent implements OnInit {
       onApprove: () => {
         for (const item of this.carts) {
           item.book = {
-            id : item.id
+            id: item.id
           };
         }
         this.cartDetailService.saveCartDetail(username, this.carts).subscribe();

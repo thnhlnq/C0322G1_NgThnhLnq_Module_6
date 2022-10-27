@@ -46,9 +46,4 @@ public class BookService implements IBookService {
     public Page<Book> findAllAndSearch(Pageable pageable, String keyCategory, String keyName, String keyAuthor) {
         return bookRepository.findAllAndSearch(pageable, "%" + keyCategory + "%", "%" + keyName + "%", "%" + keyAuthor + "%");
     }
-
-    @Override
-    public Boolean existsCode(String code) {
-        return code.equals(bookRepository.existsCode(code));
-    }
 }

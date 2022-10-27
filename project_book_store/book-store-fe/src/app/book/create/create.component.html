@@ -1,196 +1,194 @@
-<div class="body">
-  <div class="container py-5">
-    <div class="row" style="margin-top: 100px">
-      <div class="col-lg-2"></div>
-      <form class="col-lg-8" [formGroup]="bookForm">
-        <div class="mb-3 text-center">
-          <h1 class="h1">Thêm Mới Sách</h1>
+<div class="container py-5">
+  <div class="row" style="margin-top: 100px">
+    <div class="col-lg-2"></div>
+    <form class="col-lg-8" [formGroup]="bookForm">
+      <div class="mb-3 text-center">
+        <h1 class="h1">Thêm Mới Sách</h1>
+      </div>
+      <hr>
+      <div class="mx-4">
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Tên Sách" formControlName="name">
+              <mat-error
+                *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        <hr>
-        <div class="mx-4">
-          <div class="row mb-3">
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Tên Sách <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Tên Sách" formControlName="name">
-                <mat-error
-                  *ngIf="bookForm.controls.name.hasError('required') && (bookForm.controls.name.touched || bookForm.controls.name.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Danh Mục <span><i>(*)</i></span></mat-label>
-                <mat-select formControlName="category">
-                  <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
-                </mat-select>
-                <mat-error
-                  *ngIf="bookForm.controls.category.hasError('required') && (bookForm.controls.category.touched || bookForm.controls.category.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
 
-          <div class="row mb-3">
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Tác Giả <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Tên Tác Giả" formControlName="author">
-                <mat-error
-                  *ngIf="bookForm.controls.author.hasError('required') && (bookForm.controls.author.touched || bookForm.controls.author.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Tên Dịch Giả" formControlName="translator">
-                <mat-error
-                  *ngIf="bookForm.controls.translator.hasError('required') && (bookForm.controls.translator.touched || bookForm.controls.translator.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Tác Giả <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Tên Tác Giả" formControlName="author">
+              <mat-error
+                *ngIf="bookForm.controls.author.hasError('required') && (bookForm.controls.author.touched || bookForm.controls.author.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
           </div>
-
-          <div class="row mb-3">
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Kích Thước (cm) <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Kích Thước (dài x rộng)" formControlName="dimension">
-                <mat-error
-                  *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price" min="1"
-                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
-                <mat-error
-                  *ngIf="bookForm.controls.price.hasError('required') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-                <mat-error
-                  *ngIf="bookForm.controls.price.hasError('min') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
-                  Giá Sách Phải Lớn Hơn 0.
-                </mat-error>
-              </mat-form-field>
-            </div>
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Dịch Giả <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Tên Dịch Giả" formControlName="translator">
+              <mat-error
+                *ngIf="bookForm.controls.translator.hasError('required') && (bookForm.controls.translator.touched || bookForm.controls.translator.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
           </div>
+        </div>
 
-          <div class="row mb-3">
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Nhà Xuất Bản <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Nhà Xuất Bản" formControlName="publisher">
-                <mat-error
-                  *ngIf="bookForm.controls.publisher.hasError('required') && (bookForm.controls.publisher.touched || bookForm.controls.publisher.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Ngày Xuất Bản <span><i>(*)</i></span></mat-label>
-                <input matInput type="date" formControlName="releaseDate">
-                <mat-error
-                  *ngIf="bookForm.controls.releaseDate.hasError('required') && (bookForm.controls.releaseDate.touched || bookForm.controls.releaseDate.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Kích Thước (cm) <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Kích Thước (dài x rộng)" formControlName="dimension">
+              <mat-error
+                *ngIf="bookForm.controls.dimension.hasError('required') && (bookForm.controls.dimension.touched || bookForm.controls.dimension.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
           </div>
-
-          <div class="row mb-3">
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" formControlName="quantity" min="1"
-                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
-                <mat-error
-                  *ngIf="bookForm.controls.quantity.hasError('required') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-                <mat-error
-                  *ngIf="bookForm.controls.quantity.hasError('min') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
-                  Số Lượng Sách Phải Lớn Hơn 0.
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-lg-6 col-md-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
-                <input matInput type="number" formControlName="totalPages" min="1"
-                       oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
-                <mat-error
-                  *ngIf="bookForm.controls.totalPages.hasError('required') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-                <mat-error
-                  *ngIf="bookForm.controls.totalPages.hasError('min') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
-                  Số Trang Sách Phải Lớn Hơn 0.
-                </mat-error>
-              </mat-form-field>
-            </div>
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Giá Sách <span><i>(*)</i></span></mat-label>
+              <input matInput type="number" placeholder="Nhập Giá Sách" formControlName="price" min="1"
+                     oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
+              <mat-error
+                *ngIf="bookForm.controls.price.hasError('required') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+              <mat-error
+                *ngIf="bookForm.controls.price.hasError('min') && (bookForm.controls.price.touched || bookForm.controls.price.dirty)">
+                Giá Sách Phải Lớn Hơn 0.
+              </mat-error>
+            </mat-form-field>
           </div>
+        </div>
 
-          <div class="row mb-3">
-            <div class="col-lg-12 col-md-12 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Mô Tả <span><i>(*)</i></span></mat-label>
-                <textarea matInput type="textarea" rows="5" formControlName="description"></textarea>
-                <mat-error
-                  *ngIf="bookForm.controls.description.hasError('required') && (bookForm.controls.description.touched || bookForm.controls.description.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Nhà Xuất Bản <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Nhà Xuất Bản" formControlName="publisher">
+              <mat-error
+                *ngIf="bookForm.controls.publisher.hasError('required') && (bookForm.controls.publisher.touched || bookForm.controls.publisher.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
           </div>
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Ngày Xuất Bản <span><i>(*)</i></span></mat-label>
+              <input matInput type="date" formControlName="releaseDate">
+              <mat-error
+                *ngIf="bookForm.controls.releaseDate.hasError('required') && (bookForm.controls.releaseDate.touched || bookForm.controls.releaseDate.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
 
-          <div class="mb-3">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 d-grid image">
-                <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
-                <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState"
-                     src="https://cdn-icons-png.flaticon.com/512/3906/3906849.png" width="300px" height="300px"
-                     (click)="fileInput.click()">
-                <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
-                <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"
-                     width="auto" height="auto" alt="">
-                <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>
-                <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">
-                  Vui Lòng Không Để Trống.
-                </div>
-                <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">
-                  Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.
-                </div>
+        <div class="row mb-3">
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Số Lượng <span><i>(*)</i></span></mat-label>
+              <input matInput type="number" formControlName="quantity" min="1"
+                     oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
+              <mat-error
+                *ngIf="bookForm.controls.quantity.hasError('required') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+              <mat-error
+                *ngIf="bookForm.controls.quantity.hasError('min') && (bookForm.controls.quantity.touched || bookForm.controls.quantity.dirty)">
+                Số Lượng Sách Phải Lớn Hơn 0.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6 col-md-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Tổng Số Trang <span><i>(*)</i></span></mat-label>
+              <input matInput type="number" formControlName="totalPages" min="1"
+                     oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 1">
+              <mat-error
+                *ngIf="bookForm.controls.totalPages.hasError('required') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+              <mat-error
+                *ngIf="bookForm.controls.totalPages.hasError('min') && (bookForm.controls.totalPages.touched || bookForm.controls.totalPages.dirty)">
+                Số Trang Sách Phải Lớn Hơn 0.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-lg-12 col-md-12 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Mô Tả <span><i>(*)</i></span></mat-label>
+              <textarea matInput type="textarea" rows="5" formControlName="description"></textarea>
+              <mat-error
+                *ngIf="bookForm.controls.description.hasError('required') && (bookForm.controls.description.touched || bookForm.controls.description.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 d-grid image">
+              <label class="form-label text-start">Chọn Ảnh <span><i>(*)</i></span></label>
+              <img matTooltip="Nhấn Vào Đây Để Chọn Ảnh" *ngIf="!editImageState"
+                   src="https://cdn-icons-png.flaticon.com/512/3906/3906849.png" width="300px" height="300px"
+                   (click)="fileInput.click()">
+              <input hidden (change)="selectFile($event); onFileSelected($event)" #fileInput type="file">
+              <img class="form-control mt-2" [src]="url" (click)="fileInput.click()" *ngIf="editImageState"
+                   width="auto" height="auto" alt="">
+              <div class="form-text" *ngIf="checkImgSize == true">Kích Thước Ảnh Quá Lớn.</div>
+              <div class="form-text" *ngIf="checkImg == true && checkImgSize == false && regexImageUrl == false">
+                Vui Lòng Không Để Trống.
+              </div>
+              <div class="form-text" *ngIf="regexImageUrl == true && checkImgSize == false">
+                Chỉ Chấp Nhận Ảnh Có Định Dạng .jpg / .JPG.
               </div>
             </div>
           </div>
-
-          <div class="d-grid gap-2 d-md-flex justify-content-md-around">
-            <a class="d-grid text-decoration-none" routerLink="">
-              <button mat-raised-button color="warn"> Quay Lại</button>
-            </a>
-            <button *ngIf="loader" type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid"
-                    (click)="submit()"> Thêm Mới
-            </button>
-            <button *ngIf="!loader" mat-raised-button color="primary" disabled>
-              <div class="spinner-border spinner-border-sm me-1"></div>
-              Đang tải ...
-            </button>
-            <button (click)="reset()" type="reset" mat-raised-button color="accent"> Nhập Lại
-            </button>
-          </div>
         </div>
-      </form>
-      <div class="col-lg-2"></div>
-    </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-around">
+          <a class="d-grid text-decoration-none" routerLink="">
+            <button mat-raised-button color="warn"> Quay Lại</button>
+          </a>
+          <button *ngIf="loader" type="submit" mat-raised-button color="primary" [disabled]="bookForm.invalid"
+                  (click)="submit()"> Thêm Mới
+          </button>
+          <button *ngIf="!loader" mat-raised-button color="primary" disabled>
+            <div class="spinner-border spinner-border-sm me-1"></div>
+            Đang tải ...
+          </button>
+          <button (click)="reset()" type="reset" mat-raised-button color="accent"> Nhập Lại
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="col-lg-2"></div>
   </div>
 </div>

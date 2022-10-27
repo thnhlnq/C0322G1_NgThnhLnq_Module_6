@@ -7,10 +7,10 @@ import {AuthGuard} from '../security/auth.guard.';
 const routes: Routes = [{
   path: '',
   component: ViewInfoComponent,
-  // canActivate: [AuthGuard],
-  // data: {
-  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
-  // }
+  canActivate: [AuthGuard],
+  data: {
+    roles: ['ROLE_ADMIN', 'ROLE_USER']
+  }
 }];
 
 @NgModule({

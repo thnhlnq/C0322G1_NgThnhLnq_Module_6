@@ -64,13 +64,11 @@ export class LoginComponent implements OnInit {
       this.formGroup.reset();
       this.router.navigateByUrl(this.returnUrl).then();
       Swal.fire('Thông Báo !!', 'Đăng Nhập Thành Công', 'success').then();
-      // this.toast.success('Đăng Nhập Thành Công', 'Thông Báo ');
       this.shareService.sendClickEvent();
     }, err => {
       this.authService.isLoggedIn = false;
       Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Sai Tên Đăng Nhập Hoặc Sai Mật Khẩu', 'error').then();
       console.log(err);
-      // this.toast.error('Sai Tên Đăng Nhập Hoặc Sai Mật Khẩu Hoặc Tài Khoản Chưa Được Kích Hoạt', 'Thông Báo ');
     });
   }
 }

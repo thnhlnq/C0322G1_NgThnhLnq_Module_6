@@ -17,14 +17,14 @@
             <button mat-icon-button matSuffix>
               <mat-icon>person</mat-icon>
             </button>
-            <!--        <mat-error></mat-error>-->
           </mat-form-field>
         </div>
 
         <div class="example-container">
           <mat-form-field appearance="outline">
             <mat-label>Mật Khẩu</mat-label>
-            <input matInput placeholder="Nhập Mật Khẩu" [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off">
+            <input matInput placeholder="Nhập Mật Khẩu" [type]="hide ? 'password' : 'text'" formControlName="password"
+                   autocomplete="off">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -33,13 +33,9 @@
         </div>
 
         <section class="example-section d-flex justify-content-between align-items-center mb-4">
-<!--          <mat-slide-toggle color="primary" formControlName="remember_me">Lưu Mật Khẩu</mat-slide-toggle>-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="remember_me"/>-->
-<!--            <label class="form-check-label" for="flexCheckDefault">Lưu Mật Khẩu</label>-->
-<!--          </div>-->
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" formControlName="remember_me">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                   formControlName="remember_me">
             <label class="form-check-label" for="flexSwitchCheckDefault">Lưu Mật Khẩu</label>
           </div>
           <a class="example-margin" style="color: #3F51B5" routerLink="/security/reset-password">Quên Mật Khẩu</a>

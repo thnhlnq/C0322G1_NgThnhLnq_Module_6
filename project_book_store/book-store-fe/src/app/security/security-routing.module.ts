@@ -2,24 +2,15 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import {VerityResetPasswordComponent} from './verity-reset-password/verity-reset-password.component';
-import {AuthGuard} from './auth.guard.';
 
 
 const routes: Routes = [
   {
     path: 'reset-password',
-    component: ResetPasswordComponent,
-    // canActivate: [AuthGuard],
-    // data: {
-    //   roles: ['ROLE_ADMIN', 'ROLE_USER']
-    // }
+    component: ResetPasswordComponent
   }, {
     path: 'verify-reset-password/:name',
-    component: VerityResetPasswordComponent,
-    // canActivate: [AuthGuard],
-    // data: {
-    //   roles: ['ROLE_ADMIN', 'ROLE_USER']
-    // }
+    component: VerityResetPasswordComponent
   }
 ];
 

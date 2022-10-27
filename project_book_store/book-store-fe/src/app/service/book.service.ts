@@ -40,10 +40,6 @@ export class BookService {
     return this.http.patch<Book>(`${API_URL}/book/${id}`);
   }
 
-  checkCode(code: string): Observable<string> {
-    return this.http.get<string>(API_URL + '/book/checkCode/' + code);
-  }
-
   getCart() {
     const cartJson = sessionStorage.getItem('cart');
     if (cartJson) {

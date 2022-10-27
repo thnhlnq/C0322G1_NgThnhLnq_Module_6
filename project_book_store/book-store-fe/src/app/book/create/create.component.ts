@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category} from '../../model/category';
-import {Discount} from '../../model/discount';
 import {BookService} from '../../service/book.service';
 import {CategoryService} from '../../service/category.service';
-import {DiscountService} from '../../service/discount.service';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
@@ -48,11 +46,9 @@ export class CreateComponent implements OnInit {
   });
 
   categories: Category[] = [];
-  discounts: Discount[] = [];
 
   constructor(private bookService: BookService,
               private categoryService: CategoryService,
-              private discountService: DiscountService,
               private storage: AngularFireStorage,
               private toast: ToastrService,
               private router: Router,
@@ -66,18 +62,11 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory();
-    this.getDiscount();
   }
 
   getCategory(): void {
     this.categoryService.getAll().subscribe(category => {
       this.categories = category;
-    });
-  }
-
-  getDiscount(): void {
-    this.discountService.getAll().subscribe(discount => {
-      this.discounts = discount;
     });
   }
 
@@ -110,7 +99,6 @@ export class CreateComponent implements OnInit {
             // },
             status: false
           };
-          console.log(book);
           this.bookService.save(book).subscribe(() => {
             this.bookForm.reset();
             this.router.navigateByUrl('').then();

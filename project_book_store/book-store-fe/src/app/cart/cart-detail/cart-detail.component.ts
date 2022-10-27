@@ -27,14 +27,11 @@ export class CartDetailComponent implements OnInit {
   ngOnInit(): void {
     this.cartDetailService.getHistory(this.tokenStorageService.getUser().username).subscribe(value => {
       this.history = value;
-      console.log(value);
     });
   }
 
   getTotalPrice(cart: Cart) {
     let total = 0;
-    console.log(this.history);
-    console.log(cart);
     for (const item of cart.cartDetails) {
       total += item.book.price * item.quantity;
     }

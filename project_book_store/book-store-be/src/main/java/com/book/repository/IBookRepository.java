@@ -33,9 +33,6 @@ public interface IBookRepository extends JpaRepository<Book, Integer> {
             " order by `book`.id desc ", nativeQuery = true)
     Page<Book> findAllAndSearch(Pageable pageable, @Param("keyCategory") String keyCategory, @Param("keyName") String keyName, @Param("keyAuthor") String keyAuthor);
 
-    @Query(value = "select `code` from `book` where `code` = :code", nativeQuery = true)
-    String existsCode(@Param("code") String code);
-
     @Query(value = "select max(code) from book", nativeQuery = true)
     String getMaxCode();
 }

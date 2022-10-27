@@ -1,5 +1,4 @@
 import {Category} from './category';
-import {Discount} from './discount';
 
 export interface Book {
   id?: number;
@@ -17,5 +16,4 @@ export interface Book {
   translator?: string;
   status?: boolean;
   category?: Category;
-  discount?: Discount;
 }
