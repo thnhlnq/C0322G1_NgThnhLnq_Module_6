@@ -51,7 +51,6 @@ export class ListComponent implements OnInit {
   pageSize: number;
   previousPageStyle = 'inline-block';
   nextPageStyle = 'inline-block';
-  // displayPagination = 'inline-block';
 
   constructor(private bookService: BookService,
               private categoryService: CategoryService,

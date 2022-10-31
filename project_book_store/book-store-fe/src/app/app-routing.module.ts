@@ -57,6 +57,13 @@ const routes: Routes = [{
   // data: {
   //   roles: ['ROLE_ADMIN', 'ROLE_USER']
   // }
+}, {
+  path: 'statistic',
+  loadChildren: () => import('./statistic/statistic.module').then(module => module.StatisticModule),
+  // canActivate: [AuthGuard],
+  // data: {
+  //   roles: ['ROLE_ADMIN', 'ROLE_USER']
+  // }
 }];
 
 @NgModule({
