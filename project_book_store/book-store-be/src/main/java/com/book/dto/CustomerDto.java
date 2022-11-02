@@ -1,29 +1,36 @@
 package com.book.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class CustomerDto {
 
     private Integer id;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String name;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String address;
 
+    @NotNull(message = "Vui Lòng Không Để Trống.")
     private LocalDate birthday;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String gender;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String phone;
 
     private boolean status;
 
-    private UserDto userDto;
+    private UserDto users;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Integer id, String name, String address, LocalDate birthday, String gender, String phone, boolean status, UserDto userDto) {
+    public CustomerDto(Integer id, String name, String address, LocalDate birthday, String gender, String phone, boolean status, UserDto users) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -31,7 +38,7 @@ public class CustomerDto {
         this.gender = gender;
         this.phone = phone;
         this.status = status;
-        this.userDto = userDto;
+        this.users = users;
     }
 
     public Integer getId() {
@@ -90,11 +97,11 @@ public class CustomerDto {
         this.status = status;
     }
 
-    public UserDto getUserDto() {
-        return userDto;
+    public UserDto getUsers() {
+        return users;
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
+    public void setUsers(UserDto users) {
+        this.users = users;
     }
 }

@@ -10,7 +10,7 @@
         <div class="col-lg-7 mt-5 col">
           <div class="card">
             <div class="card-body">
-              <h1 class="h3 text-center px-3">{{book?.name | titlecase}}</h1>
+              <h2 class="h2 text-center px-3 animate__animated animate__slideInDown">{{book?.name | titlecase}}</h2>
               <ul class="list-inline">
                 <li class="list-inline-item w-25">
                   <p>Danh Mục: </p>
@@ -64,7 +64,7 @@
                   <p>Giá: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="h3 text-danger align-middle"><strong>{{book?.price | currency: ' ': ' ': '5.0'}} ₫</strong>
+                  <p class="h3 text-danger align-middle"><strong>{{book?.price | number}} ₫</strong>
                   </p>
                 </li>
                 <li class="list-inline-item w-25">
@@ -94,7 +94,7 @@
     </div>
 
     <div class="mt-3">
-      <h1 class="text-center">Top Truyện Mới Nhất</h1>
+      <h2 class="h2 text-center animate__animated animate__slideInDown">Top Truyện Mới Nhất</h2>
     </div>
 
     <div class="row ms-5">

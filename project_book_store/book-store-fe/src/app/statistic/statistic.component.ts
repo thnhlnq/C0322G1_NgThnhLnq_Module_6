@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {StatisticService} from '../service/statistic.service';
 import {Chart, registerables} from 'chart.js';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Title} from '@angular/platform-browser';
-import {isDate} from 'rxjs/internal-compatibility';
 import * as html2pdf from 'html2pdf.js';
 import Swal from 'sweetalert2';
 import {CategoryService} from '../service/category.service';
+import {checkDay, checkEnd, checkStart, dateInFuture, dateNotExist} from '../validation/check-date';
 
 Chart.register(...registerables);
 
@@ -20,12 +20,12 @@ export class StatisticComponent implements OnInit {
 
   listCategory: any;
   listStatistic: any;
-  valueAmountPieChart: number[] = [];
+  valueQuantityPieChart: number[] = [];
   valuePricePieChart: number[] = [];
   namePieChart: string[] = [];
 
-  pastDay = this.datePipe.transform(new Date().setDate(new Date().getDate() - 2000), 'yyyy-MM-dd');
-  today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+  // pastDay = this.datePipe.transform(new Date().setDate(new Date().getDate() - 2000), 'yyyy-MM-dd');
+  // today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
 
   myChart: Chart;
   myPieChart1: Chart;
@@ -48,13 +48,13 @@ export class StatisticComponent implements OnInit {
     });
 
     this.statisticForm = new FormGroup({
-      startDate: new FormControl(this.pastDay, this.dateNotExist),
-      endDate: new FormControl(this.today, this.dateInFuture),
-      type: new FormControl('all', Validators.required),
-      category: new FormControl('all', Validators.required),
-      styleTime: new FormControl('month', Validators.required),
-      chartStyle: new FormControl('bar', Validators.required)
-    }, this.invalidDate);
+      startDate: new FormControl('', [checkStart, dateNotExist]),
+      endDate: new FormControl('', [checkEnd, dateNotExist, dateInFuture]),
+      type: new FormControl('all'),
+      category: new FormControl('all'),
+      styleTime: new FormControl('month'),
+      chartStyle: new FormControl('bar')
+    }, checkDay);
 
     this.hiddenChart = false;
     this.hiddenPieChart = true;
@@ -68,51 +68,51 @@ export class StatisticComponent implements OnInit {
     });
   }
 
-  invalidDate(abstractControl: AbstractControl) {
-    const v = abstractControl.value;
-    const start = new Date(v.startDate);
-    const end = new Date(v.endDate);
-    end.setDate(end.getDate() - 1);
-    if (start > end) {
-      return {dateNotValid: true, message: 'Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc'};
-    }
-    if (start > new Date()) {
-      return {futureDate: true, message: 'Ngày Bắt Đầu Không Được Lớn Hơn Ngày Hiện Tại'};
-    } else {
-      return null;
-    }
-  }
+  // invalidDate(abstractControl: AbstractControl) {
+  //   const v = abstractControl.value;
+  //   const start = new Date(v.startDate);
+  //   const end = new Date(v.endDate);
+  //   end.setDate(end.getDate() - 1);
+  //   if (start > end) {
+  //     return {dateNotValid: true, message: 'Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc'};
+  //   }
+  //   if (start > new Date()) {
+  //     return {futureDate: true, message: 'Ngày Bắt Đầu Không Được Lớn Hơn Ngày Hiện Tại'};
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
-  dateNotExist(abstractControl: AbstractControl) {
-    const v = abstractControl.value;
-    const start = new Date(v);
-    if (!isDate(start)) {
-      return {dateNotExist: true, message: 'Ngày Không Tồn Tại'};
-    }
-  }
+  // dateNotExist(abstractControl: AbstractControl) {
+  //   const v = abstractControl.value;
+  //   const start = new Date(v);
+  //   if (!isDate(start)) {
+  //     return {dateNotExist: true, message: 'Ngày Không Tồn Tại'};
+  //   }
+  // }
 
-  dateInFuture(abstractControl: AbstractControl) {
-    const v = abstractControl.value;
-    const end = new Date(v);
-    const check = new Date();
-    // @ts-ignore
-    if (end > check) {
-      return {futureDate: true, message: 'Ngày Kết Thúc Không Được Lớn Hơn Ngày Hiện Taị'};
-    }
-    if (!isDate(end)) {
-      return {dateNotExist: true, message: 'Ngày Kết Thúc Không Tồn Tại'};
-    } else {
-      return null;
-    }
-  }
+  // dateInFuture(abstractControl: AbstractControl) {
+  //   const v = abstractControl.value;
+  //   const end = new Date(v);
+  //   const check = new Date();
+  //   // @ts-ignore
+  //   if (end > check) {
+  //     return {futureDate: true, message: 'Ngày Kết Thúc Không Được Lớn Hơn Ngày Hiện Taị'};
+  //   }
+  //   if (!isDate(end)) {
+  //     return {dateNotExist: true, message: 'Ngày Kết Thúc Không Tồn Tại'};
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   resetValueAndDrawPieChart() {
-    this.valueAmountPieChart = [];
+    this.valueQuantityPieChart = [];
     this.valuePricePieChart = [];
     this.namePieChart = [];
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.listStatistic.length; i++) {
-      this.valueAmountPieChart.push(this.listStatistic[i].amount);
+      this.valueQuantityPieChart.push(this.listStatistic[i].quantity);
       this.valuePricePieChart.push(this.listStatistic[i].price);
       this.namePieChart.push(this.listStatistic[i].time);
     }
@@ -497,7 +497,7 @@ export class StatisticComponent implements OnInit {
         labels: this.namePieChart,
         datasets: [{
           label: 'Số Lượng Sách',
-          data: this.valueAmountPieChart,
+          data: this.valueQuantityPieChart,
           backgroundColor: [
             'red', 'orange', 'yellow', 'green', 'blue',
             'grey', 'aqua', 'bisque', 'cadetblue', 'brown',

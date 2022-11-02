@@ -45,15 +45,15 @@ public class CustomerController {
     @PostMapping("/create")
     public ResponseEntity<List<FieldError>> create(@RequestBody @Valid CustomerDto customerDto) {
 
-        UserDto userDto = customerDto.getUserDto();
+        UserDto users = customerDto.getUsers();
 
-        Users users = new Users();
+        Users user = new Users();
 
-        BeanUtils.copyProperties(userDto, users);
+        BeanUtils.copyProperties(users, user);
 
-        users.setPassword(passwordEncoder().encode(users.getPassword()));
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
 
-        userService.save(users);
+        userService.save(user);
 
         Customer customer = new Customer();
 

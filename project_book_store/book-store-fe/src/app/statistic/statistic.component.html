@@ -1,7 +1,7 @@
 <div class="container">
   <div id="pdf" class="row" style="width: auto; padding: 0; height: auto; margin: 135px 0 0;">
+    <h1 class="h1 text-center animate__animated animate__slideInDown">Thống Kê</h1>
     <div class="col-xl-4 col-md-12" style="padding: 0; margin: 0; min-height: 600px">
-      <h1 class="h1">Thống Kê</h1>
       <div class="row">
         <div class="col-lg-12 table-responsive d-lg-grid">
           <table class="table table-striped table-hover">
@@ -16,7 +16,7 @@
             <tr *ngFor="let item of listStatistic">
               <td class="align-middle">{{item.time}}</td>
               <td class="align-middle text-end">{{item.quantity}}</td>
-              <td class="align-middle text-end">{{item.price | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td class="align-middle text-end">{{item.price | number}} ₫</td>
             </tr>
             </tbody>
           </table>
@@ -42,12 +42,24 @@
   <div class="row" style="width: auto;margin: 0;padding: 20px;height: auto">
     <div class="col-xl-12 col-md-12 col-sm-12" style="width: 100%; padding: 10px">
       <div style="width: 100%">
-        <form (ngSubmit)="onSubmit()" [formGroup]="statisticForm">
+        <form [formGroup]="statisticForm">
           <div class="row d-flex justify-content-around">
             <div class="col-lg-2">
               <mat-form-field appearance="outline">
                 <mat-label><b>Ngày Bắt Đầu</b></mat-label>
                 <input matInput type="date" formControlName="startDate">
+                <mat-error
+                  *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                  Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc.
+                </mat-error>
+                <mat-error
+                  *ngIf="statisticForm.controls.startDate.hasError('checkStart') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                  Ngày Bắt Đầu Không Được Lớn Hơn Ngày Hiện Tại.
+                </mat-error>
+                <mat-error
+                  *ngIf="statisticForm.controls.startDate.hasError('dateNotExist') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                  Ngày Bắt Đầu Không Tồn Tại.
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -55,6 +67,18 @@
               <mat-form-field appearance="outline">
                 <mat-label><b>Ngày Kết Thúc</b></mat-label>
                 <input matInput type="date" formControlName="endDate">
+                <mat-error
+                  *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                  Ngày Kết Thúc Phải Lớn Hơn Ngày Bắt Đầu.
+                </mat-error>
+                <mat-error
+                  *ngIf="statisticForm.controls.endDate.hasError('checkEnd') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                  Ngày Kết Thúc Không Được Lớn Hơn Ngày Hiện Tại.
+                </mat-error>
+                <mat-error
+                  *ngIf="statisticForm.controls.endDate.hasError('dateNotExist') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                  Ngày Kết Thúc Không Tồn Tại.
+                </mat-error>
               </mat-form-field>
             </div>
 
@@ -99,33 +123,34 @@
               </mat-form-field>
             </div>
 
-            <div [hidden]="!statisticForm.invalid" class="row">
-              <div class="col-md">
-                <p style="margin-top: 13px;margin-bottom: 3px;color: red"
-                   *ngIf="statisticForm.get('startDate').invalid && statisticForm.get('startDate').touched">
-                  {{ statisticForm.get('startDate').errors.message }}
-                </p>
-              </div>
-              <div class="col-md">
-                <p style="margin-top: 13px;margin-bottom: 3px;color: red"
-                   *ngIf="statisticForm.get('endDate').invalid && statisticForm.get('endDate').touched">
-                  {{ statisticForm.get('endDate').errors.message }}
-                </p>
-              </div>
-              <div class="col-md">
-                <p style="margin-top: 13px;margin-bottom: 3px;color: red"
-                   *ngIf="statisticForm.invalid && statisticForm.get('endDate').touched">
-                  {{ statisticForm.errors.message }}
-                </p>
-              </div>
-            </div>
+            <!--            <div [hidden]="!statisticForm.invalid" class="row">-->
+            <!--              <div class="col-md">-->
+            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
+            <!--                   *ngIf="statisticForm.get('startDate').invalid && statisticForm.get('startDate').touched">-->
+            <!--                  {{ statisticForm.get('startDate').errors.message }}-->
+            <!--                </p>-->
+            <!--              </div>-->
+            <!--              <div class="col-md">-->
+            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
+            <!--                   *ngIf="statisticForm.get('endDate').invalid && statisticForm.get('endDate').touched">-->
+            <!--                  {{ statisticForm.get('endDate').errors.message }}-->
+            <!--                </p>-->
+            <!--              </div>-->
+            <!--              <div class="col-md">-->
+            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
+            <!--                   *ngIf="statisticForm.invalid && statisticForm.get('endDate').touched">-->
+            <!--                  {{ statisticForm.errors.message }}-->
+            <!--                </p>-->
+            <!--              </div>-->
+            <!--            </div>-->
             <br>
             <div class="row">
               <div class="position-relative">
                 <div class="position-absolute top-50 start-50 translate-middle">
                   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group me-2" role="group" aria-label="First group">
-                      <button mat-raised-button color="primary" [disabled]="statisticForm.invalid" type="submit"
+                      <button (click)="onSubmit()" mat-raised-button color="primary" [disabled]="statisticForm.invalid"
+                              type="submit"
                               data-bs-toggle="modal" data-bs-target="#exampleModal">Phân Tích
                       </button>
                     </div>

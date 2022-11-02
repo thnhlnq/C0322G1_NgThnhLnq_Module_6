@@ -25,7 +25,7 @@ public class UserRoleService implements IUserRoleService {
 
     @Override
     public void save(UserRole userRole) {
-        userRoleRepository.save(userRole);
+        userRoleRepository.save(userRole.getRoles().getId(), userRole.getUsers().getId());
     }
 
     @Override

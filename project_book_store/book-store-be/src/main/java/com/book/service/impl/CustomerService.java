@@ -47,7 +47,7 @@ public class CustomerService implements ICustomerService {
         userRoleRepository.save(userRole);
 
         customer.setUsers(customer.getUsers());
-        customerRepository.save(customer);
+        customerRepository.save(customer.getName(), customer.getAddress(), customer.getBirthday(), customer.getGender(), customer.getPhone(), users.toArray().length);
     }
 
     @Override

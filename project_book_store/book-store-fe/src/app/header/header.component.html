@@ -17,7 +17,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/cart/detail"><b> Lịch Sử Mua Hàng </b></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
             <a class="nav-link" routerLink="/statistic"><b> Thống Kê </b></a>
           </li>
           <li class="nav-item">

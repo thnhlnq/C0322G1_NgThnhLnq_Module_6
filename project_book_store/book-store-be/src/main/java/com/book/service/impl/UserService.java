@@ -68,7 +68,7 @@ public class UserService implements IUserService {
 
     @Override
     public void save(Users users) {
-        userRepository.save(users);
+        userRepository.save(users.getEmail(), users.getUsername(), users.getPassword());
     }
 
     @Override

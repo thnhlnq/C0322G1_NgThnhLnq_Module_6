@@ -6,7 +6,6 @@ export interface Customer {
   name?: string;
   address?: string;
   birthday?: string;
-  email?: string;
   gender?: string;
   phone?: string;
   status?: boolean;

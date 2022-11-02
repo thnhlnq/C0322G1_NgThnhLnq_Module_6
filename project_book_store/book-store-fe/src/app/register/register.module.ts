@@ -12,23 +12,26 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [RegisterComponent],
-    imports: [
-        CommonModule,
-        RegisterRoutingModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatCheckboxModule,
-        MatSlideToggleModule,
-        MatSelectModule,
-        MatTooltipModule,
-        MatRadioModule
-    ]
+  imports: [
+    CommonModule,
+    RegisterRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    FormsModule
+  ]
 })
 export class RegisterModule {
 }

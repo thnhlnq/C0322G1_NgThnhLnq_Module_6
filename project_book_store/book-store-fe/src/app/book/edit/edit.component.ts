@@ -125,6 +125,7 @@ export class EditComponent implements OnInit {
         this.router.navigateByUrl('').then();
         Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
       }, e => {
+        this.loader = true;
         Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
         console.log(e);
       });
@@ -159,6 +160,7 @@ export class EditComponent implements OnInit {
               this.router.navigateByUrl('').then();
               Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
             }, e => {
+              this.loader = true;
               Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();
               console.log(e);
             });

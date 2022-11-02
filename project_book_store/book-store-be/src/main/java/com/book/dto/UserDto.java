@@ -2,16 +2,22 @@ package com.book.dto;
 
 import com.book.model.UserRole;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 public class UserDto {
 
     private Integer id;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
+    @Email(message = "Email Không Đúng Định Dạng.")
     private String email;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String username;
 
+    @NotBlank(message = "Vui Lòng Không Để Trống.")
     private String password;
 
     private boolean status;

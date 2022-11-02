@@ -22,7 +22,7 @@
                 <img [src]="item.image" alt="..." width="100%" height="100%">
               </td>
               <td style="max-width: 200px; width: 20%">{{item.name}}</td>
-              <td style="width: 10%" class="align-middle">{{item.price | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td style="width: 10%" class="align-middle">{{item.price | number}} ₫</td>
               <td style="width: 30%" class="align-middle text-center">
                 <ul class="list-inline mt-">
                   <li class="list-inline-item">
@@ -44,7 +44,7 @@
                   </li>
                 </ul>
               </td>
-              <td style="width: 15%;" class="align-middle">{{total(item) | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td style="width: 15%;" class="align-middle">{{total(item) | number}} ₫</td>
               <td style="width: 5%;" class="align-middle">
                 <button mat-raised-button color="warn" (click)="deleteCart(i)"><i class="fas fa-trash-alt"></i></button>
               </td>
@@ -71,7 +71,7 @@
             <div class="pt-2">
               <div class="d-flex justify-content-between mt-2">
                 <h3>Tổng Thanh Toán</h3>
-                <h3><b class="text-muted me-2">{{totalPrice | currency: ' ': ' ': '5.0'}} ₫</b></h3>
+                <h3><b class="text-muted me-2">{{totalPrice | number}} ₫</b></h3>
               </div>
             </div>
             <div class="d-flex justify-content-evenly">
@@ -97,7 +97,7 @@
                     <img
                       src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?w=1060&t=st=1666842833~exp=1666843433~hmac=fbc8692571017572e34eae5a6214ae0ae57c8c9465e29a4c9c602f5567843d69"
                       alt="" class="img-fluid mb-4"/>
-                    <div class="me-2"><b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng Của Bạn !! </b></div>
+                    <div class="me-2 animate__animated animate__slideInDown"><b>Chưa Có Sản Phẩm Nào trong Giỏ Hàng Của Bạn !! </b></div>
                     <button class="mt-2" mat-raised-button routerLink="" color="warn">Tiếp Tục Mua Sắm</button>
                   </div>
                 </div>

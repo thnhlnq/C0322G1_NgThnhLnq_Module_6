@@ -104,6 +104,7 @@ export class CreateComponent implements OnInit {
             this.router.navigateByUrl('').then();
             Swal.fire('Thông Báo !!', 'Thêm Mới Thành Công', 'success').then();
           }, e => {
+            this.loader = true;
             Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Thêm Mới Thất Bại', 'error').then();
             console.log(e);
           });

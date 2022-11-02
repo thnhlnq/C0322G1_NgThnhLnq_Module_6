@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Customer} from '../model/customer';
 import {Users} from '../model/users';
+import {Book} from '../model/book';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -22,5 +23,9 @@ export class UserService {
 
   getAll(): Observable<Users> {
     return this.http.get<Users>(`${API_URL}/book/users`);
+  }
+
+  saveCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(API_URL + '/customer/create', customer);
   }
 }

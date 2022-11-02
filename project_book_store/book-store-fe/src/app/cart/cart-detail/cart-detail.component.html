@@ -2,7 +2,7 @@
   <div class="row" style="margin-top: 100px">
     <div class="container-fluid">
       <div class="row m-auto" *ngIf="history?.carts?.length">
-        <h1 class="h1 text-center my-5">Lịch Sử Mua Hàng</h1>
+        <h1 class="h1 text-center my-5 animate__animated animate__slideInDown">Lịch Sử Mua Hàng</h1>
         <div class="col-lg-12 table-responsive d-lg-grid">
           <table>
             <thead style="font-weight: 300">
@@ -23,7 +23,7 @@
               <td class="align-middle">{{item.createDate | date: 'dd/MM/yyyy'}}</td>
               <td class="align-middle">{{history.phone}}</td>
               <td class="align-middle">{{history.address}}</td>
-              <td class="align-middle">{{getTotalPrice(item) | currency: ' ': ' ': '5.0'}} ₫</td>
+              <td class="align-middle">{{getTotalPrice(item) | number}} ₫</td>
               <td>
                 <button mat-raised-button color="primary" type="button" (click)="showDetail(item)"
                         data-bs-toggle="modal" data-bs-target="#listModal">Chi tiết
@@ -45,7 +45,8 @@
                     <img
                       src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-626.jpg?w=1060&t=st=1666856706~exp=1666857306~hmac=32345599294ebb58792e8fff31cd19eb8f660df26c41ea08f18e748684768175"
                       alt="" class="img-fluid mb-4"/>
-                    <div class="me-2"><b>Không Tìm Thấy Lịch Sử Mua Hàng !! </b></div>
+                    <div class="me-2 animate__animated animate__slideInDown"><b>Không Tìm Thấy Lịch Sử Mua Hàng !! </b>
+                    </div>
                     <button class="mt-2" mat-raised-button routerLink="" color="warn">Tiếp Tục Mua Sắm</button>
                   </div>
                 </div>
@@ -63,8 +64,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #3F51B5; height: 50px">
-              <span class="modal-title text-light" id="myModalLabel"
-                    style="font-size: 18px">Thông Tin Chi Tiết</span>
+        <span class="modal-title text-light" id="myModalLabel" style="font-size: 18px">Thông Tin Chi Tiết</span>
         <button type="button" mat-icon-button class="text-white" data-bs-dismiss="modal">
           <mat-icon>close</mat-icon>
         </button>
@@ -83,13 +83,13 @@
           <tr *ngFor="let item of cart.cartDetails; index as i">
             <td>{{i + 1}}</td>
             <td>{{item.book.name}}</td>
-            <td>{{item.book.price| currency: ' ': ' ': '5.0'}} ₫</td>
+            <td>{{item.book.price| number}} ₫</td>
             <td>{{item.quantity}}</td>
           </tr>
           <tr>
             <td colspan="3" class="text-end">Tổng Tiền</td>
             <td colspan="2"
-                style="color: #F44336; font-weight: bold">{{getTotalPrice(cart) | currency: ' ': ' ': '5.0'}} ₫
+                style="color: #F44336; font-weight: bold">{{getTotalPrice(cart) | number}} ₫
             </td>
           </tr>
           </tbody>
