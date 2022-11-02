@@ -1,139 +1,134 @@
-<div class="body">
-  <div class="container py-5">
-    <div class="row" style="margin-top: 100px">
-      <div class="col-lg-2"></div>
-      <form class="col-lg-8" [formGroup]="customerForm">
-        <div class="mb-3 text-center">
-          <h1 class="h1 animate__animated animate__slideInDown">Đăng Ký Tài Khoản</h1>
-        </div>
-        <hr>
-        <div class="mx-4">
-          <div class="row mb-3">
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Họ Và Tên <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Họ Và Tên" formControlName="name">
-                <mat-error
-                  *ngIf="customerForm.controls.name.hasError('required') && (customerForm.controls.name.touched || customerForm.controls.name.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Email <span><i>(*)</i></span></mat-label>
-                <input matInput type="email" placeholder="Nhập Email" formControlName="email">
-                <mat-error
-                  *ngIf="customerForm.controls.email.hasError('required') && (customerForm.controls.email.touched || customerForm.controls.email.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Tên Tài Khoản <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Tên Tài Khoản" formControlName="username">
-                <mat-error
-                  *ngIf="customerForm.controls.username.hasError('required') && (customerForm.controls.username.touched || customerForm.controls.username.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Mật Khẩu <span><i>(*)</i></span></mat-label>
-                <input matInput type="password" placeholder="Nhập Mật Khẩu" formControlName="password">
-                <mat-error
-                  *ngIf="customerForm.controls.password.hasError('required') && (customerForm.controls.password.touched || customerForm.controls.password.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Ngày Sinh <span><i>(*)</i></span></mat-label>
-                <input matInput type="date" placeholder="Nhập Ngày Sinh" formControlName="birthday">
-                <mat-error
-                  *ngIf="customerForm.controls.birthday.hasError('required') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-                <mat-error
-                  *ngIf="customerForm.controls.birthday.hasError('dateNotExist') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
-                  Ngày Không Tồn Tại.
-                </mat-error>
-                <mat-error
-                  *ngIf="customerForm.controls.birthday.hasError('checkAge') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
-                  Tuổi Phải Trên 18 Và Dưới 100 Tuôi.
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="col-lg-6 d-grid">
-              <mat-label>Giới Tính <span><i>(*)</i></span></mat-label>
-<!--              <input type="radio" value="Nam" formControlName="gender">Nam-->
-<!--              <input type="radio" value="Nữ" formControlName="gender">Nữ-->
-<!--              <input type="radio" value="Khác" formControlName="gender">Khác-->
-              <mat-radio-group formControlName="gender" class="d-flex justify-content-evenly">
-                <mat-radio-button color="primary" class="ms-3" value="Nam">Nam</mat-radio-button>
-                <mat-radio-button color="warn" class="ms-3" value="Nữ">Nữ</mat-radio-button>
-                <mat-radio-button color="accent" class="ms-3" value="Khác">Khác</mat-radio-button>
-              </mat-radio-group>
+<div class="container py-5">
+  <div class="row" style="margin-top: 100px">
+    <div class="col-lg-2"></div>
+    <form class="col-lg-8" [formGroup]="customerForm">
+      <div class="mb-3 text-center">
+        <h1 class="h1 animate__animated animate__slideInDown">Đăng Ký Tài Khoản</h1>
+      </div>
+      <hr>
+      <div class="mx-4">
+        <div class="row mb-3">
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Họ Và Tên <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Họ Và Tên" formControlName="name">
               <mat-error
-                *ngIf="customerForm.controls.gender.hasError('required') && (customerForm.controls.gender.touched || customerForm.controls.gender.dirty)">
+                *ngIf="customerForm.controls.name.hasError('required') && (customerForm.controls.name.touched || customerForm.controls.name.dirty)">
                 Vui Lòng Không Để Trống.
               </mat-error>
-            </div>
+            </mat-form-field>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Số Điện Thoại <span><i>(*)</i></span></mat-label>
-                <input matInput type="tel" placeholder="Nhập Số Điện Thoại" formControlName="phone">
-                <mat-error
-                  *ngIf="customerForm.controls.phone.hasError('required') && (customerForm.controls.phone.touched || customerForm.controls.phone.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="col-lg-6 d-grid">
-              <mat-form-field appearance="outline">
-                <mat-label>Địa Chỉ <span><i>(*)</i></span></mat-label>
-                <input matInput type="text" placeholder="Nhập Địa Chỉ" formControlName="address">
-                <mat-error
-                  *ngIf="customerForm.controls.address.hasError('required') && (customerForm.controls.address.touched || customerForm.controls.address.dirty)">
-                  Vui Lòng Không Để Trống.
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="d-grid gap-2 d-md-flex justify-content-md-around">
-            <a class="d-grid text-decoration-none" routerLink="/login">
-              <button mat-raised-button color="warn"> Đăng Nhập</button>
-            </a>
-            <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
-                    [disabled]="customerForm.invalid"> Đăng Ký
-            </button>
-            <button *ngIf="!loader" mat-raised-button color="primary" disabled>
-              <div class="spinner-border spinner-border-sm me-1"></div>
-              Đang tải ...
-            </button>
-            <button type="reset" mat-raised-button color="accent" (click)="reset()"> Nhập Lại
-            </button>
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Email <span><i>(*)</i></span></mat-label>
+              <input matInput type="email" placeholder="Nhập Email" formControlName="email">
+              <mat-error
+                *ngIf="customerForm.controls.email.hasError('required') && (customerForm.controls.email.touched || customerForm.controls.email.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
           </div>
         </div>
-      </form>
-      <div class="col-lg-2"></div>
-    </div>
+
+        <div class="row mb-3">
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Tên Tài Khoản <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Tên Tài Khoản" formControlName="username">
+              <mat-error
+                *ngIf="customerForm.controls.username.hasError('required') && (customerForm.controls.username.touched || customerForm.controls.username.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Mật Khẩu <span><i>(*)</i></span></mat-label>
+              <input matInput type="password" placeholder="Nhập Mật Khẩu" formControlName="password">
+              <mat-error
+                *ngIf="customerForm.controls.password.hasError('required') && (customerForm.controls.password.touched || customerForm.controls.password.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Ngày Sinh <span><i>(*)</i></span></mat-label>
+              <input matInput type="date" placeholder="Nhập Ngày Sinh" formControlName="birthday">
+              <mat-error
+                *ngIf="customerForm.controls.birthday.hasError('required') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+              <mat-error
+                *ngIf="customerForm.controls.birthday.hasError('dateNotExist') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
+                Ngày Không Tồn Tại.
+              </mat-error>
+              <mat-error
+                *ngIf="customerForm.controls.birthday.hasError('checkAge') && (customerForm.controls.birthday.touched || customerForm.controls.birthday.dirty)">
+                Tuổi Phải Trên 18 Và Dưới 100 Tuôi.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 d-grid">
+            <mat-label>Giới Tính <span><i>(*)</i></span></mat-label>
+            <mat-radio-group formControlName="gender" class="d-flex justify-content-evenly">
+              <mat-radio-button color="primary" class="ms-3" value="Nam">Nam</mat-radio-button>
+              <mat-radio-button color="warn" class="ms-3" value="Nữ">Nữ</mat-radio-button>
+              <mat-radio-button color="accent" class="ms-3" value="Khác">Khác</mat-radio-button>
+            </mat-radio-group>
+            <mat-error
+              *ngIf="customerForm.controls.gender.hasError('required') && (customerForm.controls.gender.touched || customerForm.controls.gender.dirty)">
+              Vui Lòng Không Để Trống.
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Số Điện Thoại <span><i>(*)</i></span></mat-label>
+              <input matInput type="tel" placeholder="Nhập Số Điện Thoại" formControlName="phone">
+              <mat-error
+                *ngIf="customerForm.controls.phone.hasError('required') && (customerForm.controls.phone.touched || customerForm.controls.phone.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6 d-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>Địa Chỉ <span><i>(*)</i></span></mat-label>
+              <input matInput type="text" placeholder="Nhập Địa Chỉ" formControlName="address">
+              <mat-error
+                *ngIf="customerForm.controls.address.hasError('required') && (customerForm.controls.address.touched || customerForm.controls.address.dirty)">
+                Vui Lòng Không Để Trống.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-around">
+          <a class="d-grid text-decoration-none" routerLink="/login">
+            <button mat-raised-button color="warn"> Đăng Nhập</button>
+          </a>
+          <button *ngIf="loader" type="submit" mat-raised-button color="primary" (click)="submit()"
+                  [disabled]="customerForm.invalid"> Đăng Ký
+          </button>
+          <button *ngIf="!loader" mat-raised-button color="primary" disabled>
+            <div class="spinner-border spinner-border-sm me-1"></div>
+            Đang tải ...
+          </button>
+          <button type="reset" mat-raised-button color="accent" (click)="reset()"> Nhập Lại
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="col-lg-2"></div>
   </div>
 </div>

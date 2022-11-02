@@ -26,7 +26,6 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { StatisticComponent } from './statistic/statistic.component';
 import {DatePipe} from '@angular/common';
 
 @NgModule({
