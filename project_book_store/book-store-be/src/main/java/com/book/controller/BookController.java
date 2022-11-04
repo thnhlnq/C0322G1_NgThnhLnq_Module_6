@@ -192,4 +192,13 @@ public class BookController {
         }
         return new ResponseEntity<>(history, HttpStatus.OK);
     }
+
+    @GetMapping("/best-seller")
+    public ResponseEntity<List<Book>> getBestSeller() {
+        List<Book> books = bookService.getBestSeller();
+        if (books.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 }

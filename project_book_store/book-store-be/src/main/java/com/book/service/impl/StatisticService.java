@@ -17,32 +17,32 @@ public class StatisticService implements IStatisticService {
     IStatisticRepository statisticRepository;
 
     @Override
-    public List<StatisticByWeekDto> getStatisticByWeek(String startDate, String endDate, String type) {
-        return statisticRepository.getStatisticByWeek(startDate, endDate, type);
+    public List<StatisticByWeekDto> getStatisticByWeek(String startDate, String endDate) {
+        return statisticRepository.getStatisticByWeek(startDate, endDate);
     }
 
     @Override
-    public List<StatisticByMonthDto> getStatisticByMonth(String startDate, String endDate, String type) {
-        return statisticRepository.getStatisticByMonth(startDate, endDate, type);
+    public List<StatisticByMonthDto> getStatisticByMonth(String startDate, String endDate) {
+        return statisticRepository.getStatisticByMonth(startDate, endDate);
     }
 
     @Override
-    public List<StatisticByYearDto> getStatisticByYear(String startDate, String endDate, String type) {
-        return statisticRepository.getStatisticByYear(startDate, endDate, type);
+    public List<StatisticByYearDto> getStatisticByYear(String startDate, String endDate) {
+        return statisticRepository.getStatisticByYear(startDate, endDate);
     }
 
     @Override
-    public List<StatisticByWeekDto> getStatisticByWeekAndPublisher(String startDate, String endDate, String type, String publisher) {
-        return statisticRepository.getStatisticByWeekAndPublisher(startDate, endDate, type, publisher);
+    public List<StatisticByWeekDto> getStatisticByWeekAndCustomer(String startDate, String endDate) {
+        return statisticRepository.getStatisticByWeekAndCustomer(startDate, endDate);
     }
 
     @Override
-    public List<StatisticByMonthDto> getStatisticByMonthAndPublisher(String startDate, String endDate, String type, String publisher) {
-        return statisticRepository.getStatisticByMonthAndPublisher(startDate, endDate, type, publisher);
+    public List<StatisticByMonthDto> getStatisticByMonthAndCustomer(String startDate, String endDate) {
+        return statisticRepository.getStatisticByMonthAndCustomer(startDate, endDate);
     }
 
     @Override
-    public List<StatisticByYearDto> getStatisticByYearAndPublisher(String startDate, String endDate, String type, String publisher) {
-        return statisticRepository.getStatisticByYearAndPublisher(startDate, endDate, type, publisher);
+    public List<StatisticByYearDto> getStatisticByYearAndCustomer(String startDate, String endDate) {
+        return statisticRepository.getStatisticByYearAndCustomer(startDate, endDate);
     }
 }

@@ -35,4 +35,7 @@ public interface IBookRepository extends JpaRepository<Book, Integer> {
 
     @Query(value = "select max(code) from book", nativeQuery = true)
     String getMaxCode();
+
+    @Query(value = "select book.*, cart_detail.* from book join cart_detail on cart_detail.book_id = book.id group by book.name order by cart_detail.quantity desc limit 0, 12;", nativeQuery = true)
+    List<Book> getBestSeller();
 }

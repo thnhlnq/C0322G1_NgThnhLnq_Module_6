@@ -13,27 +13,27 @@ export class StatisticService {
   constructor(private http: HttpClient) {
   }
 
-  getStatisticByWeek(starDay, endDay, type): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-week/${starDay}/${endDay}/${type}`);
+  getStatisticByWeek(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-week/${startDay}/${endDay}`);
   }
 
-  getStatisticByMonth(starDay, endDay, type): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-month/${starDay}/${endDay}/${type}`);
+  getStatisticByMonth(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-month/${startDay}/${endDay}`);
   }
 
-  getStatisticByYear(starDay, endDay, type): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-year/${starDay}/${endDay}/${type}`);
+  getStatisticByYear(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-year/${startDay}/${endDay}`);
   }
 
-  getStatisticByWeekPublisher(starDay, endDay, type, publisher): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-week-publisher/${starDay}/${endDay}/${type}/${publisher}`);
+  getStatisticByWeekCustomer(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-week-customer/${startDay}/${endDay}`);
   }
 
-  getStatisticByMonthPublisher(starDay, endDay, type, publisher): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-month-publisher/${starDay}/${endDay}/${type}/${publisher}`);
+  getStatisticByMonthCustomer(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-month-customer/${startDay}/${endDay}`);
   }
 
-  getStatisticByYearPublisher(starDay, endDay, type, publisher): Observable<HttpEvent<any>> {
-    return this.http.get<any>(`${API_URL}/statistic/by-year-publisher/${starDay}/${endDay}/${type}/${publisher}`);
+  getStatisticByYearCustomer(startDay, endDay): Observable<HttpEvent<any>> {
+    return this.http.get<any>(`${API_URL}/statistic/by-year-customer/${startDay}/${endDay}`);
   }
 }

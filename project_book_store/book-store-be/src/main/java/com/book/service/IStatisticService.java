@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface IStatisticService {
 
-    List<StatisticByWeekDto> getStatisticByWeek(String startDate, String endDate, String type);
+    List<StatisticByWeekDto> getStatisticByWeek(String startDate, String endDate);
 
-    List<StatisticByMonthDto> getStatisticByMonth(String startDate, String endDate, String type);
+    List<StatisticByMonthDto> getStatisticByMonth(String startDate, String endDate);
 
-    List<StatisticByYearDto> getStatisticByYear(String startDate, String endDate, String type);
+    List<StatisticByYearDto> getStatisticByYear(String startDate, String endDate);
 
-    List<StatisticByWeekDto> getStatisticByWeekAndPublisher(String startDate, String endDate, String type, String publisher);
+    List<StatisticByWeekDto> getStatisticByWeekAndCustomer(String startDate, String endDate);
 
-    List<StatisticByMonthDto> getStatisticByMonthAndPublisher(String startDate, String endDate, String type, String publisher);
+    List<StatisticByMonthDto> getStatisticByMonthAndCustomer(String startDate, String endDate);
 
-    List<StatisticByYearDto> getStatisticByYearAndPublisher(String startDate, String endDate, String type, String publisher);
+    List<StatisticByYearDto> getStatisticByYearAndCustomer(String startDate, String endDate);
 }

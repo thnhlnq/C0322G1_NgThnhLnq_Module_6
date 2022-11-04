@@ -1,170 +1,122 @@
 <div class="container">
-  <div id="pdf" class="row" style="width: auto; padding: 0; height: auto; margin: 135px 0 0;">
-    <h1 class="h1 text-center animate__animated animate__slideInDown">Thống Kê</h1>
-    <div class="col-xl-4 col-md-12" style="padding: 0; margin: 0; min-height: 600px">
-      <div class="row">
-        <div class="col-lg-12 table-responsive d-lg-grid">
-          <table class="table table-striped table-hover">
-            <thead style="font-weight: 300">
-            <tr>
-              <th>Thời Gian - Công Ty</th>
-              <th class="text-end">Số Lượng</th>
-              <th class="text-end">Doanh Thu</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let item of listStatistic">
-              <td class="align-middle">{{item.time}}</td>
-              <td class="align-middle text-end">{{item.quantity}}</td>
-              <td class="align-middle text-end">{{item.price | number}} ₫</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div id="pdf" class="row" style="margin-top: 100px">
+    <div class="col-lg-12 my-5">
+      <h1 class="h1 text-center animate__animated animate__slideInDown">Thống Kê</h1>
 
-    <div class="col-xl-8 col-md-12" style="padding: 0; margin: 0; min-height: 600px">
-      <div class="row" style="padding: 0; margin: 0">
-        <div [hidden]="hiddenChart" class="col-12">
+      <div class="row">
+        <div [hidden]="hiddenChart" class="col-lg-12">
           <canvas id="myChart" width="100%" height="50%"></canvas>
         </div>
-        <div [hidden]="hiddenPieChart" class="col-md-6">
+        <div [hidden]="hiddenPieChart" class="col-lg-6">
           <canvas id="myPieChart1" width="100%" height="50%"></canvas>
         </div>
-        <div [hidden]="hiddenPieChart" class="col-md-6">
+        <div [hidden]="hiddenPieChart" class="col-lg-6">
           <canvas id="myPieChart2" width="100%" height="50%"></canvas>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row" style="width: auto;margin: 0;padding: 20px;height: auto">
-    <div class="col-xl-12 col-md-12 col-sm-12" style="width: 100%; padding: 10px">
-      <div style="width: 100%">
-        <form [formGroup]="statisticForm">
-          <div class="row d-flex justify-content-around">
-            <div class="col-lg-2">
-              <mat-form-field appearance="outline">
-                <mat-label><b>Ngày Bắt Đầu</b></mat-label>
-                <input matInput type="date" formControlName="startDate">
-                <mat-error
-                  *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
-                  Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc.
-                </mat-error>
-                <mat-error
-                  *ngIf="statisticForm.controls.startDate.hasError('checkStart') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
-                  Ngày Bắt Đầu Không Được Lớn Hơn Ngày Hiện Tại.
-                </mat-error>
-                <mat-error
-                  *ngIf="statisticForm.controls.startDate.hasError('dateNotExist') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
-                  Ngày Bắt Đầu Không Tồn Tại.
-                </mat-error>
-              </mat-form-field>
-            </div>
+    <div class="col-lg-12">
+      <form [formGroup]="statisticForm">
+        <div class="row d-flex justify-content-evenly">
+          <div class="col-lg-2">
+            <mat-form-field appearance="outline">
+              <mat-label><b>Ngày Bắt Đầu</b></mat-label>
+              <input matInput type="date" formControlName="startDate">
+              <mat-error
+                *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                Ngày Bắt Đầu Phải Nhỏ Hơn Ngày Kết Thúc.
+              </mat-error>
+              <mat-error
+                *ngIf="statisticForm.controls.startDate.hasError('checkStart') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                Ngày Bắt Đầu Không Được Lớn Hơn Ngày Hiện Tại.
+              </mat-error>
+              <mat-error
+                *ngIf="statisticForm.controls.startDate.hasError('dateNotExist') && (statisticForm.controls.startDate.touched || statisticForm.controls.startDate.dirty)">
+                Ngày Bắt Đầu Không Tồn Tại.
+              </mat-error>
+            </mat-form-field>
+          </div>
 
-            <div class="col-lg-2">
-              <mat-form-field appearance="outline">
-                <mat-label><b>Ngày Kết Thúc</b></mat-label>
-                <input matInput type="date" formControlName="endDate">
-                <mat-error
-                  *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
-                  Ngày Kết Thúc Phải Lớn Hơn Ngày Bắt Đầu.
-                </mat-error>
-                <mat-error
-                  *ngIf="statisticForm.controls.endDate.hasError('checkEnd') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
-                  Ngày Kết Thúc Không Được Lớn Hơn Ngày Hiện Tại.
-                </mat-error>
-                <mat-error
-                  *ngIf="statisticForm.controls.endDate.hasError('dateNotExist') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
-                  Ngày Kết Thúc Không Tồn Tại.
-                </mat-error>
-              </mat-form-field>
-            </div>
+          <div class="col-lg-2">
+            <mat-form-field appearance="outline">
+              <mat-label><b>Ngày Kết Thúc</b></mat-label>
+              <input matInput type="date" formControlName="endDate">
+              <mat-error
+                *ngIf="statisticForm.hasError('checkDate') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                Ngày Kết Thúc Phải Lớn Hơn Ngày Bắt Đầu.
+              </mat-error>
+              <mat-error
+                *ngIf="statisticForm.controls.endDate.hasError('checkEnd') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                Ngày Kết Thúc Không Được Lớn Hơn Ngày Hiện Tại.
+              </mat-error>
+              <mat-error
+                *ngIf="statisticForm.controls.endDate.hasError('dateNotExist') && (statisticForm.controls.endDate.touched || statisticForm.controls.endDate.dirty)">
+                Ngày Kết Thúc Không Tồn Tại.
+              </mat-error>
+            </mat-form-field>
+          </div>
 
-            <div class="col-lg-2">
-              <mat-form-field appearance="outline">
-                <mat-label><b>Thời Gian</b></mat-label>
-                <mat-select formControlName="styleTime">
-                  <mat-option value='month'>Tháng</mat-option>
-                  <mat-option value='year'>Năm</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+          <div class="col-lg-2">
+            <mat-form-field appearance="outline">
+              <mat-label><b>Thời Gian</b></mat-label>
+              <mat-select formControlName="styleTime">
+                <mat-option value='week'>Tuần</mat-option>
+                <mat-option value='month'>Tháng</mat-option>
+                <mat-option value='year'>Năm</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
 
-            <!--            <div class="col-lg-2">-->
-            <!--              <mat-form-field appearance="outline">-->
-            <!--                <mat-label><b>Loại Heo</b></mat-label>-->
-            <!--                <mat-select formControlName="type">-->
-            <!--                  <mat-option value='all'>Tất Cả</mat-option>-->
-            <!--                  <mat-option value='0'>Thág</mat-option>-->
-            <!--                  <mat-option value='1'>Năm</mat-option>-->
-            <!--                </mat-select>-->
-            <!--              </mat-form-field>-->
-            <!--            </div>-->
+          <!--          <div class="col-lg-2">-->
+          <!--            <mat-form-field appearance="outline">-->
+          <!--              <mat-label><b>Loại Thống Kê</b></mat-label>-->
+          <!--              <mat-select formControlName="type">-->
+          <!--                <mat-option value='0'>Sách Mua Nhiều Nhất</mat-option>-->
+          <!--                <mat-option value='1'>Khách Hàng Mua Nhiều</mat-option>-->
+          <!--              </mat-select>-->
+          <!--            </mat-form-field>-->
+          <!--          </div>-->
 
-            <!--            <div class="col-lg-2">-->
-            <!--              <mat-form-field appearance="outline">-->
-            <!--                <mat-label><b>Danh Mục</b></mat-label>-->
-            <!--                <mat-select formControlName="company">-->
-            <!--                  <mat-option value='all'>Tất Cả</mat-option>-->
-            <!--                  <mat-option *ngFor="let item of listCategory" value="{{item.id}}">{{item.name}}</mat-option>-->
-            <!--                </mat-select>-->
-            <!--              </mat-form-field>-->
-            <!--            </div>-->
+          <!--            <div class="col-lg-2">-->
+          <!--              <mat-form-field appearance="outline">-->
+          <!--                <mat-label><b>Danh Mục</b></mat-label>-->
+          <!--                <mat-select formControlName="company">-->
+          <!--                  <mat-option value='all'>Tất Cả</mat-option>-->
+          <!--                  <mat-option *ngFor="let item of listCategory" value="{{item.id}}">{{item.name}}</mat-option>-->
+          <!--                </mat-select>-->
+          <!--              </mat-form-field>-->
+          <!--            </div>-->
 
-            <div class="col-lg-2">
-              <mat-form-field appearance="outline">
-                <mat-label><b>Biểu Đồ</b></mat-label>
-                <mat-select formControlName="chartStyle">
-                  <mat-option value='pie'>Biểu Đồ Tròn</mat-option>
-                  <mat-option value="bar">Biểu Đồ Cột</mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
+          <!--          <div class="col-lg-2">-->
+          <!--            <mat-form-field appearance="outline">-->
+          <!--              <mat-label><b>Biểu Đồ</b></mat-label>-->
+          <!--              <mat-select formControlName="chartStyle">-->
+          <!--                <mat-option value='pie'>Biểu Đồ Tròn</mat-option>-->
+          <!--                <mat-option value="bar">Biểu Đồ Cột</mat-option>-->
+          <!--              </mat-select>-->
+          <!--            </mat-form-field>-->
+          <!--          </div>-->
 
-            <!--            <div [hidden]="!statisticForm.invalid" class="row">-->
-            <!--              <div class="col-md">-->
-            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
-            <!--                   *ngIf="statisticForm.get('startDate').invalid && statisticForm.get('startDate').touched">-->
-            <!--                  {{ statisticForm.get('startDate').errors.message }}-->
-            <!--                </p>-->
-            <!--              </div>-->
-            <!--              <div class="col-md">-->
-            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
-            <!--                   *ngIf="statisticForm.get('endDate').invalid && statisticForm.get('endDate').touched">-->
-            <!--                  {{ statisticForm.get('endDate').errors.message }}-->
-            <!--                </p>-->
-            <!--              </div>-->
-            <!--              <div class="col-md">-->
-            <!--                <p style="margin-top: 13px;margin-bottom: 3px;color: red"-->
-            <!--                   *ngIf="statisticForm.invalid && statisticForm.get('endDate').touched">-->
-            <!--                  {{ statisticForm.errors.message }}-->
-            <!--                </p>-->
-            <!--              </div>-->
-            <!--            </div>-->
-            <br>
-            <div class="row">
-              <div class="position-relative">
-                <div class="position-absolute top-50 start-50 translate-middle">
-                  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group me-2" role="group" aria-label="First group">
-                      <button (click)="onSubmit()" mat-raised-button color="primary" [disabled]="statisticForm.invalid"
-                              type="submit"
-                              data-bs-toggle="modal" data-bs-target="#exampleModal">Phân Tích
-                      </button>
-                    </div>
-                    <div class="btn-group me-2" role="group" aria-label="Second group">
-                      <button type="button" mat-raised-button color="warn" (click)="exportPdf()">Xuất Dữ Liệu</button>
-                    </div>
+          <div class="row my-5">
+            <div class="position-relative">
+              <div class="position-absolute top-50 start-50 translate-middle">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                  <div class="btn-group me-2" role="group" aria-label="First group">
+                    <button (click)="onSubmit()" mat-raised-button color="primary" [disabled]="statisticForm.invalid"
+                            type="submit"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Phân Tích
+                    </button>
+                  </div>
+                  <div class="btn-group me-2" role="group" aria-label="Second group">
+                    <button type="button" mat-raised-button color="warn" (click)="exportPdf()">Xuất Dữ Liệu</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </form>
-        <br>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

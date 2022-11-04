@@ -33,6 +33,7 @@ export class ListComponent implements OnInit {
   });
 
   books: Book[] = [];
+  bookSellers: Book[] = [];
   categories: Category[] = [];
   carts: any = this.bookService.getCart();
 
@@ -71,6 +72,7 @@ export class ListComponent implements OnInit {
     this.getCategory();
     this.searchBook();
     this.getListSearch();
+    this.getBestSeller();
     this.dataService.changeData({
       quantity: this.cartService.getTotalQuantity()
     });
@@ -216,5 +218,11 @@ export class ListComponent implements OnInit {
         this.ngOnInit();
         break;
     }
+  }
+
+  getBestSeller(): void {
+    this.bookService.getBestSeller().subscribe(next => {
+      this.bookSellers = next;
+    });
   }
 }

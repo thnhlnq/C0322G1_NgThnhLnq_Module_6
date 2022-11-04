@@ -16,68 +16,99 @@ import java.util.List;
 @Transactional
 public interface IStatisticRepository extends JpaRepository<Book, Integer> {
 
-    @Query(value = "select sum(price * quantity) as price, " +
-            "publisher as publisher, " +
-            "sum(quantity) as quantity, " +
-            "week(release_date) as `week`, " +
-            "month(release_date) as `month`, " +
-            "year(release_date) as `year`, " +
-            "concat(week(release_date), '/', month(release_date), '/ ', year(release_date), ' - ' , publisher) as `time` " +
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "week(cart.create_date) as `week`, " +
+            "month(cart.create_date) as `month`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time` " +
             "from `book` " +
-            "where (release_date > date(:startTime)) " +
-            "and(release_date < date(:endTime)) " +
-            "and `name` like %:type% group by `time` order by `time`;", nativeQuery = true)
-    List<StatisticByWeekDto> getStatisticByWeek(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type);
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByWeekDto> getStatisticByWeek(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
-    @Query(value = "select sum(price * quantity) as price, " +
-            "publisher as publisher, " +
-            "sum(quantity) as quantity, " +
-            "month(release_date) as `month`, " +
-            "year(release_date) as `year`, " +
-            "concat(month(release_date), ' / ', year(release_date), ' - ' , publisher) as `time` " +
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "month(cart.create_date) as `month`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time` " +
             "from `book` " +
-            "where (release_date > date(:startTime)) " +
-            "and(release_date < date(:endTime)) " +
-            "and `name` like %:type% group by `time` order by `time`;", nativeQuery = true)
-    List<StatisticByMonthDto> getStatisticByMonth(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type);
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByMonthDto> getStatisticByMonth(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
-    @Query(value = "select sum(price * quantity) as price, " +
-            "publisher as publisher, " +
-            "sum(quantity) as quantity, " +
-            "month(release_date) as `month`, " +
-            "year(release_date) as `year`, " +
-            "concat(year(release_date), ' - ' , publisher) as `time` " +
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time` " +
             "from `book` " +
-            "where (release_date > date(:startTime)) " +
-            "and(release_date < date(:endTime)) " +
-            "and `name` like %:type% group by `time` order by `time`;", nativeQuery = true)
-    List<StatisticByYearDto> getStatisticByYear(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type);
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByYearDto> getStatisticByYear(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
-    @Query(value = "SELECT SUM(price * quantity) AS price, " +
-            "publisher AS publisher, " +
-            "SUM(quantity) AS quantity, " +
-            "WEEK(release_date) AS `week`, " +
-            "MONTH(release_date) AS `month`, " +
-            "YEAR(release_date) AS `year`, " +
-            "CONCAT(MONTH(release_date), ' / ' ,YEAR(release_date), ' - ', publisher) AS `time`FROM `book` " +
-            "WHERE (release_date > DATE(:startTime)) and publisher = :publisher AND (release_date < DATE(:endTime))AND `name` LIKE %:type% GROUP BY `time` ORDER BY `time`;", nativeQuery = true)
-    List<StatisticByWeekDto> getStatisticByWeekAndPublisher(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type, @Param("publisher") String publisher);
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "week(cart.create_date) as `week`, " +
+            "month(cart.create_date) as `month`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time`, " +
+            "customer.name as `customer`" +
+            "from `book` " +
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "join customer on customer.id = cart.customer_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByWeekDto> getStatisticByWeekAndCustomer(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "month(cart.create_date) as `month`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time`, " +
+            "customer.name as `customer`" +
+            "from `book` " +
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "join customer on customer.id = cart.customer_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByMonthDto> getStatisticByMonthAndCustomer(@Param("startTime") String startTime, @Param("endTime") String endTime);
 
-    @Query(value = "SELECT SUM(price * quantity) AS price, " +
-            "publisher AS publisher, " +
-            "SUM(quantity) AS quantity, " +
-            "MONTH(release_date) AS `month`, " +
-            "YEAR(release_date) AS `year`, " +
-            "CONCAT(MONTH(release_date), ' / ' ,YEAR(release_date), ' - ', publisher) AS `time`FROM `book` " +
-            "WHERE (release_date > DATE(:startTime)) and publisher = :publisher AND (release_date < DATE(:endTime))AND `name` LIKE %:type% GROUP BY `time` ORDER BY `time`;", nativeQuery = true)
-    List<StatisticByMonthDto> getStatisticByMonthAndPublisher(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type, @Param("publisher") String publisher);
-
-    @Query(value = "SELECT SUM(price * quantity) AS price, " +
-            "publisher AS publisher, " +
-            "SUM(quantity) AS quantity, " +
-            "YEAR(release_date) AS `year`, " +
-            "CONCAT(YEAR(release_date), ' - ', publisher) AS `time`FROM `book` " +
-            "WHERE (release_date > DATE(:startTime)) and publisher = :publisher AND (release_date < DATE(:endTime))AND `name` LIKE %:type% GROUP BY `time` ORDER BY `time`;", nativeQuery = true)
-    List<StatisticByYearDto> getStatisticByYearAndPublisher(@Param("startTime") String startTime, @Param("endTime") String endTime, @Param("type") String type, @Param("publisher") String publisher);
+    @Query(value = "select sum(book.price * cart_detail.quantity) as `price`, " +
+            "sum(cart_detail.quantity) as `quantity`, " +
+            "year(cart.create_date) as `year`, " +
+            "book.name as `time`, " +
+            "customer.name as `customer`" +
+            "from `book` " +
+            "join cart_detail on cart_detail.book_id = book.id " +
+            "join cart on cart.id = cart_detail.cart_id " +
+            "join customer on customer.id = cart.customer_id " +
+            "where (cart.create_date > date(:startTime)) " +
+            "and (cart.create_date < date(:endTime)) " +
+            "group by book.id " +
+            "order by quantity desc " +
+            "limit 10", nativeQuery = true)
+    List<StatisticByYearDto> getStatisticByYearAndCustomer(@Param("startTime") String startTime, @Param("endTime") String endTime);
 }

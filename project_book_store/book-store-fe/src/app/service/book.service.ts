@@ -47,4 +47,8 @@ export class BookService {
       return [];
     }
   }
+
+  getBestSeller(): Observable<Book[]> {
+    return this.http.get<Book[]>(API_URL + '/book/best-seller');
+  }
 }

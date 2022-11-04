@@ -4,8 +4,6 @@ public interface StatisticByWeekDto {
 
     Long getPrice();
 
-    String getPublisher();
-
     Long getQuantity();
 
     String getWeek();
@@ -15,4 +13,6 @@ public interface StatisticByWeekDto {
     String getYear();
 
     String getTime();
+
+    String getCustomer();
 }
