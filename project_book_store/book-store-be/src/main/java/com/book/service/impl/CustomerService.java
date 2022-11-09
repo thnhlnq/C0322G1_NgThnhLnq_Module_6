@@ -45,9 +45,17 @@ public class CustomerService implements ICustomerService {
         userRole.setUsers(users.get(users.toArray().length - 1));
         userRole.setRoles(roles);
         userRoleRepository.save(userRole);
-
         customer.setUsers(customer.getUsers());
         customerRepository.save(customer.getName(), customer.getAddress(), customer.getBirthday(), customer.getGender(), customer.getPhone(), users.toArray().length);
+    }
+
+    @Override
+    public void create(Customer customer) {
+        if (customerRepository.findCustomerByEmail(customer.getUsers().getEmail()) == null) {
+            Users users = userRepository.findById(userRepository.findMaxId()).get();
+            customer.setUsers(users);
+            customerRepository.save(customer);
+        }
     }
 
     @Override

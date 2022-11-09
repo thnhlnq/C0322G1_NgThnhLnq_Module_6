@@ -63,4 +63,16 @@ public class CustomerController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @PostMapping("/saveCustomerGmail")
+    public ResponseEntity<List<?>> create(@RequestBody Customer customer) {
+        customerService.create(customer);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/saveUserGmail")
+    public ResponseEntity<List<?>> createUser(@RequestBody Users user) {
+        userService.create(user);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

@@ -27,6 +27,12 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {DatePipe} from '@angular/common';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -49,7 +55,6 @@ import {DatePipe} from '@angular/common';
     MatSelectModule,
     MatOptionModule,
     MatTabsModule,
-    MatIconModule,
     MatSlideToggleModule,
     MatMenuModule,
     MatPaginatorModule,
@@ -57,13 +62,35 @@ import {DatePipe} from '@angular/common';
     MatTooltipModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    SocialLoginModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       progressBar: true,
       tapToDismiss: true
     })
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('734066717842-tnup7v3l38uujekob8nvb25767gv8jan.apps.googleusercontent.com',
+              {scope: 'email', plugin_name: 'login_app'}
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }],
   exports: [],
   bootstrap: [AppComponent]
 })

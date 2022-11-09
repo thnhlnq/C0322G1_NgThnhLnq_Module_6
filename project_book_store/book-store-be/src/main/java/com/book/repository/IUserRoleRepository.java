@@ -18,7 +18,7 @@ public interface IUserRoleRepository extends JpaRepository<UserRole, Integer> {
     List<UserRole> findAllByUsers(Users users);
 
     @Modifying
-    @Query(value = "insert into user_role (`status`, `roles_id`,`users_id`) values (0, :roleId, :userId)", nativeQuery = true)
-    void save(@Param("roleId") Integer roleId, @Param("userId") Integer userId);
+    @Query(value = "insert into user_role (`status`, `roles_id`,`users_id`) values (0, 2, :userId)", nativeQuery = true)
+    void save(@Param("userId") Integer userId);
 
 }

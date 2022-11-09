@@ -2,10 +2,13 @@ package com.book.service.impl;
 
 import com.book.model.Users;
 import com.book.repository.IUserRepository;
+import com.book.repository.IUserRoleRepository;
 import com.book.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -21,7 +24,14 @@ public class UserService implements IUserService {
     IUserRepository userRepository;
 
     @Autowired
+    IUserRoleRepository userRoleRepository;
+
+    @Autowired
     private JavaMailSender javaMailSender;
+
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Override
     public Users findByName(String name) {
@@ -69,6 +79,16 @@ public class UserService implements IUserService {
     @Override
     public void save(Users users) {
         userRepository.save(users.getEmail(), users.getUsername(), users.getPassword());
+    }
+
+    @Override
+    public void create(Users users) {
+        if (userRepository.findUsersByName(users.getUsername()) != null) {
+            return;
+        }
+        users.setPassword(passwordEncoder().encode(users.getPassword()));
+        userRepository.save(users);
+        userRoleRepository.save(users.getId());
     }
 
     @Override

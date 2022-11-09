@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Customer} from '../model/customer';
 import {Users} from '../model/users';
-import {Book} from '../model/book';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -17,8 +16,7 @@ export class UserService {
   }
 
   getCustomer(username: string): Observable<Customer> {
-    // @ts-ignore
-    return this.http.post<Customer>(`${API_URL}/book/` + username);
+    return this.http.post<Customer>(`${API_URL}/book/`, username);
   }
 
   getAll(): Observable<Users> {
@@ -27,5 +25,13 @@ export class UserService {
 
   saveCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(API_URL + '/customer/create', customer);
+  }
+
+  saveCustomerGmail(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(API_URL + '/customer/saveCustomerGmail', customer);
+  }
+
+  saveUserGmail(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(API_URL + '/customer/saveUserGmail', customer);
   }
 }

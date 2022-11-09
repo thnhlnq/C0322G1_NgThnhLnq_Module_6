@@ -39,6 +39,10 @@ export class BookService {
     return this.http.patch<Book>(`${API_URL}/book/${id}`);
   }
 
+  getBestSeller(): Observable<Book[]> {
+    return this.http.get<Book[]>(API_URL + '/book/best-seller');
+  }
+
   getCart() {
     const cartJson = sessionStorage.getItem('cart');
     if (cartJson) {
@@ -46,9 +50,5 @@ export class BookService {
     } else {
       return [];
     }
-  }
-
-  getBestSeller(): Observable<Book[]> {
-    return this.http.get<Book[]>(API_URL + '/book/best-seller');
   }
 }

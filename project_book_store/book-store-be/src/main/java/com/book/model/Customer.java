@@ -25,6 +25,7 @@ public class Customer {
 
     private boolean status;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id", referencedColumnName = "id")
     private Users users;

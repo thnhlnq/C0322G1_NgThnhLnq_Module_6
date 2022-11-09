@@ -1,4 +1,4 @@
-package org.example.OCA;
+package org.example.OCA.OCA_6;
 
 public class OCA_6 {
     public static void main(String[] args) {

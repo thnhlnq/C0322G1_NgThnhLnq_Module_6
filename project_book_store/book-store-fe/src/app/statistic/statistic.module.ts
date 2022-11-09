@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {StatisticRoutingModule} from './statistic-routing.module';
-import {StatisticComponent} from './statistic.component';
+import {StatisticComponent} from './statistic-book/statistic.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';

@@ -3,6 +3,7 @@ import {CartService} from '../service/cart.service';
 import {DataService} from '../service/data.service';
 import {ShareService} from '../service/share.service';
 import {TokenStorageService} from '../service/token-storage.service';
+import {SocialAuthService, SocialUser} from 'angularx-social-login';
 
 @Component({
   selector: 'app-header',
@@ -17,16 +18,24 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   totalQuantity: any = 0;
 
+  socialUser!: SocialUser;
+  isLoggedin?: boolean;
+
   ngOnInit(): void {
     this.dataService.getData.subscribe((result: any) => {
       this.totalQuantity = parseInt(result.quantity, 10);
     });
     this.loadHeader();
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
+    });
   }
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
               private cartService: CartService,
+              private socialAuthService: SocialAuthService,
               private dataService: DataService) {
     this.shareService.getClickEvent().subscribe(() => {
       this.loadHeader();
@@ -45,8 +54,10 @@ export class HeaderComponent implements OnInit {
   logOut(): void {
     this.isLoggedIn = false;
     this.tokenStorageService.signOut();
+    this.socialAuthService.signOut().then();
     this.dataService.changeData({
       quantity: this.cartService.getTotalQuantity()
     });
+    this.socialAuthService.signOut().then();
   }
 }

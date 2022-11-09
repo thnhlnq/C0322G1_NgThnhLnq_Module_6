@@ -27,4 +27,7 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
     @Query(value = "select customer.* from customer join users on users.id = customer.users_id where users.username = :username", nativeQuery = true)
     Customer findHistoryByUsername(@Param("username") String username);
+
+    @Query(value = "select * from customer join users on users.id = customer.users_id where email = :email limit 1", nativeQuery = true)
+    Customer findCustomerByEmail(@Param("email") String email);
 }

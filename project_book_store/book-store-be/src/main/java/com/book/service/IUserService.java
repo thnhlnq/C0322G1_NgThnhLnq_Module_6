@@ -19,6 +19,8 @@ public interface IUserService {
 
     void save(Users users);
 
+    void create(Users users);
+
     Optional<Users> findById(Integer id);
 
     void edit(Users users);

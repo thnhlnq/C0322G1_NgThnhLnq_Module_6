@@ -1,110 +1,310 @@
-insert into `category` values 
-(1, 'Văn Học Việt Nam'), 
-(2, 'Văn Học Nước Ngoài'), 
-(3, 'Thiếu Nhi'), 
-(4, 'Thời Sự - Chính Trị'), 
-(5, 'Khoa Học Tự Nhiên - Nhân Văn'), 
-(6, 'Sách Tham Khảo'), 
-(7, 'Sách Tái Bản'), 
-(8, 'Sách Kinh Tế');
-insert into `discount` values 
-(1, 0), 
-(2, 5), 
-(3, 7), 
-(4, 9), 
-(5, 10);
+insert into `roles` (`name`, `status`)
+values ('ROLE_ADMIN', 0),
+       ('ROLE_USER', 0);
 
-insert into `book` values 
-(1, 'Cao Minh',' 978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(2, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(3, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1),
-(4, 'Cao Minh', '978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(5, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(6, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1),
-(7, 'Cao Minh', '978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(8, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(9, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1),
-(10, 'Cao Minh', '978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(11, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(12, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1),
-(13, 'Cao Minh', '978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(14, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(15, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1),
-(16, 'Cao Minh', '978654321', 'NẾU MỘT NGÀY ANH THẤY TÔI ĐIÊN, THỰC RA CHÍNH LÀ ANH ĐIÊN ĐẤY!', '16 x 24', 'https://salt.tikicdn.com/cache/w1200/ts/product/7c/e8/34/4d3636aadb471cad0bf2f45d681e4f23.jpg', 'Thiên Tài Bên Trái, Kẻ Điên Bên Phải', '125.000', 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', 0, 424, 'Thu Hương', 1, 1), 
-(17, 'Sir Arthur Conan Doyle', '9876543132', 'Bạn đang cầm trên tay tập truyện về nhân vật thám tử nổi danh nhất mọi thời đại – vị thám tử tài ba xuất hiện đầu tiên trong tác phẩm trinh thám kinh điển “Sherlock Holmes” của nhà văn Arthur Conan Doyle.', '13.5 x 20.5', 'https://salt.tikicdn.com/cache/w1200/ts/product/98/fb/6b/8afaf7b08aa4c6e408181baf4c6fdeaa.jpg', 'Sherlock Holmes toàn tập', '98.000', 'Nhà Xuất Bản Văn Học', '20', '2020-10-19', 0, '600', 'Bùi Liên Thảo - Vũ Thu Hà - Vũ Quế Anh', 1, 1),
-(18, 'Dale Carnegie', '9876543132', 'Đắc nhân tâm – How to win friends and Influence People của Dale Carnegie là quyển sách nổi tiếng nhất, bán chạy nhất và có tầm ảnh hưởng nhất của mọi thời đại. Tác phẩm đã được chuyển ngữ sang hầu hết các thứ tiếng trên thế giới và có mặt ở hàng trăm quốc gia.', '3', 'https://salt.tikicdn.com/cache/w1200/ts/product/6a/da/bb/185d27fe442a1668cf0196c1b82c87eb.jpg', 'Đắc Nhân Tâm', '196.000', 'Nhà Xuất Bản Kim Đồng', '30', '2020-10-19', 0, '300', 'Bùi Liên Thảo', 1, 1);
-insert into `users` values 
-(1, 'thlonq@gmail.com', '31265431', 0, 'thlonq'), 
-(2, 'thek32165456@gmail.com', '321654978', 0, 'khachhang2'), 
-(3, 'trancuong@gmail.com', '321654987', 0, 'poiuyt'),
-(4, 'thlonq@gmail.com', '31265431', 0, 'thlonq'), 
-(5, 'thek32165456@gmail.com', '321654978', 0, 'khachhang2'), 
-(6, 'trancuong@gmail.com', '321654987', 0, 'poiuyt'),
-(7, 'thlonq@gmail.com', '31265431', 0, 'thlonq'), 
-(8, 'thek32165456@gmail.com', '321654978', 0, 'khachhang2'), 
-(9, 'trancuong@gmail.com', '321654987', 0, 'poiuyt'),
-(10, 'thlonq@gmail.com', '31265431', 0, 'thlonq'), 
-(11, 'thek32165456@gmail.com', '321654978', 0, 'khachhang2'), 
-(12, 'trancuong@gmail.com', '321654987', 0, 'poiuyt');
-insert into `customer` values 
-(1, 'Đà Nẵng', '1994-10-11', 'Nam', 'Thnh Lnq', 09012365478, 0, 1), 
-(2, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(3, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1),
-(4, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(5, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1),
-(6, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(7, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1),
-(8, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(9, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1),
-(10, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(11, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1),
-(12, 'Đà Nẵng', '1994-10-11', 'Nam', 'Nguyễn Văn Bình', 09012365478, 0, 1), 
-(13, 'Đà Nẵng', '1994-10-11', 'Nam', 'Trần Văn Cường', 09012365478, 0, 1);
-insert into `cart` values 
-(1, '2022-09-09', 0, 1), 
-(2, '2022-09-09', 0, 2), 
-(3, '2022-09-09', 0, 3),
-(4, '2022-09-09', 0, 1),
-(5, '2022-09-09', 0, 1), 
-(6, '2022-09-09', 0, 2), 
-(7, '2022-09-09', 0, 3),
-(8, '2022-09-09', 0, 1), 
-(9, '2022-09-09', 0, 2), 
-(10, '2022-09-09', 0, 3),
-(11, '2022-09-09', 0, 1), 
-(12, '2022-09-09', 0, 2), 
-(13, '2022-09-09', 0, 3),
-(14, '2022-09-09', 0, 1), 
-(15, '2022-09-09', 0, 2), 
-(16, '2022-09-09', 0, 3);
-insert into `cart_detail` values 
-(1, 5, 1, 1), 
-(2, 15, 2, 1), 
-(3, 50, 1, 1),
-(4, 5, 1, 1), 
-(5, 15, 2, 1), 
-(6, 50, 1, 1),
-(7, 5, 1, 1), 
-(8, 15, 2, 1), 
-(9, 50, 1, 1),
-(10, 5, 1, 1), 
-(11, 15, 2, 1), 
-(12, 50, 1, 1),
-(13, 5, 1, 1), 
-(14, 15, 2, 1), 
-(15, 50, 1, 1),
-(16, 5, 1, 1), 
-(17, 15, 2, 1), 
-(18, 50, 1, 1);
-insert into `roles` values (1, 'ROLE_ADMIN', 0), (2, 'ROLE_USER', 0);
-insert into `user_role` values 
-(1, 0, 1, 1), 
-(2, 0, 2, 2),
-(3, 0, 1, 1), 
-(4, 0, 2, 2),
-(5, 0, 1, 1), 
-(6, 0, 2, 2),
-(7, 0, 1, 1), 
-(8, 0, 2, 2),
-(9, 0, 1, 1), 
-(10, 0, 2, 2);
+insert into `users` (email, `password`, `status`, username)
+values ('hoa@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'admin'),
+       ('linh@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'user'),
+       ('long@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'long'),
+       ('hoang@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'hoang');
+
+insert into `customer` (address, birthday, gender, `name`, phone, `status`, users_id)
+values ('Quảng Nam', '1995-01-08', 'Nam', 'Lưu Hòa', 0976482451, 0, 1),
+       ('Đà Nẵng', '1995-10-11', 'Nam', 'Nguyễn Văn Linh', 0901234785, 0, 2),
+       ('Quảng Trị', '1999-10-10', 'Nam', 'Nguyễn Thành Long', 090101010, 0, 3),
+       ('Huế', '1995-10-11', 'Nam', 'Trần Văn Hoàng', 0901020304, 0, 4);
+
+insert into `user_role` (`status`, roles_id, users_id)
+values (0, 1, 1),
+       (0, 2, 1),
+       (0, 2, 2),
+       (0, 2, 3),
+       (0, 2, 4);
+
+insert into category (`name`)
+values ('Văn Học Việt Nam'),
+       ('Văn Học Nước Ngoài'),
+       ('Thiếu Nhi'),
+       ('Thời Sự-Chính Trị'),
+       ('Khoa Học Tự Nhiên-Nhân Văn'),
+       ('Sách Tham Khảo'),
+       ('Sách Tái Bản'),
+       ('Sách Kinh Tế');
+
+insert into book (author, `code`, `description`, dimension, image, `name`, price, publisher, quantity, release_date, `status`,
+                  total_pages, translator, category_id)
+values ('Akira Toriyama, Toyotarou', 'MS00001', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244872927.jpg',
+        'Dragon Ball Super-Tập 13: Trên Từng Chiến Tuyến', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19', false,
+        192,
+        'Barbie Ayumi, Admin Kej', 1),
+       ('Akira Toriyama, Toyotarou', 'MS00002', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865059.jpg',
+        'Dragon Ball Super Tập 8: Dấu Hiệu Thức Tỉnh Của Son Goku', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19',
+        false, 192, 'Barbie Ayumi, Admin Kej', 1),
+       ('Akira Toriyama, Toyotarou', 'MS00003', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244872910.jpg',
+        'Dragon Ball Super-Tập 12: Thân Phận Thực Sự Của Merus', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19',
+        false, 192, 'Barbie Ayumi, Admin Kej', 3),
+       ('Akira Toriyama, Toyotarou', 'MS00004', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865080.jpg',
+        'Dragon Ball Super-Tập 11: Cuộc Đại Vượt Ngục', 25000, 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', false,
+        192,
+        'Barbie Ayumi, Admin Kej', 4),
+       ('Akira Toriyama, Toyotarou', 'MS00005', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865073.jpg',
+        'Dragon Ball Super Tập 10: Điều Ước Của Moro', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19', false, 192,
+        'Barbie Ayumi, Admin Kej', 5),
+       ('Akira Toriyama, Toyotarou', 'MS00006', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/d/r/dragon-ball-super---tap-9---tb-2022.jpg',
+        'Dragon Ball Super Tập 9: Tàn Cuộc', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19', false, 192,
+        'Barbie Ayumi, Admin Kej', 7),
+       ('Akira Toriyama, Toyotarou', 'MS00007', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/3/9/394080.jpg',
+        'Dragon Ball Super Tập 7: Giải Đấu Sức Mạnh-Cuộc Đua Tranh Sống Còn', 25000, 'Nhà Xuất Bản Thế Giới', 10,
+        '2021-01-06', false, 192, 'Barbie Ayumi, Admin Kej', 6),
+       ('Akira Toriyama, Toyotarou', 'MS00008', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865035.jpg',
+        'Dragon Ball Super Tập 6: Hỡi Các Siêu Chiến Binh, Hãy Tập Hợp!', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19', false, 192, 'Barbie Ayumi, Admin Kej', 4),
+       ('Akira Toriyama, Toyotarou', 'MS00009', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/d/r/dragon-ball-super---tap-5-_tai-ban-2022_.jpg',
+        'Dragon Ball Super Tập 5: Tạm Biệt Nhé Trunks Lớn!', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19',
+        false, 192,
+        'Barbie Ayumi, Admin Kej', 1),
+       ('Akira Toriyama, Toyotarou', 'MS00010', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865011.jpg',
+        'Dragon Ball Super Tập 4: Hi Vọng Cuối Cùng', 25000, 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', false, 192,
+        'Barbie Ayumi, Admin Kej', 2),
+       ('Akira Toriyama, Toyotarou', 'MS00011', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865004.jpg',
+        'Dragon Ball Super Tập 3: Kế Hoạch Vô Nhân', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19', false, 192,
+        'Barbie Ayumi, Admin Kej', 3),
+       ('Akira Toriyama, Toyotarou', 'MS00012', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864991.jpg',
+        'Dragon Ball Super Tập 2: Vũ Trụ Nào Chiến Thắng?', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19', false,
+        192,
+        'Barbie Ayumi, Admin Kej', 5),
+       ('Akira Toriyama, Toyotarou', 'MS00013', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
+còn dang dở sau trận chiến với Ma Buu.
+Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
+Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
+        '17.6 x 11.3',
+        'https://cdn0.fahasa.com/media/catalog/product/d/r/dragon-ball-super---tap-1-_-tai-ban-2022_.jpg',
+        'Dragon Ball Super Tập 1: Các Chiến Binh Của Vũ Trụ Thứ 6', 25000, 'Nhà Xuất Bản Thế Giới', 10,
+        '2021-01-06',
+        false, 192, 'Barbie Ayumi, Admin Kej', 4),
+       ('Akira Toriyama', 'MS00014', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_185991.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 42: Tạm Biệt Ngọc Rồng', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19',
+        false, 192, 'Nhiều Người Dịch', 5),
+       ('Akira Toriyama', 'MS00015', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864946.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 39: Vĩnh Biệt Chiến Binh Kiêu Hãnh', 25000, 'Nhà Xuất Bản Kim Đồng', 30,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 6),
+       ('Akira Toriyama', 'MS00016', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864939.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 38: Son Goku VS Vegeta, Cuộc Đối Đầu Định Mệnh', 25000,
+        'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', false, 192, 'Nhiều Người Dịch', 5),
+       ('Akira Toriyama', 'MS00017', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864922.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 37: Khởi Động Kế Hoạch Tác Chiến', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 3),
+       ('Akira Toriyama', 'MS00018', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864915.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 36: Thời Thế Tạo Anh Hùng', 25000, 'Nhà Xuất Bản Kim Đồng', 30,
+        '2020-10-19',
+        false, 192, 'Nhiều Người Dịch', 4),
+       ('Akira Toriyama', 'MS00019', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864892.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 34: Người Kế Thừa Của Goku', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19',
+        false, 192, 'Nhiều Người Dịch', 2),
+       ('Akira Toriyama', 'MS00020', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864847.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 29: Goku Đại Thất Bại', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19',
+        false, 192, 'Nhiều Người Dịch', 6),
+       ('Akira Toriyama', 'MS00021', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864830.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 28: Cậu Thiếu Niên Đến Từ Tương Lai', 25000, 'Nhà Xuất Bản Văn Học', 10,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 1),
+       ('Akira Toriyama', 'MS00022', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864823.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 27: Siêu Saiya, Chiến Binh Huyền Thoại', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 5),
+       ('Akira Toriyama', 'MS00023', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864816.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 26: Son Goku Hồi Phục', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19',
+        false, 192, 'Nhiều Người Dịch', 3),
+       ('Akira Toriyama', 'MS00024', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864755.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 20: Trời Long Đất Lở', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19',
+        false,
+        192, 'Nhiều Người Dịch', 6),
+       ('Akira Toriyama', 'MS00025', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864717.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 16: Kì Phùng Địch Thủ', 25000, 'Nhà Xuất Bản Kim Đồng', 10,
+        '2019-11-11',
+        false, 192, 'Nhiều Người Dịch', 4),
+       ('Akira Toriyama', 'MS00026', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864656_1.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 10: Đại Hội Võ Thuật Lần Thứ 22', 25000, 'Nhà Xuất Bản Văn Học', 20,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 1),
+       ('Akira Toriyama', 'MS00027', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864649.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 9: Bà Thầy Bói', 25000, 'Nhà Xuất Bản Thế Giới', 30, '1999-10-10',
+        false, 192,
+        'Nhiều Người Dịch', 8),
+       ('Akira Toriyama', 'MS00028', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/d/r/dragon-ball---tap-8---tb-2022-.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 8: Son Goku Đột Kích', 25000, 'Nhà Xuất Bản Văn Học', 31, '1999-11-11',
+        false,
+        192, 'Nhiều Người Dịch', 2),
+       ('Akira Toriyama', 'MS00029', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/d/r/dragon-ball---tap-7---tb-2022-.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 7: Theo Dấu Tướng Quân Blue', 25000, 'Nhà Xuất Bản Văn Học', 10,
+        '2022-11-11',
+        false, 192, 'Nhiều Người Dịch', 5),
+       ('Akira Toriyama', 'MS00030', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864618.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 6: Sai Lầm Của Bulma', 25000, 'Nhà Xuất Bản Thế Giới', 20, '2022-11-11',
+        false, 192, 'Nhiều Người Dịch', 2),
+       ('Akira Toriyama', 'MS00033', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_185989.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 40: Vũ Khí Cuối Cùng Của Trái Đất', 19000, 'Nhà Xuất Bản Thế Giới', 10,
+        '2019-10-11', false, 192, 'Nhiều Người Dịch', 1),
+       ('Akira Toriyama', 'MS00034', 'Dragon Ball là bộ truyện tranh thiếu niên dài kì nổi tiếng của tác giả Toriyama Akira trên tuần san Weely Shonen Jump. Bộ truyện ra đời năm 1984 và kết thúc vào năm 1995 với tổng cộng 519 chương, chia thành 42 tập truyện rời do NXB Shueisha phát hành.
+Bộ truyện kể về một cậu bé đuôi khỉ tên là Son Goku sống một mình trong chốn rừng sâu. Cậu rất coi trọng viên ngọc kỉ vật quý giá ông nội để lại trước khi mất.
+Một ngày nọ, cậu vô tình gặp một cô gái kì lạ tên là Bulma đang trên đường tìm kiếm 7 viên ngọc rồng truyền thuyết. Bulma chỉ cho Son Goku thấy rằng, viên ngọc gia bảo của cậu chính là viên ngọc 4 sao, 1 trong 7 viên ngọc rồng mà cô đang tìm kiếm, còn rủ Son Goku tham gia phiêu lưu cùng với mình nữa. Chẳng mảy may suy nghĩ, Goku vui vẻ nhận lời và kể từ đó, cậu nhóc chính thức bước vào một hành trình vĩ đại, không đơn giản chỉ là tìm ngọc rồng nữa, mà là bảo vệ chúng khỏi những kẻ xấu xa mang dã tâm lớn như: Tập đoàn Red Ribbon, Đại Ma Vương Piccolo, Frieza Đại Đế, Cell Bọ Hung, Ma Buu...
+Dù đụng độ phải đối thủ mạnh hơn mình rất nhiều, Son Goku không hề nao núng, cậu luôn nỗ lực cải thiện sức mạnh của chính mình và coi kẻ thù giống như những thử thách thú vị cần vượt qua. Chính vì lí do đó mà xưa nay Son Goku vẫn luôn được độc giả xem như là biểu tượng của sự cố gắng không ngừng nghỉ.
+Suốt chặng đường trừ gian diệt ác ấy, Goku còn có những người thầy, người bạn sẵn sàng ở bên giúp đỡ, thậm chí vào sinh ra tử cùng cậu. Tác giả Toriyama Akira đã khẳng định một điều rằng: ta sẽ chẳng làm nên điều gì lớn lao nếu như ở bên không có những người bạn tốt. Triết lí: tình bạn – nỗ lực làm nên chiến thắng từ đó đã trở thành tôn chỉ của hầu hết những bộ truyện tranh thiếu niên sau này của Shonen Jump.
+Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn còn sôi sục cho tới tận ngày nay. Bên cạnh series 42 tập chính, Dragon Ball còn được tác giả Toriyama phát triển thành vũ trụ Dragon Ball thông qua các tác phẩm Anime, Movie, và mới đây là series Dragon Ball Super được NXB Kim Đồng mua bản quyền và phát hành gần như sát với Nhật Bản, mời quý vị độc giả đón đọc và ủng hộ.',
+        '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864946.jpg',
+        'Dragon Ball-7 Viên Ngọc Rồng Tập 39: Vĩnh Biệt Chiến Binh Kiêu Hãnh', 25000, 'Nhà Xuất Bản Kim Đồng', 11,
+        '2020-10-19', false, 192, 'Nhiều Người Dịch', 5);

@@ -21,7 +21,6 @@ public class Users {
 
     private boolean status;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "users")
     private Customer customer;
 

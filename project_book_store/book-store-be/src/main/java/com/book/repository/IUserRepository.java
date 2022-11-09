@@ -32,4 +32,7 @@ public interface IUserRepository extends JpaRepository<Users, Integer> {
     @Modifying
     @Query(value = "insert into users (email, username, password, status) values (:email, :username, :password, 0)", nativeQuery = true)
     void save(@Param("email") String email, @Param("username") String username, @Param("password") String password);
+
+    @Query(value = "select max(id) from users", nativeQuery = true)
+    Integer findMaxId();
 }

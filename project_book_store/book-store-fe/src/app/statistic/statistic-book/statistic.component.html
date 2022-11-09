@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row" style="margin-top: 100px">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-5">
+      <h1 class="h1 text-center animate__animated animate__slideInDown">Thống Kê</h1>
+
+      <div id="pdf" class="row">
+        <canvas id="myChart" width="100%" height="50%"></canvas>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <form [formGroup]="statisticForm" (submit)="submit()">
+          <div class="row d-flex justify-content-evenly">
+            <div class="col-lg-3" *ngIf="statisticForm.value.type === 'book'">
+              <mat-form-field appearance="outline">
+                <mat-label><b>Ngày Bắt Đầu</b></mat-label>
+                <input matInput type="date" formControlName="startDate">
+                <mat-hint> Chọn Ngày Bắt Đầu</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-3" *ngIf="statisticForm.value.type === 'book'">
+              <mat-form-field appearance="outline">
+                <mat-label><b>Ngày Kết Thúc</b></mat-label>
+                <input matInput type="date" formControlName="endDate">
+                <mat-hint> Chọn Ngày Kết Thúc</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-3">
+              <mat-form-field appearance="outline">
+                <mat-label><b>Thống Kê Theo</b></mat-label>
+                <mat-select formControlName="type">
+                  <mat-option value="book">Sách Bán Chạy Nhất</mat-option>
+                  <mat-option value="customer">Khách Hàng Mua Nhiều Nhất</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row my-5">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+              <div class="row d-flex justify-content-evenly">
+                <div class="col-lg-3">
+                  <button mat-raised-button color="primary" type="submit">
+                    Phân Tích
+                  </button>
+                </div>
+                <div class="col-lg-3">
+                  <button type="button" mat-raised-button color="warn" (click)="exportPdf()">Xuất Dữ Liệu</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+</div>
