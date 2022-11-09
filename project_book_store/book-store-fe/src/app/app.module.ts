@@ -27,6 +27,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {DatePipe} from '@angular/common';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {
   FacebookLoginProvider,
   GoogleLoginProvider,
@@ -60,6 +61,7 @@ import {
     MatPaginatorModule,
     MatCheckboxModule,
     MatTooltipModule,
+    MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     SocialLoginModule,

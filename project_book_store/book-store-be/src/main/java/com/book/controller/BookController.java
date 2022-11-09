@@ -201,4 +201,13 @@ public class BookController {
         }
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
+
+    @GetMapping("/author/{author}")
+    public ResponseEntity<List<Book>> getSameAuthor(@PathVariable String author) {
+        List<Book> books = bookService.getSameAuthor(author);
+        if (books.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
 }

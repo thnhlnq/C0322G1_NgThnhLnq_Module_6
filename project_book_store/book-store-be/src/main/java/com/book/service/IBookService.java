@@ -20,4 +20,6 @@ public interface IBookService {
     Page<Book> findAllAndSearch(Pageable pageable, String keyCategory, String keyName, String keyAuthor);
 
     List<Book> getBestSeller();
+
+    List<Book> getSameAuthor(String author);
 }

@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
         password: this.socialUser.id,
         status: false
       };
-      this.userService.saveUserGmail(user).subscribe(value1 => {
+      this.userService.saveUserGmail(user).subscribe(prev => {
         const customer: Customer = {
           name: this.socialUser.name,
           address: 'Quảng Trị',
@@ -115,7 +115,7 @@ export class LoginComponent implements OnInit {
         });
         this.onSubmit();
         this.userService.saveCustomerGmail(customer).subscribe(next => {
-          this.socialAuthService.authState.subscribe(value2 => {
+          this.socialAuthService.authState.subscribe(data => {
           });
         });
       });

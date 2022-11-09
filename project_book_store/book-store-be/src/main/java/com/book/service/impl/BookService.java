@@ -51,4 +51,9 @@ public class BookService implements IBookService {
     public List<Book> getBestSeller() {
         return bookRepository.getBestSeller();
     }
+
+    @Override
+    public List<Book> getSameAuthor(String author) {
+        return bookRepository.getSameAuthor(author);
+    }
 }

@@ -5,14 +5,13 @@ import {AuthGuard} from '../security/auth.guard.';
 
 
 const routes: Routes = [{
-    path: '',
-    component: StatisticComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: ['ROLE_ADMIN']
-    }
-  }]
-;
+  path: '',
+  component: StatisticComponent,
+  canActivate: [AuthGuard],
+  data: {
+    roles: ['ROLE_ADMIN']
+  }
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
