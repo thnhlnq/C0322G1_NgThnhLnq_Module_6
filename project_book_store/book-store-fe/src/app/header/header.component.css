@@ -11,3 +11,23 @@ nav {
 img {
   object-fit: cover;
 }
+
+#myBtn2 {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: #3F51B5;
+  width:60px;
+  height:60px;
+  padding:10px;
+}
+
+#myBtn2:hover {
+  background-color: #555;
+}

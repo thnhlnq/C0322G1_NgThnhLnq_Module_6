@@ -59,5 +59,8 @@
         </button>
       </div>
     </div>
+    <button *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1" mat-mini-fab color="primary" id="myBtn2" [routerLink]="['/chat/login']">
+      <mat-icon>messenger</mat-icon>
+    </button>
   </div>
 </nav>

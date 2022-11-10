@@ -58,6 +58,5 @@ export class HeaderComponent implements OnInit {
     this.dataService.changeData({
       quantity: this.cartService.getTotalQuantity()
     });
-    this.socialAuthService.signOut().then();
   }
 }

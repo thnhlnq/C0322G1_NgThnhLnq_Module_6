@@ -31,7 +31,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         Users users = userRepository.findUsersByName(username);
 
         if (users == null) {
-            throw new UsernameNotFoundException("User " + username + " was not found in the database");
+            throw new UsernameNotFoundException("Không Tìm Thấy Tài Khoản " + username + " Này !!");
         }
 
         List<UserRole> userRoles = userRoleRepository.findAllByUsers(users);

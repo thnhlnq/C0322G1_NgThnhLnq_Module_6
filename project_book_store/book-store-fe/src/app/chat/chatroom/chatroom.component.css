@@ -31,10 +31,11 @@
 
 footer.sticky-footer {
   position: fixed;
+  padding-top: 5px;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 10px;
+  /*padding: 10px;*/
   background-color: #ffffff;
   border-top: solid 1px #efefef;
 }

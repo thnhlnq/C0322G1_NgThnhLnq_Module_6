@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ActivatedRoute, Router} from '@angular/router';
 import firebase from 'firebase';
+import {Title} from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -28,7 +29,9 @@ export class AddroomComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private title: Title) {
+    this.title.setTitle('Chat');
   }
 
   ngOnInit(): void {
@@ -41,7 +44,7 @@ export class AddroomComponent implements OnInit {
     const room = form;
     this.ref.orderByChild('roomname').equalTo(room.roomname).once('value', (snapshot: any) => {
       if (snapshot.exists()) {
-        this.snackBar.open('Room name already exist!');
+        this.snackBar.open('Phòng Này Đã Tồn Tại !!');
       } else {
         const newRoom = firebase.database().ref('rooms/').push();
         newRoom.set(room).then();

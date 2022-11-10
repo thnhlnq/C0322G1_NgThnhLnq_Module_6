@@ -4,6 +4,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import firebase from 'firebase';
 import {DatePipe} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -45,7 +46,9 @@ export class ChatroomComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              public datepipe: DatePipe) {
+              public datepipe: DatePipe,
+              private title: Title) {
+    this.title.setTitle('Chat');
     this.nickname = localStorage.getItem('nickname');
     this.roomname = this.route.snapshot.params.roomname;
     firebase.database().ref('chats/').on('value', resp => {
@@ -61,11 +64,11 @@ export class ChatroomComponent implements OnInit {
 
   ngOnInit(): void {
     this.chatForm = this.formBuilder.group({
-      message: [null, Validators.required]
+      message: [null]
     });
   }
 
-  onFormSubmit(form: any) {
+  onFormSubmit(form: any): void {
     const chat = form;
     chat.roomname = this.roomname;
     chat.nickname = this.nickname;
@@ -78,12 +81,12 @@ export class ChatroomComponent implements OnInit {
     });
   }
 
-  exitChat() {
+  exitChat(): void {
     const chat = {roomname: '', nickname: '', message: '', date: '', type: ''};
     chat.roomname = this.roomname;
     chat.nickname = this.nickname;
     chat.date = this.datepipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
-    chat.message = `${this.nickname} leave the room`;
+    chat.message = `${this.nickname} Đã Rời Khỏi Phòng Này`;
     chat.type = 'exit';
     const newMessage = firebase.database().ref('chats/').push();
     newMessage.set(chat).then();

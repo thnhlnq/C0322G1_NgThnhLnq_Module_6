@@ -43,6 +43,10 @@ export class BookService {
     return this.http.get<Book[]>(API_URL + '/book/best-seller');
   }
 
+  getAuthor(author: string): Observable<Book> {
+    return this.http.get<Book>(`${API_URL}/book/author/${author}`);
+  }
+
   getCart() {
     const cartJson = sessionStorage.getItem('cart');
     if (cartJson) {

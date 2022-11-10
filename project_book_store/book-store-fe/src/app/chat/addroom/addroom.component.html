@@ -1,15 +1,14 @@
 <div class="container" style="margin-top: 100px;">
   <form class="example-form" [formGroup]="roomForm" (ngSubmit)="onFormSubmit(roomForm.value)">
-    <h2>Please enter new Room</h2>
-    <mat-form-field class="example-full-width">
-      <mat-label>Room Name</mat-label>
-      <input matInput placeholder="Enter room name" formControlName="roomname"
+    <mat-form-field class="example-full-width mt-5" appearance="outline">
+      <mat-label><b>Tên Phòng</b></mat-label>
+      <input matInput placeholder="Nhập Tên Phòng" formControlName="roomname"
              [errorStateMatcher]="matcher">
       <mat-error>
-        <span *ngIf="!roomForm.get('roomname').valid && roomForm.get('roomname').touched">Enter room name</span>
+        <span *ngIf="!roomForm.get('roomname').valid && roomForm.get('roomname').touched">Vui Lòng Nhập Tên Phòng</span>
       </mat-error>
     </mat-form-field>
-    <div class="button-row">
+    <div class="button-row mb-5">
       <button type="submit" [disabled]="!roomForm.valid" mat-fab color="primary">
         <mat-icon>save</mat-icon>
       </button>

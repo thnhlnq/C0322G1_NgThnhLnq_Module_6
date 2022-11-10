@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DatePipe} from '@angular/common';
 import firebase from 'firebase';
+import {Title} from '@angular/platform-browser';
 
 export const snapshotToArray = (snapshot: any) => {
   const returnArr = [];
@@ -27,7 +28,11 @@ export class RoomlistComponent implements OnInit {
   rooms = [];
   isLoadingResults = true;
 
-  constructor(private route: ActivatedRoute, private router: Router, public datepipe: DatePipe) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              public datepipe: DatePipe,
+              private title: Title) {
+    this.title.setTitle('Chat');
     this.nickname = localStorage.getItem('nickname');
     firebase.database().ref('rooms/').on('value', resp => {
       this.rooms = [];
@@ -44,7 +49,7 @@ export class RoomlistComponent implements OnInit {
     chat.roomname = roomname;
     chat.nickname = this.nickname;
     chat.date = this.datepipe.transform(new Date(), 'dd/MM/yyyy HH:mm:ss');
-    chat.message = `${this.nickname} enter the room`;
+    chat.message = ` ${this.nickname} Đã Vào Phòng `;
     chat.type = 'join';
     const newMessage = firebase.database().ref('chats/').push();
     newMessage.set(chat).then();

@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validat
 import {ErrorStateMatcher} from '@angular/material/core';
 import firebase from 'firebase';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,7 +24,11 @@ export class LoginComponent implements OnInit {
   ref = firebase.database().ref('users/');
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private title: Title
+              ) {
+    this.title.setTitle('Chat');
   }
 
   ngOnInit() {

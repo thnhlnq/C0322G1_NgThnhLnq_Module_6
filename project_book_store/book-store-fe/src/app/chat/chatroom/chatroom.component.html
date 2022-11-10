@@ -1,9 +1,9 @@
-<div class="container example-container mat-elevation-z8" style="margin-top: 100px;">
-  <mat-drawer-container class="drawer-container">
+<div class="container example-container mat-elevation-z8">
+  <mat-drawer-container class="drawer-container" style="margin-top: 86px;">
     <mat-drawer mode="side" opened class="left-drawer">
       <div class="users-pane">
         <mat-card class="users-card">
-          <button type="button" mat-button matSuffix mat-icon-button aria-label="Exit" (click)="exitChat()">
+          <button color="warn" type="button" mat-button matSuffix mat-icon-button aria-label="Exit" (click)="exitChat()">
             <mat-icon>logout</mat-icon>
           </button>
         </mat-card>
@@ -36,11 +36,9 @@
       <footer class="sticky-footer">
         <form class="message-form" [formGroup]="chatForm" (ngSubmit)="onFormSubmit(chatForm.value)">
           <mat-form-field class="message-form-field" appearance="outline">
-            <input matInput placeholder="Enter message here" formControlName="message"
+            <mat-label><b>Tin Nhắn</b></mat-label>
+            <input matInput placeholder="Nhập Tin Nhắn Của Bạn" formControlName="message"
                    [errorStateMatcher]="matcher">
-            <mat-error>
-              <span *ngIf="!chatForm.get('message').valid && chatForm.get('message').touched">Enter your message</span>
-            </mat-error>
             <button type="submit" [disabled]="!chatForm.valid" mat-button matSuffix mat-icon-button aria-label="Send">
               <mat-icon>send</mat-icon>
             </button>
