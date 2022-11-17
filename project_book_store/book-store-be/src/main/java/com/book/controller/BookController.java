@@ -15,7 +15,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -154,7 +156,7 @@ public class BookController {
     }
 
     @PostMapping("/saveCart/{username}")
-    public ResponseEntity<List<CartDetailDto>> saveCart(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetails) {
+    public ResponseEntity<List<CartDetailDto>> saveCart(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetails) throws MessagingException, UnsupportedEncodingException {
         Customer customer = customerService.findByUsername(username);
         Cart cart = new Cart();
         cart.setCreateDate(LocalDate.now());
@@ -168,6 +170,7 @@ public class BookController {
             cartDetail.setQuantity(item.getQuantity());
             cartDetailService.save(cartDetail);
         }
+        userService.emailAfterPaypal(cart, cartDetails);
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
@@ -191,6 +194,41 @@ public class BookController {
             item.setCartDetails(cartDetailDtos);
         }
         return new ResponseEntity<>(history, HttpStatus.OK);
+    }
+
+    @PostMapping("/save/{username}")
+    public ResponseEntity<List<CartDetailDto>> saveCartDetail(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetailDtos) {
+        Customer customer = customerService.findByUsername(username);
+        Cart cart = cartService.findCart(customer.getId());
+        if (cart == null) {
+            cart = new Cart();
+            cart.setCreateDate(LocalDate.now());
+            cart.setCustomer(customer);
+            cart.setStatus(true);
+            cart = cartService.save(cart);
+        } else {
+            cartDetailService.deleteCartDetailByCartId(cart.getId());
+        }
+        for (CartDetailDto item : cartDetailDtos) {
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.setCart(cart);
+            cartDetail.setBook(item.getBook());
+            cartDetail.setQuantity(item.getQuantity());
+            cartDetailService.save(cartDetail);
+        }
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/cart/{username}")
+    public ResponseEntity<List<CartDetailDto>> getCartDetail(@PathVariable String username) {
+        Customer customer = customerService.findHistoryByUsername(username);
+        Cart cart = cartService.findCart(customer.getId());
+        List<CartDetail> cartDetails = cartDetailService.findCartDetail(cart.getId());
+        List<CartDetailDto> cartDetailDtos = new LinkedList<>();
+        for (CartDetail cartDetail : cartDetails) {
+            cartDetailDtos.add(new CartDetailDto(cartDetail.getQuantity(), cartDetail.getBook()));
+        }
+        return new ResponseEntity<>(cartDetailDtos, HttpStatus.OK);
     }
 
     @GetMapping("/best-seller")

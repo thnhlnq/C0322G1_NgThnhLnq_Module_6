@@ -123,7 +123,7 @@ export class EditComponent implements OnInit {
       this.bookService.edit(this.id, book).subscribe(() => {
         this.bookForm.reset();
         this.router.navigateByUrl('').then();
-        Swal.fire('Thông Báo !!', 'Chỉnh Sửa Thành Công', 'success').then();
+        Swal.fire('Thông Báo !!', 'Không Có Sự Thay Đổi !!', 'info').then();
       }, e => {
         this.loader = true;
         Swal.fire('Thông Báo !!', 'Đã Có Lỗi Xảy Ra. Chỉnh Sửa Thất Bại', 'error').then();

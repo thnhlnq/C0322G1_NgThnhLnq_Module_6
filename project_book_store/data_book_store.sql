@@ -3,16 +3,16 @@ values ('ROLE_ADMIN', 0),
        ('ROLE_USER', 0);
 
 insert into `users` (email, `password`, `status`, username)
-values ('hoa@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'admin'),
-       ('linh@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'user'),
-       ('long@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'long'),
-       ('hoang@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'hoang');
+values ('admin@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'admin'),
+       ('nguyen@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'usernguyen'),
+       ('tran@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'usertran'),
+       ('hoang@gmail.com', '$2a$10$AFDDl9JoG6mniECGmKvR3eg1YWyWPppzWweLeZ1doD2Wg3jJq3ukG', 0, 'userhoang');
 
 insert into `customer` (address, birthday, gender, `name`, phone, `status`, users_id)
-values ('Quảng Nam', '1995-01-08', 'Nam', 'Lưu Hòa', 0976482451, 0, 1),
-       ('Đà Nẵng', '1995-10-11', 'Nam', 'Nguyễn Văn Linh', 0901234785, 0, 2),
-       ('Quảng Trị', '1999-10-10', 'Nam', 'Nguyễn Thành Long', 090101010, 0, 3),
-       ('Huế', '1995-10-11', 'Nam', 'Trần Văn Hoàng', 0901020304, 0, 4);
+values ('Quảng Nam', '1995-01-08', 'Nam', 'Nguyễn Admin', 0976482451, 0, 1),
+       ('Đà Nẵng', '1995-10-11', 'Nam', 'Nguyễn User', 0901234785, 0, 2),
+       ('Quảng Trị', '1999-10-10', 'Nam', 'Trần User', 090101010, 0, 3),
+       ('Huế', '1995-10-11', 'Nam', 'Hoàng User', 0901020304, 0, 4);
 
 insert into `user_role` (`status`, roles_id, users_id)
 values (0, 1, 1),
@@ -25,21 +25,20 @@ insert into category (`name`)
 values ('Văn Học Việt Nam'),
        ('Văn Học Nước Ngoài'),
        ('Thiếu Nhi'),
-       ('Thời Sự-Chính Trị'),
-       ('Khoa Học Tự Nhiên-Nhân Văn'),
+       ('Thời Sự - Chính Trị'),
+       ('Khoa Học Tự Nhiên - Nhân Văn'),
        ('Sách Tham Khảo'),
        ('Sách Tái Bản'),
        ('Sách Kinh Tế');
 
-insert into book (author, `code`, `description`, dimension, image, `name`, price, publisher, quantity, release_date, `status`,
-                  total_pages, translator, category_id)
+insert into book (author, `code`, `description`, dimension, image, `name`, price, publisher, quantity, release_date,
+                  `status`, total_pages, translator, category_id)
 values ('Akira Toriyama, Toyotarou', 'MS00001', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện còn dang dở sau trận chiến với Ma Buu.
 Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
 Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
         '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244872927.jpg',
-        'Dragon Ball Super-Tập 13: Trên Từng Chiến Tuyến', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19', false,
-        192,
-        'Barbie Ayumi, Admin Kej', 1),
+        'Dragon Ball Super - Tập 13: Trên Từng Chiến Tuyến', 25000, 'Nhà Xuất Bản Văn Học', 20, '2020-10-19', false,
+        192, 'Barbie Ayumi, Admin Kej', 1),
        ('Akira Toriyama, Toyotarou', 'MS00002', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
 còn dang dở sau trận chiến với Ma Buu.
 Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
@@ -52,14 +51,14 @@ còn dang dở sau trận chiến với Ma Buu.
 Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
 Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
         '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244872910.jpg',
-        'Dragon Ball Super-Tập 12: Thân Phận Thực Sự Của Merus', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19',
+        'Dragon Ball Super - Tập 12: Thân Phận Thực Sự Của Merus', 25000, 'Nhà Xuất Bản Kim Đồng', 30, '2020-10-19',
         false, 192, 'Barbie Ayumi, Admin Kej', 3),
        ('Akira Toriyama, Toyotarou', 'MS00004', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
 còn dang dở sau trận chiến với Ma Buu.
 Sau khi Trái Đất lập lại hòa bình không lâu, có 2 kẻ lạ mặt xuất hiện dò tìm thông tin về Siêu Saiya Thần Thánh, nhưng Goku và nhóm bạn không ai hay biết gì về nhân vật này. Hai bên đã có một màn “đánh chào hỏi” nhưng phe Trái Đất đã thua chóng vánh trước 2 kẻ lạ mặt đó. Tất cả đều không khỏi sốc khi biết họ chính là Thần Hủy Diệt cùng cộng sự, người được cho là mạnh nhất toàn bộ vũ trụ.
 Sự kiện này sau đó cũng mở ra 1 cốt truyện mới vô cùng mở với thế giới 7 viên ngọc rồng, có tận 12 vũ trụ cùng biết bao nhân vật, chiến binh mới. Goku cùng nhóm bạn lại bước vào hành trình chinh phục các giới hạn sức mạnh, chiến đấu với cái ác để bảo vệ những điều thân thương.',
         '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244865080.jpg',
-        'Dragon Ball Super-Tập 11: Cuộc Đại Vượt Ngục', 25000, 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', false,
+        'Dragon Ball Super - Tập 11: Cuộc Đại Vượt Ngục', 25000, 'Nhà Xuất Bản Thế Giới', 10, '2021-01-06', false,
         192,
         'Barbie Ayumi, Admin Kej', 4),
        ('Akira Toriyama, Toyotarou', 'MS00005', 'Dragon Ball Super với cốt truyện của tác giả Akira Toriyama và nét vẽ đầy mới mẻ của họa sĩ Toyotarou là phần tiếp nối của bộ truyện Dragon Ball, kể tiếp câu chuyện
@@ -308,3 +307,29 @@ Tuy Dragon Ball đã kết thúc nhưng sức hút của bộ truyện vẫn cò
         '17.6 x 11.3', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8935244864946.jpg',
         'Dragon Ball-7 Viên Ngọc Rồng Tập 39: Vĩnh Biệt Chiến Binh Kiêu Hãnh', 25000, 'Nhà Xuất Bản Kim Đồng', 11,
         '2020-10-19', false, 192, 'Nhiều Người Dịch', 5);
+
+insert into cart (create_date, `status`, customer_id)
+values ('2022-11-02', false, 1),
+       ('2022-11-03', false, 2),
+       ('2022-11-04', false, 3),
+       ('2022-11-05', false, 2),
+       ('2022-11-06', false, 2),
+       ('2022-11-07', false, 4),
+       ('2022-11-08', false, 3),
+       ('2022-11-09', false, 4),
+       ('2022-11-09', false, 4),
+       ('2022-11-09', false, 2),
+       ('2022-11-06', false, 3);
+
+insert into cart_detail (quantity, book_id, cart_id)
+values (100, 1, 1),
+       (201, 2, 2),
+       (396, 4, 3),
+       (123, 5, 4),
+       (314, 17, 5),
+       (343, 14, 6),
+       (114, 11, 7),
+       (314, 8, 9),
+       (551, 24, 10),
+       (114, 19, 11),
+       (354, 21, 8);

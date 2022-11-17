@@ -9,4 +9,6 @@ public interface ICartService {
     Cart save(Cart cart);
 
     List<Cart> findByCustomerId(Integer id);
+
+    Cart findCart(int id);
 }

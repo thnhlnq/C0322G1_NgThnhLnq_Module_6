@@ -22,4 +22,12 @@ export class CartDetailService {
   getHistory(username: string): Observable<History> {
     return this.http.get<History>(API_URL + '/book/history/' + username);
   }
+
+  saveCart(username: string, cartDetail: CartDetail[]) {
+    return this.http.post(API_URL + '/book/save/' + username, cartDetail);
+  }
+
+  getCart(username: string): Observable<History> {
+    return this.http.get<History>(API_URL + '/book/cart/' + username);
+  }
 }

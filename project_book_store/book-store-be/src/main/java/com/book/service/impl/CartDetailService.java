@@ -23,4 +23,9 @@ public class CartDetailService implements ICartDetailService {
     public List<CartDetail> findCartDetail(Integer id) {
         return cartDetailRepository.findCartDetail(id);
     }
+
+    @Override
+    public void deleteCartDetailByCartId(int id) {
+        cartDetailRepository.deleteCartDetailByCartId(id);
+    }
 }

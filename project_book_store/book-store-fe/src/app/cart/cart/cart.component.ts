@@ -7,6 +7,7 @@ import {render} from 'creditcardpayments/creditCardPayments';
 import {Title} from '@angular/platform-browser';
 import {CartDetailService} from '../../service/cart-detail.service';
 import {TokenStorageService} from '../../service/token-storage.service';
+import {CartDetail} from '../../model/cart-detail';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,7 @@ import {TokenStorageService} from '../../service/token-storage.service';
 })
 export class CartComponent implements OnInit {
 
+  cartDetails: CartDetail[] = [];
   carts: any = [];
   book: Book;
 
@@ -30,11 +32,9 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // tslint:disable-next-line:variable-name
-    const _this = this;
     setTimeout(() => {
-      _this.dataService.changeData({
-        quantity: _this.cartService.getTotalQuantity()
+      this.dataService.changeData({
+        quantity: this.cartService.getTotalQuantity()
       });
     }, 1);
     this.carts = this.cartService.getCart();

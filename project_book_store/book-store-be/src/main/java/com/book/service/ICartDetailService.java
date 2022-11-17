@@ -9,4 +9,6 @@ public interface ICartDetailService {
     CartDetail save(CartDetail cartDetail);
 
     List<CartDetail> findCartDetail(Integer id);
+
+    void deleteCartDetailByCartId(int id);
 }

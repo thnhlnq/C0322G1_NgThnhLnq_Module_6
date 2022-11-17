@@ -1,5 +1,7 @@
 package com.book.service;
 
+import com.book.dto.CartDetailDto;
+import com.book.model.Cart;
 import com.book.model.Users;
 
 import javax.mail.MessagingException;
@@ -30,4 +32,6 @@ public interface IUserService {
     Boolean existsUsername(String username);
 
     Boolean existsEmail(String email);
+
+    void emailAfterPaypal(Cart cart, List<CartDetailDto> list) throws MessagingException, UnsupportedEncodingException;
 }

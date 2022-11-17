@@ -2,9 +2,9 @@ package org.example;
 
 public class QuickSort {
 
-    // Hàm nhận phần tử cuối cùng làm chốt,
-    // đặt các phần tử nhỏ hơn chốt ở trước
-    // và lớn hơn ở sau nó
+//     Hàm nhận phần tử cuối cùng làm chốt,
+//     đặt các phần tử nhỏ hơn chốt ở trước
+//     và lớn hơn ở sau nó
     int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = (low - 1); // index of smaller element

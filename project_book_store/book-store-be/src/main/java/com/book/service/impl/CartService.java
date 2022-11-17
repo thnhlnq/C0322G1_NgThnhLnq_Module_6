@@ -23,4 +23,9 @@ public class CartService implements ICartService {
     public List<Cart> findByCustomerId(Integer id) {
         return cartRepository.findByCustomerId(id);
     }
+
+    @Override
+    public Cart findCart(int id) {
+        return cartRepository.findCart(id);
+    }
 }
