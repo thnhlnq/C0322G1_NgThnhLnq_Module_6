@@ -16,7 +16,8 @@ export class UserService {
   }
 
   getCustomer(username: string): Observable<Customer> {
-    return this.http.post<Customer>(`${API_URL}/book/`, username);
+    // @ts-ignore
+    return this.http.post<Customer>(`${API_URL}/book/${username}`);
   }
 
   getAll(): Observable<Users> {

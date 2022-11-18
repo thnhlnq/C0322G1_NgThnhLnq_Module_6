@@ -12,7 +12,7 @@
                   <p>Họ Và Tên: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{customer.name}}</strong></p>
+                  <p class="text-muted"><strong>{{customer?.name}}</strong></p>
                 </li>
 
                 <li class="list-inline-item w-25">
@@ -22,25 +22,25 @@
                   <p class="text-muted"><strong>{{username}}</strong></p>
                 </li>
 
-                <li class="list-inline-item w-25">
-                  <p>Email: </p>
-                </li>
-                <li class="list-inline-item w-50">
-                  <p class="text-muted" type="email"><strong>{{customer.users.email}}</strong></p>
-                </li>
+<!--                <li class="list-inline-item w-25">-->
+<!--                  <p>Email: </p>-->
+<!--                </li>-->
+<!--                <li class="list-inline-item w-50">-->
+<!--                  <p class="text-muted"><strong>{{customer?.users?.email}}</strong></p>-->
+<!--                </li>-->
 
                 <li class="list-inline-item w-25">
                   <p>Ngày Sinh: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{customer.birthday | date: 'dd/MM/yyyy'}}</strong></p>
+                  <p class="text-muted"><strong>{{customer?.birthday | date: 'dd/MM/yyyy'}}</strong></p>
                 </li>
 
                 <li class="list-inline-item w-25">
                   <p>Giới Tính: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{customer.gender}}</strong>
+                  <p class="text-muted"><strong>{{customer?.gender}}</strong>
                   </p>
                 </li>
 
@@ -48,14 +48,14 @@
                   <p>Số Điện Thoại: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{customer.phone}}</strong></p>
+                  <p class="text-muted"><strong>{{customer?.phone}}</strong></p>
                 </li>
 
                 <li class="list-inline-item w-25">
                   <p>Địa Chỉ: </p>
                 </li>
                 <li class="list-inline-item w-50">
-                  <p class="text-muted"><strong>{{customer.address}}</strong></p>
+                  <p class="text-muted"><strong>{{customer?.address}}</strong></p>
                 </li>
               </ul>
             </div>

@@ -23,10 +23,10 @@ dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.7.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.7.2'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-
 }
 
 tasks.named('test') {

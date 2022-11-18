@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="860e2ffc-bbe8-452a-8100-7a5d879db2bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/RemoveDuplicate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GetNonDuplicateValues.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,22 +13,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/example/RemoveDuplicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/example/RemoveDuplicate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/QuickSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/controller/BookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/repository/ICartDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/repository/ICartDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/repository/ICartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/repository/ICartRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/ICartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/ICartDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/ICartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/ICartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/impl/CartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/impl/CartDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/impl/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-be/src/main/java/com/book/service/impl/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/edit/edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/book/edit/edit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/cart/cart/cart.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/service/cart-detail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/service/cart-detail.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../project_book_store/data_book_store.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/data_book_store.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RemoveDuplicate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RemoveDuplicate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/view-info/view-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../project_book_store/book-store-fe/src/app/view-info/view-info.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,19 +50,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/C0322G1_NgThnhLnq/Module_6_Project/algorithm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/C0322G1_NgThnhLnq/Module_6_Project/algorithm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Application.RemoveDuplicate">
+}]]></component>
+  <component name="RunManager" selected="Application.GetNonDuplicateValues">
+    <configuration name="GetNonDuplicateValue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.GetNonDuplicateValue" />
+      <module name="algorithm.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GetNonDuplicateValues" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.GetNonDuplicateValues" />
+      <module name="algorithm.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="QuickSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.QuickSort" />
       <module name="algorithm.main" />
@@ -100,32 +115,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SecondLargest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.SecondLargest" />
-      <module name="algorithm.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.OCA.OCA_1.Test" />
-      <module name="algorithm.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.OCA.OCA_1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="org.example.OCA.OCA_8.Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.OCA.OCA_8.Test" />
       <module name="algorithm.main" />
@@ -141,11 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.QuickSort" />
-        <item itemvalue="Application.RemoveDuplicate" />
+        <item itemvalue="Application.GetNonDuplicateValues" />
+        <item itemvalue="Application.GetNonDuplicateValue" />
         <item itemvalue="Application.org.example.OCA.OCA_8.Test" />
-        <item itemvalue="Application.SecondLargest" />
-        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.RemoveDuplicate" />
+        <item itemvalue="Application.QuickSort" />
       </list>
     </recent_temporary>
   </component>
@@ -167,6 +156,7 @@
       <workItem from="1667712641635" duration="458000" />
       <workItem from="1667987339531" duration="52000" />
       <workItem from="1668576232006" duration="295000" />
+      <workItem from="1668653972542" duration="8886000" />
     </task>
     <servers />
   </component>

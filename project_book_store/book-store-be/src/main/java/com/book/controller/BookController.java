@@ -6,6 +6,8 @@ import com.book.dto.CartDto;
 import com.book.dto.HistoryDto;
 import com.book.model.*;
 import com.book.service.*;
+import com.book.service.impl.EmailService;
+import freemarker.template.TemplateException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -45,6 +47,9 @@ public class BookController {
 
     @Autowired
     ICartDetailService cartDetailService;
+
+    @Autowired
+    EmailService emailService;
 
     @GetMapping("")
     public ResponseEntity<List<Book>> getAll() {
@@ -156,7 +161,7 @@ public class BookController {
     }
 
     @PostMapping("/saveCart/{username}")
-    public ResponseEntity<List<CartDetailDto>> saveCart(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetails) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<List<CartDetailDto>> saveCart(@PathVariable String username, @RequestBody List<CartDetailDto> cartDetails) throws MessagingException, IOException, TemplateException {
         Customer customer = customerService.findByUsername(username);
         Cart cart = new Cart();
         cart.setCreateDate(LocalDate.now());
@@ -170,7 +175,8 @@ public class BookController {
             cartDetail.setQuantity(item.getQuantity());
             cartDetailService.save(cartDetail);
         }
-        userService.emailAfterPaypal(cart, cartDetails);
+//        userService.emailAfterPaypal(cart, cartDetails);
+        emailService.sendEmail(cart, cartDetails);
         return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
