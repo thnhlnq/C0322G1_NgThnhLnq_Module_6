@@ -43,24 +43,26 @@
 <table class="table table-striped">
     <thead>
     <tr style="width: 100%;">
-        <#--        <th>#</th>-->
-        <th style="width: 50%; text-align: center">Tên Sách</th>
+        <th style="width: 5%;">#</th>
+        <th style="width: 45%; text-align: center">Tên Sách</th>
         <th style="width: 25%; text-align: center">Số Lượng</th>
         <th style="width: 25%; text-align: center">Giá</th>
     </tr>
     </thead>
     <tbody>
-    <#list CartDetail as cartDetail>
+    <#list CartDetail as item>
         <tr style="width: 100%;">
-            <#--            <td> ${index}</td>-->
-            <td style="width: 50%;">${cartDetail.book.name}</td>
-            <td style="width: 25%; text-align: center">${cartDetail.quantity}</td>
-            <td style="width: 25%; text-align: center">${cartDetail.book.price * cartDetail.quantity} <b>₫</b></td>
+            <td style="width: 5%;"> ${item?index + 1}</td>
+            <td style="width: 45%;">${item.book.name}</td>
+            <td style="width: 25%; text-align: center">${item.quantity}</td>
+            <td style="width: 25%; text-align: center">${item.book.price * item.quantity} <b>₫</b></td>
         </tr>
     </#list>
     <tr>
-        <td colspan="2" style="text-align: right">Tổng Tiền:</td>
-        <td colspan="2" style="color: #F44336; font-weight: bold">${sum} <b>₫</b></td>
+        <td style="width: 5%;"></td>
+        <td style="width: 45%;"></td>
+        <td style="width: 25%;text-align: right">Tổng Tiền:</td>
+        <td style="width: 25%;color: #F44336; font-weight: bold">${sum} <b>₫</b></td>
     </tr>
     </tbody>
 </table>

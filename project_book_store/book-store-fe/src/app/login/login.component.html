@@ -9,12 +9,12 @@
       <div style="text-align: center">
         <img src="assets/image/240_F_211078107_d7jQeiFY2JfdTKUu6zC8Y5d28WhYaQP4.jpg" width="200" height="200" alt="">
       </div>
-      <form [formGroup]="formGroup" (submit)="onSubmit()">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <div class="example-container">
           <mat-form-field appearance="outline">
             <mat-label>Tên Tài Khoản</mat-label>
             <input matInput type="text" placeholder="Nhập Tên Tài Khoản" formControlName="username" autocomplete="off">
-            <button mat-icon-button matSuffix>
+            <button type="button" mat-icon-button matSuffix>
               <mat-icon>person</mat-icon>
             </button>
           </mat-form-field>
@@ -23,10 +23,8 @@
         <div class="example-container">
           <mat-form-field appearance="outline">
             <mat-label>Mật Khẩu</mat-label>
-            <input matInput placeholder="Nhập Mật Khẩu" [type]="hide ? 'password' : 'text'" formControlName="password"
-                   autocomplete="off">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
+            <input matInput placeholder="Nhập Mật Khẩu" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
