@@ -17,7 +17,7 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/cart/detail"><b> Lịch Sử Mua Hàng </b></a>
           </li>
-          <li class="nav-item" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1">
+          <li class="nav-item" *ngIf="['ROLE_ADMIN'].indexOf(role)!==-1" [hidden]="!isLoggedIn">
             <a class="nav-link" routerLink="/statistic"><b> Thống Kê </b></a>
           </li>
           <li class="nav-item">
@@ -59,7 +59,7 @@
         </button>
       </div>
     </div>
-    <button *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1" mat-mini-fab color="primary" id="myBtn2" [routerLink]="['/chat/login']">
+    <button *ngIf="['ROLE_ADMIN', 'ROLE_USER'].indexOf(role)!==-1;" [hidden]="!isLoggedIn" mat-mini-fab color="primary" id="myBtn2" [routerLink]="['/chat/login']">
       <mat-icon>messenger</mat-icon>
     </button>
   </div>
