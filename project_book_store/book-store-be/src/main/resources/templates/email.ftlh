@@ -7,6 +7,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet"/>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #DDD;
+        }
+
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
 </head>
 <body>
 <h2 style="text-align: center">Cảm Ơn Bạn Đã Đặt Hàng Tại Book Store</h2>
@@ -24,27 +40,27 @@
 <p>Điện Thoại: ${cart.customer.phone}</p>
 <p>Email: ${cart.customer.users.email}</p>
 <h3>Chi Tiết Kiện Hàng</h3>
-<table class="table">
+<table class="table table-striped">
     <thead>
-    <tr>
+    <tr style="width: 100%;">
         <#--        <th>#</th>-->
-        <th>Tên Sách</th>
-        <th>Số Lượng</th>
-        <th>Giá</th>
+        <th style="width: 50%; text-align: center">Tên Sách</th>
+        <th style="width: 25%; text-align: center">Số Lượng</th>
+        <th style="width: 25%; text-align: center">Giá</th>
     </tr>
     </thead>
     <tbody>
     <#list CartDetail as cartDetail>
-        <tr class="summary-table">
+        <tr style="width: 100%;">
             <#--            <td> ${index}</td>-->
-            <td> ${cartDetail.book.name}</td>
-            <td> ${cartDetail.quantity}</td>
-            <td> ${cartDetail.book.price} ₫</td>
+            <td style="width: 50%;">${cartDetail.book.name}</td>
+            <td style="width: 25%; text-align: center">${cartDetail.quantity}</td>
+            <td style="width: 25%; text-align: center">${cartDetail.book.price * cartDetail.quantity} <b>₫</b></td>
         </tr>
     </#list>
     <tr>
-        <td colspan="3" style="text-align: right">Tổng Tiền:</td>
-        <td colspan="2" style="color: #F44336; font-weight: bold"> ${sum} ₫</td>
+        <td colspan="2" style="text-align: right">Tổng Tiền:</td>
+        <td colspan="2" style="color: #F44336; font-weight: bold">${sum} <b>₫</b></td>
     </tr>
     </tbody>
 </table>
