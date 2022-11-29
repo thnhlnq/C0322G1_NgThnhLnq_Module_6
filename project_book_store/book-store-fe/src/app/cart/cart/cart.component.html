@@ -23,7 +23,7 @@
               </td>
               <td style="max-width: 200px; width: 20%">{{item.name}}</td>
               <td style="width: 10%" class="align-middle">{{item.price | number}} ₫</td>
-              <td style="width: 30%" class="align-middle text-center">
+              <td style="width: 30%" class="align-middle text-center pt-4">
                 <ul class="list-inline mt-">
                   <li class="list-inline-item">
                     <button *ngIf="item.quantity == 1" (click)="decrease(i, item.quantity)" mat-raised-button disabled
