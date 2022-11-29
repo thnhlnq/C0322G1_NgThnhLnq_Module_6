@@ -36,12 +36,12 @@ public class SymmetricalArray {
 //        }
 //        System.out.println(count);
 
-        int[] arr = {1, 2, 3, 4, 0, 5, 3, 3, 1};
-        boolean flag = true;
+        int[] arr = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
+        boolean flag = false;
         int count = 0;
         for (int i = 0; i < arr.length / 2; i++) {
-            if (arr[i] == arr[arr.length - i - 1]) {
-                flag = false;
+            if (arr[i] == arr[arr.length - 1 - i]) {
+                flag = true;
                 count++;
             }
         }
