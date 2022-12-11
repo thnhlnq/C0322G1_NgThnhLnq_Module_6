@@ -38,7 +38,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
         helper.setSubject("Thông Tin Thanh Toán");
         helper.setFrom("ntlonq14@gmail.com", "Book Store");
-        helper.setTo("ntlonq14@gmail.com");
+        helper.setTo(cart.getCustomer().getUsers().getEmail());
         int sum = 0;
         for (CartDetail cartDetail : cartDetailRepository.findCartDetail(cart.getId())) {
             sum += cartDetail.getBook().getPrice() * cartDetail.getQuantity();

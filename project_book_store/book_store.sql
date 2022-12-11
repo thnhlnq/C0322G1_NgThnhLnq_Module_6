@@ -1,22 +1,12 @@
-drop database if exists book_store;
+drop database if exists demo_book_store;
 
-create database book_store;
+create database demo_book_store;
 
-use book_store;
+use demo_book_store;
 
-CREATE TABLE `author` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) DEFAULT NULL,
-    PRIMARY KEY (`id`)
-);
 CREATE TABLE `category` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) DEFAULT NULL,
-    PRIMARY KEY (`id`)
-);
-CREATE TABLE `discount` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `percent` VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (`id`)
 );
 CREATE TABLE `book` (
@@ -33,16 +23,10 @@ CREATE TABLE `book` (
     `status` BIT(1) DEFAULT NULL,
     `total_page` INT DEFAULT NULL,
     `translator` VARCHAR(255) DEFAULT NULL,
-    `author_id` INT DEFAULT NULL,
     `category_id` INT DEFAULT NULL,
-    `discount_id` INT DEFAULT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`category_id`)
-        REFERENCES `category` (`id`),
-    FOREIGN KEY (`discount_id`)
-        REFERENCES `discount` (`id`),
-    FOREIGN KEY (`author_id`)
-        REFERENCES `author` (`id`)
+        REFERENCES `category` (`id`)
 );
 CREATE TABLE `users` (
     `username` VARCHAR(255) NOT NULL,

@@ -6,16 +6,16 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080/api/public',
   firebaseConfig: {
-    apiKey: 'AIzaSyBnC8anvokACsGObyXLRD4qcW7ng_p6ZAo',
-    authDomain: 'image-e4034.firebaseapp.com',
-    databaseURL: 'https://image-e4034-default-rtdb.asia-southeast1.firebasedatabase.app',
-    projectId: 'image-e4034',
-    storageBucket: 'image-e4034.appspot.com',
-    messagingSenderId: '139807362441',
-    appId: '1:139807362441:web:f52229648b79ce9f3e2558',
-    measurementId: 'G-GV6STQXD8X'
+    apiKey: "AIzaSyBnC8anvokACsGObyXLRD4qcW7ng_p6ZAo",
+    authDomain: "image-e4034.firebaseapp.com",
+    databaseURL: "https://image-e4034-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "image-e4034",
+    storageBucket: "image-e4034.appspot.com",
+    messagingSenderId: "139807362441",
+    appId: "1:139807362441:web:f52229648b79ce9f3e2558",
+    measurementId: "G-GV6STQXD8X"
   }
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

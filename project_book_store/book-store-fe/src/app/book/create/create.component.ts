@@ -27,6 +27,7 @@ export class CreateComponent implements OnInit {
   url: any;
   msg = '';
   loader = true;
+  categories: Category[] = [];
 
   bookForm: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -44,8 +45,6 @@ export class CreateComponent implements OnInit {
     translator: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
   });
-
-  categories: Category[] = [];
 
   constructor(private bookService: BookService,
               private categoryService: CategoryService,
@@ -75,7 +74,6 @@ export class CreateComponent implements OnInit {
     const nameImg = this.getCurrentDateTime() + this.selectedImage.name;
     const filePath = `book/${nameImg}`;
     const fileRef = this.storage.ref(filePath);
-    // const book = this.bookForm.value;
     let book: Book;
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(finalize(() => {
         fileRef.getDownloadURL().subscribe((url) => {
@@ -94,9 +92,6 @@ export class CreateComponent implements OnInit {
             totalPages: this.bookForm.value.totalPages,
             translator: this.bookForm.value.translator,
             category: this.bookForm.value.category,
-            // category: {
-            //   id: this.bookForm.value.category,
-            // },
             status: false
           };
           this.bookService.save(book).subscribe(() => {

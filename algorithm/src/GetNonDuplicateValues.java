@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 public class GetNonDuplicateValues {
-    public static ArrayList<Integer> removeDuplicate(int[] array) {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 2, 5, 4, 3, 2, 5, 8, 2, -5};
         ArrayList<Integer> result = new ArrayList<>();
         boolean flag = false;
         for (int i = 0; i < array.length; i++) {
@@ -16,11 +17,6 @@ public class GetNonDuplicateValues {
                 result.add(array[i]);
             }
         }
-        return result;
-    }
-
-    public static void main(String[] args) {
-        int[] array = {1, 2, 2, 5, 4, 3, 2, 5, 8, 2};
-        System.out.println(removeDuplicate(array));
+        System.out.println(result);
     }
 }

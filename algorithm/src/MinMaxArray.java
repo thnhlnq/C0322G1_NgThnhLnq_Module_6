@@ -9,7 +9,7 @@ public class MinMaxArray {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
         ArrayList<Integer> array = new ArrayList<>();
-        int item;
+        int item = 0;
         for (int i = 0; i < n; i++) {
             item = rd.nextInt(100);
             array.add(item);

@@ -15,6 +15,6 @@ export class AppComponent {
   title = 'book-store-fe';
 
   constructor() {
-    firebase.initializeApp(config);
+    // firebase.initializeApp(config);
   }
 }
